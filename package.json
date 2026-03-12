@@ -9,7 +9,8 @@
     "setup": "node scripts/setup.js",
     "test": "node test-system.js",
     "migrate": "node database/migrations/001-create-initial-tables.js",
-    "seed": "node database/seeders/index.js"
+    "seed": "node database/seeders/index.js",
+    "postinstall": "npm run migrate"
   },
   "keywords": [
     "perfumes",

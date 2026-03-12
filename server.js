@@ -13,6 +13,14 @@ const flash = require('connect-flash');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+// Configurar URL base para Railway
+const BASE_URL = process.env.RAILWAY_URL?.replace(/\/$/, '') || process.env.BASE_URL || 'http://localhost:3000';
+process.env.BASE_URL = BASE_URL;
+
+console.log('🚀 Iniciando servidor...');
+console.log(`📍 URL Base: ${BASE_URL}`);
+console.log(`🌍 Ambiente: ${process.env.NODE_ENV || 'development'}`);
+
 // Configuração de segurança
 app.use(helmet({
     contentSecurityPolicy: {
