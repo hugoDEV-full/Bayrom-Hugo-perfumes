@@ -140,20 +140,29 @@ app.use((err, req, res, next) => {
 // Inicialização do servidor
 async function startServer() {
     try {
-        // Executar migrações do banco de dados em produção
-        if (process.env.NODE_ENV === 'production') {
-            console.log('🔄 Executando migrações do banco de dados...');
-            const { createTables } = require('./database/migrations/001-create-initial-tables');
-            await createTables();
-            console.log('✅ Migrações concluídas com sucesso!');
-        }
-
-        // Iniciar servidor
-        app.listen(PORT, () => {
+        // Iniciar servidor primeiro para healthcheck funcionar
+        const server = app.listen(PORT, () => {
             console.log(`🚀 Servidor Bayrom & Hugo Parfums rodando na porta ${PORT}`);
             console.log(`🌐 Ambiente: ${process.env.NODE_ENV || 'development'}`);
             console.log(`📍 URL: ${process.env.BASE_URL || `http://localhost:${PORT}`}`);
         });
+
+        // Executar migrações do banco de dados em produção (em background)
+        if (process.env.NODE_ENV === 'production') {
+            console.log('🔄 Executando migrações do banco de dados...');
+            const { createTables } = require('./database/migrations/001-create-initial-tables');
+            
+            // Executar migrações em background sem bloquear o servidor
+            createTables()
+                .then(() => {
+                    console.log('✅ Migrações concluídas com sucesso!');
+                })
+                .catch((error) => {
+                    console.error('❌ Erro nas migrações (servidor continua rodando):', error.message);
+                });
+        }
+
+        return server;
     } catch (error) {
         console.error('❌ Erro ao iniciar servidor:', error);
         process.exit(1);
