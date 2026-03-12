@@ -1,0 +1,318 @@
+/* Animação Dourada Melhorada - Legibilidade Garantida */
+
+/* Títulos Dourados Principais - Melhorados */
+.title-luxury-gold {
+    font-family: 'Playfair Display', serif;
+    font-size: 3.5rem;
+    font-weight: 700;
+    position: relative;
+    text-align: center;
+    margin-bottom: 1.5rem;
+    
+    /* Base sólida para legibilidade */
+    color: #d4af37;
+    
+    /* Gradiente sutil sobreposto */
+    background: linear-gradient(135deg, 
+        #FFD700 0%, 
+        #d4af37 30%, 
+        #f4e4bc 60%, 
+        #FFD700 100%);
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    
+    /* Sombra para profundidade e legibilidade */
+    text-shadow: 
+        0 2px 4px rgba(0, 0, 0, 0.3),
+        0 4px 8px rgba(212, 175, 55, 0.4),
+        0 0 20px rgba(255, 215, 0, 0.3);
+    
+    /* Animação suave */
+    animation: goldShineImproved 4s ease-in-out infinite;
+    
+    /* Z-index alto para ficar sobre outros elementos */
+    position: relative;
+    z-index: 10;
+}
+
+/* Animação melhorada */
+@keyframes goldShineImproved {
+    0%, 100% { 
+        background-position: 0% 50%;
+        filter: brightness(1) drop-shadow(0 0 10px rgba(255, 215, 0, 0.3));
+    }
+    50% { 
+        background-position: 100% 50%;
+        filter: brightness(1.2) drop-shadow(0 0 20px rgba(255, 215, 0, 0.5));
+    }
+}
+
+/* Preços Dourados - Versão Melhorada */
+.price-material-gold-improved {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    font-weight: 700;
+    position: relative;
+    display: inline-block;
+    
+    /* Base sólida */
+    color: #d4af37;
+    
+    /* Gradiente sutil */
+    background: linear-gradient(135deg, 
+        #FFD700 0%, 
+        #d4af37 50%, 
+        #f4e4bc 100%);
+    background-size: 150% 150%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    
+    /* Sombra para legibilidade */
+    text-shadow: 
+        0 1px 3px rgba(0, 0, 0, 0.4),
+        0 2px 6px rgba(212, 175, 55, 0.3);
+    
+    /* Animação suave */
+    animation: priceGoldPulse 3s ease-in-out infinite;
+    
+    /* Z-index */
+    position: relative;
+    z-index: 5;
+}
+
+@keyframes priceGoldPulse {
+    0%, 100% { 
+        background-position: 0% 50%;
+        transform: scale(1);
+    }
+    50% { 
+        background-position: 100% 50%;
+        transform: scale(1.02);
+    }
+}
+
+/* Tags e Badges Dourados */
+.tag-gold-improved {
+    background: linear-gradient(135deg, 
+        rgba(255, 215, 0, 0.9) 0%, 
+        rgba(212, 175, 55, 0.9) 50%, 
+        rgba(244, 228, 188, 0.9) 100%);
+    color: #1a1a1a;
+    padding: 8px 20px;
+    border-radius: 25px;
+    font-weight: 700;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    
+    /* Borda dourada */
+    border: 2px solid #d4af37;
+    
+    /* Sombra */
+    box-shadow: 
+        0 4px 12px rgba(212, 175, 55, 0.3),
+        0 2px 4px rgba(0, 0, 0, 0.2);
+    
+    /* Animação */
+    animation: tagGoldGlow 2s ease-in-out infinite alternate;
+    
+    /* Z-index */
+    position: relative;
+    z-index: 5;
+}
+
+@keyframes tagGoldGlow {
+    0% { 
+        box-shadow: 
+            0 4px 12px rgba(212, 175, 55, 0.3),
+            0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+    100% { 
+        box-shadow: 
+            0 6px 20px rgba(255, 215, 0, 0.4),
+            0 3px 6px rgba(0, 0, 0, 0.3);
+    }
+}
+
+/* Botões Dourados Melhorados */
+.btn-gold-improved {
+    background: linear-gradient(135deg, 
+        #FFD700 0%, 
+        #d4af37 50%, 
+        #f4e4bc 100%);
+    color: #1a1a1a;
+    border: 2px solid #d4af37;
+    padding: 12px 30px;
+    border-radius: 30px;
+    font-weight: 700;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    
+    /* Sombra */
+    box-shadow: 
+        0 6px 20px rgba(212, 175, 55, 0.3),
+        0 3px 6px rgba(0, 0, 0, 0.2);
+    
+    /* Z-index */
+    position: relative;
+    z-index: 5;
+}
+
+.btn-gold-improved:hover {
+    transform: translateY(-2px);
+    box-shadow: 
+        0 8px 25px rgba(255, 215, 0, 0.4),
+        0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.btn-gold-improved::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, 
+        transparent, 
+        rgba(255, 255, 255, 0.3), 
+        transparent);
+    transition: left 0.5s ease;
+}
+
+.btn-gold-improved:hover::before {
+    left: 100%;
+}
+
+/* Ícones Dourados */
+.icon-gold-improved {
+    color: #d4af37;
+    font-size: 1.5rem;
+    
+    /* Sombra para destaque */
+    text-shadow: 
+        0 2px 4px rgba(212, 175, 55, 0.5),
+        0 1px 2px rgba(0, 0, 0, 0.3);
+    
+    /* Animação suave */
+    animation: iconGoldPulse 2s ease-in-out infinite;
+    
+    /* Z-index */
+    position: relative;
+    z-index: 5;
+}
+
+@keyframes iconGoldPulse {
+    0%, 100% { 
+        transform: scale(1);
+        filter: brightness(1);
+    }
+    50% { 
+        transform: scale(1.1);
+        filter: brightness(1.2);
+    }
+}
+
+/* Cards com Destaque Dourado */
+.card-gold-accent {
+    border: 2px solid transparent;
+    background: linear-gradient(white, white) padding-box,
+                linear-gradient(135deg, #d4af37, #FFD700, #f4e4bc) border-box;
+    position: relative;
+    
+    /* Sombra dourada */
+    box-shadow: 
+        0 8px 25px rgba(212, 175, 55, 0.2),
+        0 4px 12px rgba(0, 0, 0, 0.1);
+    
+    /* Animação suave */
+    animation: cardGoldBorder 3s ease-in-out infinite;
+}
+
+@keyframes cardGoldBorder {
+    0%, 100% { 
+        box-shadow: 
+            0 8px 25px rgba(212, 175, 55, 0.2),
+            0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+    50% { 
+        box-shadow: 
+            0 12px 35px rgba(255, 215, 0, 0.3),
+            0 6px 15px rgba(0, 0, 0, 0.15);
+    }
+}
+
+/* Textos Pequenos Dourados */
+.text-gold-small {
+    color: #d4af37;
+    font-weight: 600;
+    text-shadow: 0 1px 2px rgba(212, 175, 55, 0.3);
+    position: relative;
+    z-index: 5;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .title-luxury-gold {
+        font-size: 2.5rem;
+        text-shadow: 
+            0 1px 3px rgba(0, 0, 0, 0.4),
+            0 2px 6px rgba(212, 175, 55, 0.3);
+    }
+    
+    .price-material-gold-improved {
+        font-size: 1.5rem;
+    }
+    
+    .tag-gold-improved {
+        font-size: 0.8rem;
+        padding: 6px 15px;
+    }
+    
+    .btn-gold-improved {
+        font-size: 0.9rem;
+        padding: 10px 20px;
+    }
+}
+
+/* Acessibilidade - Redução de movimento */
+@media (prefers-reduced-motion: reduce) {
+    .title-luxury-gold,
+    .price-material-gold-improved,
+    .tag-gold-improved,
+    .icon-gold-improved,
+    .card-gold-accent {
+        animation: none;
+    }
+    
+    .title-luxury-gold {
+        background-position: 0% 50%;
+    }
+    
+    .price-material-gold-improved {
+        background-position: 0% 50%;
+    }
+}
+
+/* Modo Escuro - Ajuste de contraste */
+@media (prefers-color-scheme: dark) {
+    .title-luxury-gold {
+        text-shadow: 
+            0 2px 4px rgba(0, 0, 0, 0.5),
+            0 4px 8px rgba(212, 175, 55, 0.5),
+            0 0 20px rgba(255, 215, 0, 0.4);
+    }
+    
+    .price-material-gold-improved {
+        text-shadow: 
+            0 1px 3px rgba(0, 0, 0, 0.5),
+            0 2px 6px rgba(212, 175, 55, 0.4);
+    }
+}
