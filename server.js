@@ -144,21 +144,11 @@ app.use((err, req, res, next) => {
 // Inicialização do servidor
 async function startServer() {
     try {
-        // Verificar se o banco está pronto em produção
-        if (process.env.NODE_ENV === 'production' && process.env.DATABASE_URL) {
-            console.log('🔄 Verificando banco de dados...');
-            const buildDatabase = require('./build-database');
-            
-            // Executar build do banco em background
-            setTimeout(async () => {
-                try {
-                    await buildDatabase();
-                    console.log('✅ Banco de dados verificado e atualizado!');
-                } catch (error) {
-                    console.log('⚠️  Erro ao verificar banco (servidor continuando):', error.message);
-                }
-            }, 5000);
-        }
+        // Garantir que o banco está pronto ANTES de qualquer coisa
+        console.log('🔄 Configurando banco de dados...');
+        const buildDatabase = require('./build-database');
+        await buildDatabase();
+        console.log('✅ Banco de dados configurado!');
         
         // Iniciar servidor
         const server = app.listen(PORT, () => {
