@@ -45,7 +45,7 @@ const Product = sequelize.define('Product', {
     slug: DataTypes.STRING,
     brand: DataTypes.STRING,
     category: DataTypes.STRING,
-    price: DataTypes.DECIMAL(10, 2),
+    regular_price: DataTypes.DECIMAL(10, 2),
     sale_price: DataTypes.DECIMAL(10, 2),
     description: DataTypes.TEXT,
     short_description: DataTypes.TEXT,
@@ -230,7 +230,7 @@ async function buildDatabase() {
             await Product.bulkCreate([
                 {
                     name: 'BP Chanel No. 5', slug: 'bp-chanel-no-5', brand: 'BP', category: 'feminino',
-                    price: 180.00, sale_price: 180.00,
+                    regular_price: 180.00, sale_price: 180.00,
                     description: 'Clássico atemporal com notas florais elegantes de jasmim, rosa e sândalo. Uma fragrância icônica que representa elegância e sofisticação.',
                     short_description: 'Fragrância floral icônica e sofisticada.',
                     inspiration: 'Chanel No. 5', fragrance_family: 'floral', size_ml: 100,
@@ -240,7 +240,7 @@ async function buildDatabase() {
                 },
                 {
                     name: 'BP Bleu de Chanel', slug: 'bp-bleu-de-chanel', brand: 'BP', category: 'masculino',
-                    price: 220.00, sale_price: 220.00,
+                    regular_price: 220.00, sale_price: 220.00,
                     description: 'Fragrância woody aromática para o homem moderno com notas de grapefruit, menta e sândalo. Elegância masculina em um frasco.',
                     short_description: 'Elegância masculina em frasco.',
                     inspiration: 'Bleu de Chanel', fragrance_family: 'woody', size_ml: 100,
@@ -250,7 +250,7 @@ async function buildDatabase() {
                 },
                 {
                     name: 'BP Creed Aventus', slug: 'bp-creed-aventus', 'brand': 'BP', category: 'masculino',
-                    price: 280.00, sale_price: 280.00,
+                    regular_price: 280.00, sale_price: 280.00,
                     description: 'Laranja, bergamota, abacaxi e patchouli criam uma fragrância poderosa e sofisticada. Sucesso em frasco para homens determinados.',
                     short_description: 'Sucesso em frasco.',
                     inspiration: 'Creed Aventus', fragrance_family: 'frutal', size_ml: 100,
@@ -260,7 +260,7 @@ async function buildDatabase() {
                 },
                 {
                     name: 'BP Black Opium', slug: 'bp-black-opium', brand: 'BP', category: 'feminino',
-                    price: 190.00, sale_price: 190.00,
+                    regular_price: 190.00, sale_price: 190.00,
                     description: 'Café, baunilha e flores brancas criam uma fragrância viciante e misteriosa. Paixão intensa em cada gota.',
                     short_description: 'Paixão intensa.',
                     inspiration: 'YSL Black Opium', fragrance_family: 'oriental', size_ml: 90,
@@ -270,7 +270,7 @@ async function buildDatabase() {
                 },
                 {
                     name: 'BP Sauvage', slug: 'bp-sauvage', brand: 'BP', category: 'masculino',
-                    price: 200.00, sale_price: 180.00,
+                    regular_price: 200.00, sale_price: 180.00,
                     description: 'Notas ambéreas intensas com pimenta, bergamota e âmbar para uma presença marcante. Força selvagem em essência.',
                     short_description: 'Força selvagem.',
                     inspiration: 'Dior Sauvage', fragrance_family: 'ambar', size_ml: 100,
@@ -280,7 +280,7 @@ async function buildDatabase() {
                 },
                 {
                     name: 'BP J\'adore', slug: 'bp-jadore', brand: 'BP', category: 'feminino',
-                    price: 160.00, sale_price: 160.00,
+                    regular_price: 160.00, sale_price: 160.00,
                     description: 'Buquê floral com ylang-ylang, damasco e jasmim para uma fragrância radiante. Feminilidade em flor.',
                     short_description: 'Feminilidade em flor.',
                     inspiration: 'Dior J\'adore', fragrance_family: 'floral', size_ml: 100,
@@ -290,7 +290,7 @@ async function buildDatabase() {
                 },
                 {
                     name: 'BP Good Girl', slug: 'bp-good-girl', brand: 'BP', category: 'feminino',
-                    price: 210.00, sale_price: 210.00,
+                    regular_price: 210.00, sale_price: 210.00,
                     description: 'Amêndoa, café, baunilha e tuberosa em uma fragrância dual e sedutora. Beleza poderosa e misteriosa.',
                     short_description: 'Beleza poderosa.',
                     inspiration: 'Carolina Herrera Good Girl', fragrance_family: 'oriental', size_ml: 80,
@@ -300,7 +300,7 @@ async function buildDatabase() {
                 },
                 {
                     name: 'BP Le Male', slug: 'bp-le-male', brand: 'BP', category: 'masculino',
-                    price: 170.00, sale_price: 170.00,
+                    regular_price: 170.00, sale_price: 170.00,
                     description: 'Menta, lavanda e baunilha criam uma fragrância clássica e moderna. O homem moderno em essência.',
                     short_description: 'O homem moderno.',
                     inspiration: 'Jean Paul Gaultier Le Male', fragrance_family: 'ambar', size_ml: 125,
