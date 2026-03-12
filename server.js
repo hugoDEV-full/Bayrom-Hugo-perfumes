@@ -144,27 +144,29 @@ app.use((err, req, res, next) => {
 // Inicialização do servidor
 async function startServer() {
     try {
-        // Iniciar servidor primeiro para healthcheck funcionar
+        // Verificar se o banco está pronto em produção
+        if (process.env.NODE_ENV === 'production' && process.env.DATABASE_URL) {
+            console.log('🔄 Verificando banco de dados...');
+            const buildDatabase = require('./build-database');
+            
+            // Executar build do banco em background
+            setTimeout(async () => {
+                try {
+                    await buildDatabase();
+                    console.log('✅ Banco de dados verificado e atualizado!');
+                } catch (error) {
+                    console.log('⚠️  Erro ao verificar banco (servidor continuando):', error.message);
+                }
+            }, 5000);
+        }
+        
+        // Iniciar servidor
         const server = app.listen(PORT, () => {
             console.log(`🚀 Servidor Bayrom & Hugo Parfums rodando na porta ${PORT}`);
             console.log(`🌐 Ambiente: ${process.env.NODE_ENV || 'development'}`);
             console.log(`📍 URL: ${process.env.BASE_URL || `http://localhost:${PORT}`}`);
+            console.log(`🗄️  Banco: ${process.env.DATABASE_URL ? 'MySQL (Produção)' : 'SQLite (Local)'}`);
         });
-
-        // Executar migrações do banco de dados em produção (em background)
-        if (process.env.NODE_ENV === 'production') {
-            console.log('🔄 Executando migrações do banco de dados...');
-            const { createTables } = require('./database/migrations/001-create-initial-tables');
-            
-            // Executar migrações em background sem bloquear o servidor
-            createTables()
-                .then(() => {
-                    console.log('✅ Migrações concluídas com sucesso!');
-                })
-                .catch((error) => {
-                    console.error('❌ Erro nas migrações (servidor continua rodando):', error.message);
-                });
-        }
 
         return server;
     } catch (error) {
