@@ -1,0 +1,292 @@
+<%- include('../../partials/header') %>
+
+<div class="container py-4">
+    <!-- Header -->
+    <div class="row mb-4">
+        <div class="col-md-6">
+            <h1><%= searchQuery ? `Resultados para "${searchQuery}"` : 'Produtos' %></h1>
+            <p class="text-muted">
+                <% if (pagination.totalItems === 1) { %>
+                    1 produto encontrado
+                <% } else { %>
+                    <%= pagination.totalItems %> produtos encontrados
+                <% } %>
+            </p>
+        </div>
+        <div class="col-md-6 text-md-end">
+            <div class="d-flex align-items-center justify-content-md-end gap-2">
+                <label class="text-muted">Ordenar por:</label>
+                <select class="form-select form-select-sm" style="width: auto;" onchange="sortProducts(this.value)">
+                    <option value="relevance" <%= filters.sort === 'relevance' ? 'selected' : '' ?>>Relevância</option>
+                    <option value="newest" <%= filters.sort === 'newest' ? 'selected' : '' ?>>Mais Novos</option>
+                    <option value="price-low" <%= filters.sort === 'price-low' ? 'selected' : '' ?>>Menor Preço</option>
+                    <option value="price-high" <%= filters.sort === 'price-high' ? 'selected' : '' ?>>Maior Preço</option>
+                    <option value="bestselling" <%= filters.sort === 'bestselling' ? 'selected' : '' ?>>Mais Vendidos</option>
+                    <option value="rating" <%= filters.sort === 'rating' ? 'selected' : '' ?>>Melhor Avaliados</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <!-- Filtros -->
+        <div class="col-lg-3 mb-4">
+            <div class="card">
+                <div class="card-header">
+                    <h6 class="mb-0">Filtros</h6>
+                </div>
+                <div class="card-body">
+                    <!-- Categorias -->
+                    <div class="mb-4">
+                        <h6>Categorias</h6>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="category" id="cat-all" 
+                                   value="" <%= !filters.category ? 'checked' : '' %> onchange="filterProducts()">
+                            <label class="form-check-label" for="cat-all">
+                                Todas
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="category" id="cat-masculino" 
+                                   value="masculino" <%= filters.category === 'masculino' ? 'checked' : '' %> onchange="filterProducts()">
+                            <label class="form-check-label" for="cat-masculino">
+                                Masculino
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="category" id="cat-feminino" 
+                                   value="feminino" <%= filters.category === 'feminino' ? 'checked' : '' %> onchange="filterProducts()">
+                            <label class="form-check-label" for="cat-feminino">
+                                Feminino
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="category" id="cat-unisex" 
+                                   value="unisex" <%= filters.category === 'unisex' ? 'checked' : '' %> onchange="filterProducts()">
+                            <label class="form-check-label" for="cat-unisex">
+                                Unisex
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Faixa de Preço -->
+                    <div class="mb-4">
+                        <h6>Faixa de Preço</h6>
+                        <div class="row g-2">
+                            <div class="col-6">
+                                <input type="number" class="form-control form-control-sm" 
+                                       placeholder="Mín" id="priceMin" value="<%= filters.price_min || '' %>"
+                                       onchange="filterProducts()">
+                            </div>
+                            <div class="col-6">
+                                <input type="number" class="form-control form-control-sm" 
+                                       placeholder="Máx" id="priceMax" value="<%= filters.price_max || '' %>"
+                                       onchange="filterProducts()">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Marcas -->
+                    <div class="mb-4">
+                        <h6>Marcas</h6>
+                        <select class="form-select form-select-sm" id="brandFilter" onchange="filterProducts()">
+                            <option value="">Todas as marcas</option>
+                            <% brands.forEach(brand => { %>
+                                <option value="<%= brand %>" <%= filters.brand === brand ? 'selected' : '' %>>
+                                    <%= brand %>
+                                </option>
+                            <% }); %>
+                        </select>
+                    </div>
+
+                    <button class="btn btn-outline-secondary btn-sm w-100" onclick="clearFilters()">
+                        Limpar Filtros
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Produtos -->
+        <div class="col-lg-9">
+            <% if (products.length === 0) { %>
+                <div class="text-center py-5">
+                    <i class="fas fa-search fa-4x text-muted mb-3"></i>
+                    <h4>Nenhum produto encontrado</h4>
+                    <p class="text-muted">Tente ajustar seus filtros ou buscar por outros termos.</p>
+                    <button class="btn btn-primary" onclick="clearFilters()">
+                        Limpar Filtros
+                    </button>
+                </div>
+            <% } else { %>
+                <div class="row g-4">
+                    <% products.forEach(product => { %>
+                        <div class="col-lg-4 col-md-6">
+                            <div class="product-card">
+                                <div class="product-image">
+                                    <img src="<%= product.featured_image || '/images/product-placeholder.jpg' %>" 
+                                         alt="<%= product.name %>" 
+                                         loading="lazy">
+                                    
+                                    <% if (product.sale_price && product.sale_price < product.regular_price) { %>
+                                    <span class="badge-sale">
+                                        -<%= Math.round(((product.regular_price - product.sale_price) / product.regular_price) * 100) %>%
+                                    </span>
+                                    <% } %>
+                                    
+                                    <div class="product-actions">
+                                        <button class="add-to-wishlist" data-product-id="<%= product.id %>">
+                                            <i class="far fa-heart"></i>
+                                        </button>
+                                        <button class="add-to-cart" data-product-id="<%= product.id %>">
+                                            <i class="fas fa-shopping-cart"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                
+                                <div class="card-body">
+                                    <div class="product-brand"><%= product.brand %></div>
+                                    <h5 class="product-name"><%= product.name %></h5>
+                                    
+                                    <% if (product.averageRating > 0) { %>
+                                        <div class="product-rating mb-2">
+                                            <div class="stars">
+                                                <% for(let i = 1; i <= 5; i++) { %>
+                                                    <% if (i <= Math.round(product.averageRating)) { %>
+                                                        <i class="fas fa-star text-warning"></i>
+                                                    <% } else { %>
+                                                        <i class="far fa-star text-warning"></i>
+                                                    <% } %>
+                                                <% } %>
+                                            </div>
+                                            <small class="text-muted">(<%= product.averageRating %>)</small>
+                                        </div>
+                                    <% } %>
+                                    
+                                    <div class="product-price">
+                                        <% if (product.sale_price && product.sale_price < product.regular_price) { %>
+                                            <span class="price-current">R$ <%= product.sale_price.toFixed(2).replace('.', ',') %></span>
+                                            <span class="price-original">R$ <%= product.regular_price.toFixed(2).replace('.', ',') %></span>
+                                        <% } else { %>
+                                            <span class="price-current">R$ <%= product.regular_price.toFixed(2).replace('.', ',') %></span>
+                                        <% } %>
+                                    </div>
+                                    
+                                    <div class="mt-3">
+                                        <a href="/products/<%= product.slug %>" class="btn btn-outline-primary btn-sm w-100">
+                                            Ver Detalhes
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    <% }); %>
+                </div>
+
+                <!-- Paginação -->
+                <% if (pagination.totalPages > 1) { %>
+                <nav aria-label="Paginação de produtos" class="mt-5">
+                    <ul class="pagination justify-content-center">
+                        <% if (pagination.hasPrevPage) { %>
+                            <li class="page-item">
+                                <a class="page-link" href="?page=<%= pagination.currentPage - 1 %><%= buildQueryString() %>">Anterior</a>
+                            </li>
+                        <% } else { %>
+                            <li class="page-item disabled">
+                                <span class="page-link">Anterior</span>
+                            </li>
+                        <% } %>
+
+                        <% for(let i = 1; i <= pagination.totalPages; i++) { %>
+                            <% if (i === pagination.currentPage) { %>
+                                <li class="page-item active">
+                                    <span class="page-link"><%= i %></span>
+                                </li>
+                            <% } else { %>
+                                <li class="page-item">
+                                    <a class="page-link" href="?page=<%= i %><%= buildQueryString() %>"><%= i %></a>
+                                </li>
+                            <% } %>
+                        <% } %>
+
+                        <% if (pagination.hasNextPage) { %>
+                            <li class="page-item">
+                                <a class="page-link" href="?page=<%= pagination.currentPage + 1 %><%= buildQueryString() %>">Próxima</a>
+                            </li>
+                        <% } else { %>
+                            <li class="page-item disabled">
+                                <span class="page-link">Próxima</span>
+                            </li>
+                        <% } %>
+                    </ul>
+                </nav>
+                <% } %>
+            <% } %>
+        </div>
+    </div>
+</div>
+
+<script>
+function buildQueryString() {
+    const params = new URLSearchParams();
+    
+    const category = document.querySelector('input[name="category"]:checked')?.value;
+    const priceMin = document.getElementById('priceMin').value;
+    const priceMax = document.getElementById('priceMax').value;
+    const brand = document.getElementById('brandFilter').value;
+    const sort = document.querySelector('select').value;
+    
+    if (category) params.append('category', category);
+    if (priceMin) params.append('price_min', priceMin);
+    if (priceMax) params.append('price_max', priceMax);
+    if (brand) params.append('brand', brand);
+    if (sort && sort !== 'relevance') params.append('sort', sort);
+    
+    const queryString = params.toString();
+    return queryString ? '&' + queryString : '';
+}
+
+function filterProducts() {
+    const params = new URLSearchParams(window.location.search);
+    
+    const category = document.querySelector('input[name="category"]:checked')?.value;
+    const priceMin = document.getElementById('priceMin').value;
+    const priceMax = document.getElementById('priceMax').value;
+    const brand = document.getElementById('brandFilter').value;
+    
+    // Limpar parâmetros existentes
+    params.delete('category');
+    params.delete('price_min');
+    params.delete('price_max');
+    params.delete('brand');
+    params.delete('page');
+    
+    // Adicionar novos parâmetros
+    if (category) params.append('category', category);
+    if (priceMin) params.append('price_min', priceMin);
+    if (priceMax) params.append('price_max', priceMax);
+    if (brand) params.append('brand', brand);
+    
+    // Recarregar página
+    window.location.href = '?' + params.toString();
+}
+
+function sortProducts(sortValue) {
+    const params = new URLSearchParams(window.location.search);
+    
+    if (sortValue === 'relevance') {
+        params.delete('sort');
+    } else {
+        params.set('sort', sortValue);
+    }
+    
+    params.delete('page');
+    
+    window.location.href = '?' + params.toString();
+}
+
+function clearFilters() {
+    window.location.href = '/products';
+}
+</script>
+
+<%- include('../../partials/footer') %>

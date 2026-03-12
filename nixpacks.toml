@@ -1,0 +1,12 @@
+[phases.setup]
+nixPkgs = ["nodejs_20", "mysql"]
+
+[phases.build]
+cmds = ["npm install", "npm run migrate"]
+
+[start]
+cmd = "npm start"
+
+[variables]
+NODE_VERSION = "20"
+NPM_VERSION = "10"

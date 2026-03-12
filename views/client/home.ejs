@@ -1,0 +1,328 @@
+<%- include('../partials/header') %>
+
+<!-- Hero Section -->
+<section class="hero-section">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6">
+                <div class="hero-content">
+                    <h1 class="text-white">Fragrâncias Excepcionais</h1>
+                    <p class="text-white-50">Descubra perfumes premium inspirados nas grandes marcas mundiais. Qualidade excepcional com preços imbatíveis.</p>
+                    <div class="d-flex gap-3 flex-wrap">
+                        <a href="/products" class="btn btn-light btn-lg">
+                            <i class="fas fa-shopping-bag"></i> Comprar Agora
+                        </a>
+                        <a href="/sobre-nos" class="btn btn-outline-light btn-lg">
+                            <i class="fas fa-info-circle"></i> Saiba Mais
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="hero-image text-center">
+                    <img src="/images/hero-perfumes.png" alt="Perfumes Premium" class="img-fluid rounded-3 shadow-lg">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Features Section -->
+<section class="py-5 bg-light">
+    <div class="container">
+        <div class="row g-4">
+            <div class="col-md-3 col-6">
+                <div class="text-center">
+                    <div class="feature-icon mb-3">
+                        <i class="fas fa-truck fa-3x text-primary"></i>
+                    </div>
+                    <h5>Frete Grátis</h5>
+                    <p class="text-muted small">Em compras acima de R$ 250</p>
+                </div>
+            </div>
+            <div class="col-md-3 col-6">
+                <div class="text-center">
+                    <div class="feature-icon mb-3">
+                        <i class="fas fa-shield-alt fa-3x text-success"></i>
+                    </div>
+                    <h5>Compra Segura</h5>
+                    <p class="text-muted small">100% protegido</p>
+                </div>
+            </div>
+            <div class="col-md-3 col-6">
+                <div class="text-center">
+                    <div class="feature-icon mb-3">
+                        <i class="fas fa-undo fa-3x text-warning"></i>
+                    </div>
+                    <h5>7 Dias para Troca</h5>
+                    <p class="text-muted small">Garantia de satisfação</p>
+                </div>
+            </div>
+            <div class="col-md-3 col-6">
+                <div class="text-center">
+                    <div class="feature-icon mb-3">
+                        <i class="fas fa-certificate fa-3x text-danger"></i>
+                    </div>
+                    <h5>Produtos Originais</h5>
+                    <p class="text-muted small">Qualidade garantida</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Categories Section -->
+<section class="py-5">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="display-5">Nossas Categorias</h2>
+            <p class="text-muted">Escolha a fragrância perfeita para você</p>
+        </div>
+        
+        <div class="row g-4">
+            <div class="col-md-4">
+                <a href="/products?category=masculino" class="category-card d-block">
+                    <i class="fas fa-male"></i>
+                    <h3>Masculino</h3>
+                    <p>Fragrâncias fortes e marcantes</p>
+                </a>
+            </div>
+            <div class="col-md-4">
+                <a href="/products?category=feminino" class="category-card d-block">
+                    <i class="fas fa-female"></i>
+                    <h3>Feminino</h3>
+                    <p>Notas delicadas e envolventes</p>
+                </a>
+            </div>
+            <div class="col-md-4">
+                <a href="/products?category=unisex" class="category-card d-block">
+                    <i class="fas fa-venus-mars"></i>
+                    <h3>Unisex</h3>
+                    <p>Versáteis para qualquer ocasião</p>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Featured Products -->
+<section class="py-5 bg-light">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="display-5">Produtos em Destaque</h2>
+            <p class="text-muted">Nossas melhores fragrâncias selecionadas para você</p>
+        </div>
+        
+        <div class="row g-4">
+            <% featuredProducts.forEach(product => { %>
+            <div class="col-lg-3 col-md-4 col-sm-6">
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="<%= product.featured_image || '/images/product-placeholder.jpg' %>" 
+                             alt="<%= product.name %>" 
+                             loading="lazy">
+                        
+                        <% if (product.sale_price && product.sale_price < product.regular_price) { %>
+                        <span class="badge-sale">
+                            -<%= Math.round(((product.regular_price - product.sale_price) / product.regular_price) * 100) %>%
+                        </span>
+                        <% } %>
+                        
+                        <div class="product-actions">
+                            <button class="add-to-wishlist" data-product-id="<%= product.id %>">
+                                <i class="far fa-heart"></i>
+                            </button>
+                            <button class="add-to-cart" data-product-id="<%= product.id %>">
+                                <i class="fas fa-shopping-cart"></i>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="card-body">
+                        <div class="product-brand"><%= product.brand %></div>
+                        <h5 class="product-name"><%= product.name %></h5>
+                        
+                        <div class="product-price">
+                            <% if (product.sale_price && product.sale_price < product.regular_price) { %>
+                                <span class="price-current">R$ <%= product.sale_price.toFixed(2).replace('.', ',') %></span>
+                                <span class="price-original">R$ <%= product.regular_price.toFixed(2).replace('.', ',') %></span>
+                            <% } else { %>
+                                <span class="price-current">R$ <%= product.regular_price.toFixed(2).replace('.', ',') %></span>
+                            <% } %>
+                        </div>
+                        
+                        <div class="mt-3">
+                            <a href="/products/<%= product.slug %>" class="btn btn-outline-primary btn-sm w-100">
+                                Ver Detalhes
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <% }); %>
+        </div>
+        
+        <div class="text-center mt-4">
+            <a href="/products" class="btn btn-primary btn-lg">
+                Ver Todos os Produtos
+                <i class="fas fa-arrow-right ms-2"></i>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Best Sellers -->
+<section class="py-5">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="display-5">Mais Vendidos</h2>
+            <p class="text-muted">As fragrâncias preferidas dos nossos clientes</p>
+        </div>
+        
+        <div class="row g-4">
+            <% bestSellers.slice(0, 4).forEach(product => { %>
+            <div class="col-lg-3 col-md-4 col-sm-6">
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="<%= product.featured_image || '/images/product-placeholder.jpg' %>" 
+                             alt="<%= product.name %>" 
+                             loading="lazy">
+                        
+                        <% if (product.sale_price && product.sale_price < product.regular_price) { %>
+                        <span class="badge-sale">
+                            -<%= Math.round(((product.regular_price - product.sale_price) / product.regular_price) * 100) %>%
+                        </span>
+                        <% } %>
+                        
+                        <div class="product-actions">
+                            <button class="add-to-wishlist" data-product-id="<%= product.id %>">
+                                <i class="far fa-heart"></i>
+                            </button>
+                            <button class="add-to-cart" data-product-id="<%= product.id %>">
+                                <i class="fas fa-shopping-cart"></i>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="card-body">
+                        <div class="product-brand"><%= product.brand %></div>
+                        <h5 class="product-name"><%= product.name %></h5>
+                        
+                        <div class="product-price">
+                            <% if (product.sale_price && product.sale_price < product.regular_price) { %>
+                                <span class="price-current">R$ <%= product.sale_price.toFixed(2).replace('.', ',') %></span>
+                                <span class="price-original">R$ <%= product.regular_price.toFixed(2).replace('.', ',') %></span>
+                            <% } else { %>
+                                <span class="price-current">R$ <%= product.regular_price.toFixed(2).replace('.', ',') %></span>
+                            <% } %>
+                        </div>
+                        
+                        <div class="mt-3">
+                            <a href="/products/<%= product.slug %>" class="btn btn-outline-primary btn-sm w-100">
+                                Ver Detalhes
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <% }); %>
+        </div>
+    </div>
+</section>
+
+<!-- Sale Products -->
+<section class="py-5 bg-danger bg-gradient">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="display-5 text-white">Ofertas Especiais</h2>
+            <p class="text-white-50">Aproveite nossos descontos por tempo limitado</p>
+        </div>
+        
+        <div class="row g-4">
+            <% saleProducts.slice(0, 4).forEach(product => { %>
+            <div class="col-lg-3 col-md-4 col-sm-6">
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="<%= product.featured_image || '/images/product-placeholder.jpg' %>" 
+                             alt="<%= product.name %>" 
+                             loading="lazy">
+                        
+                        <span class="badge-sale">
+                            -<%= Math.round(((product.regular_price - product.sale_price) / product.regular_price) * 100) %>%
+                        </span>
+                        
+                        <div class="product-actions">
+                            <button class="add-to-wishlist" data-product-id="<%= product.id %>">
+                                <i class="far fa-heart"></i>
+                            </button>
+                            <button class="add-to-cart" data-product-id="<%= product.id %>">
+                                <i class="fas fa-shopping-cart"></i>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="card-body">
+                        <div class="product-brand"><%= product.brand %></div>
+                        <h5 class="product-name"><%= product.name %></h5>
+                        
+                        <div class="product-price">
+                            <span class="price-current">R$ <%= product.sale_price.toFixed(2).replace('.', ',') %></span>
+                            <span class="price-original">R$ <%= product.regular_price.toFixed(2).replace('.', ',') %></span>
+                        </div>
+                        
+                        <div class="mt-3">
+                            <a href="/products/<%= product.slug %>" class="btn btn-primary btn-sm w-100">
+                                Ver Detalhes
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <% }); %>
+        </div>
+    </div>
+</section>
+
+<!-- Newsletter Section -->
+<section class="py-5 bg-dark text-white">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6">
+                <h3>Receba Ofertas Exclusivas</h3>
+                <p class="text-white-50">Cadastre-se e ganhe 10% de desconto na primeira compra!</p>
+            </div>
+            <div class="col-lg-6">
+                <form class="d-flex gap-2" id="heroNewsletterForm">
+                    <input type="email" class="form-control" placeholder="Seu melhor email" required>
+                    <button type="submit" class="btn btn-warning">Cadastrar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Trust Badges -->
+<section class="py-4 bg-light border-top">
+    <div class="container">
+        <div class="row align-items-center text-center">
+            <div class="col-md-3 col-6 mb-3 mb-md-0">
+                <i class="fas fa-credit-card fa-2x text-primary mb-2"></i>
+                <div class="small">Pagamento Seguro</div>
+            </div>
+            <div class="col-md-3 col-6 mb-3 mb-md-0">
+                <i class="fas fa-box fa-2x text-success mb-2"></i>
+                <div class="small">Embalagem Discreta</div>
+            </div>
+            <div class="col-md-3 col-6 mb-3 mb-md-0">
+                <i class="fas fa-headset fa-2x text-warning mb-2"></i>
+                <div class="small">Suporte Especializado</div>
+            </div>
+            <div class="col-md-3 col-6">
+                <i class="fas fa-star fa-2x text-danger mb-2"></i>
+                <div class="small">Satisfação Garantida</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<%- include('../partials/footer') %>

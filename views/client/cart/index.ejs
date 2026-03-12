@@ -1,0 +1,193 @@
+<%- include('../../partials/header') %>
+
+<div class="container py-5">
+    <h1 class="mb-4">Carrinho de Compras</h1>
+    
+    <% if (cartItems.length === 0) { %>
+        <div class="text-center py-5">
+            <i class="fas fa-shopping-cart fa-4x text-muted mb-3"></i>
+            <h3>Seu carrinho está vazio</h3>
+            <p class="text-muted">Adicione produtos incríveis ao seu carrinho!</p>
+            <a href="/products" class="btn btn-primary btn-lg">
+                <i class="fas fa-shopping-bag"></i> Continuar Comprando
+            </a>
+        </div>
+    <% } else { %>
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="cart-table">
+                    <% cartItems.forEach(item => { %>
+                        <div class="cart-item">
+                            <div class="row align-items-center">
+                                <div class="col-md-2">
+                                    <img src="<%= item.product.featured_image || '/images/product-placeholder.jpg' %>" 
+                                         alt="<%= item.product.name %>" 
+                                         class="img-fluid rounded">
+                                </div>
+                                
+                                <div class="col-md-4">
+                                    <h6 class="mb-1"><%= item.product.name %></h6>
+                                    <small class="text-muted"><%= item.product.brand %></small>
+                                    <div class="mt-2">
+                                        <small class="text-muted">R$ <%= item.unit_price.toFixed(2).replace('.', ',') %> cada</small>
+                                    </div>
+                                </div>
+                                
+                                <div class="col-md-3">
+                                    <div class="quantity-control" data-item-id="<%= item.id || item.product_id %>">
+                                        <button type="button" class="decrease">-</button>
+                                        <input type="number" value="<%= item.quantity %>" min="1" max="10" readonly>
+                                        <button type="button" class="increase">+</button>
+                                    </div>
+                                </div>
+                                
+                                <div class="col-md-2 text-end">
+                                    <div class="fw-bold item-total">
+                                        R$ <%= item.total_price.toFixed(2).replace('.', ',') %>
+                                    </div>
+                                </div>
+                                
+                                <div class="col-md-1 text-end">
+                                    <button class="btn btn-sm btn-outline-danger remove-from-cart" 
+                                            data-item-id="<%= item.id || item.product_id %>">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    <% }); %>
+                </div>
+                
+                <div class="mt-4">
+                    <a href="/products" class="btn btn-outline-primary">
+                        <i class="fas fa-arrow-left"></i> Continuar Comprando
+                    </a>
+                </div>
+            </div>
+            
+            <div class="col-lg-4">
+                <div class="cart-summary">
+                    <h4>Resumo do Pedido</h4>
+                    
+                    <div class="summary-row">
+                        <span>Subtotal</span>
+                        <span>R$ <%= totals.subtotal.replace('.', ',') %></span>
+                    </div>
+                    
+                    <div class="summary-row">
+                        <span>Frete</span>
+                        <% if (totals.freeShipping) { %>
+                            <span class="text-success">Grátis</span>
+                        <% } else { %>
+                            <span>R$ <%= totals.shipping.replace('.', ',') %></span>
+                        <% } %>
+                    </div>
+                    
+                    <% if (!totals.freeShipping) { %>
+                        <div class="free-shipping-progress">
+                            <small class="text-muted">
+                                Falta R$ <%= (250 - parseFloat(totals.subtotal)).toFixed(2).replace('.', ',') %> para frete grátis
+                            </small>
+                            <div class="progress mt-1">
+                                <div class="progress-bar" style="width: <%= Math.min((totals.subtotal / 250) * 100, 100) %>%"></div>
+                            </div>
+                        </div>
+                    <% } %>
+                    
+                    <div class="summary-row total">
+                        <span>Total</span>
+                        <span>R$ <%= totals.total.replace('.', ',') %></span>
+                    </div>
+                    
+                    <div class="d-grid gap-2 mt-4">
+                        <a href="/checkout" class="btn btn-primary btn-lg">
+                            <i class="fas fa-lock"></i> Finalizar Compra
+                        </a>
+                        
+                        <button class="btn btn-outline-secondary" onclick="clearCart()">
+                            <i class="fas fa-trash"></i> Limpar Carrinho
+                        </button>
+                    </div>
+                    
+                    <div class="mt-4 text-center">
+                        <small class="text-muted">
+                            <i class="fas fa-shield-alt"></i> Compra 100% Segura
+                        </small>
+                    </div>
+                </div>
+                
+                <!-- Cupom de Desconto -->
+                <div class="card mt-3">
+                    <div class="card-body">
+                        <h6 class="card-title">Cupom de Desconto</h6>
+                        <form id="couponForm" class="d-flex gap-2">
+                            <input type="text" class="form-control" placeholder="Código do cupom" id="couponCode">
+                            <button type="submit" class="btn btn-outline-primary">Aplicar</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <% } %>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Função para limpar carrinho
+    window.clearCart = async function() {
+        if (confirm('Tem certeza que deseja limpar seu carrinho?')) {
+            try {
+                const response = await fetch('/cart/clear', {
+                    method: 'DELETE',
+                    headers: {
+                        'X-Requested-With': 'XMLHttpRequest'
+                    }
+                });
+                
+                const result = await response.json();
+                if (result.success) {
+                    location.reload();
+                }
+            } catch (error) {
+                console.error('Erro ao limpar carrinho:', error);
+            }
+        }
+    };
+    
+    // Formulário de cupom
+    document.getElementById('couponForm').addEventListener('submit', async function(e) {
+        e.preventDefault();
+        const couponCode = document.getElementById('couponCode').value;
+        
+        if (!couponCode) return;
+        
+        try {
+            const response = await fetch('/api/coupon/validate', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-Requested-With': 'XMLHttpRequest'
+                },
+                body: JSON.stringify({
+                    code: couponCode,
+                    subtotal: '<%= totals.subtotal %>'
+                })
+            });
+            
+            const result = await response.json();
+            
+            if (result.valid) {
+                showNotification('success', `Cupom aplicado! Desconto de R$ ${result.coupon.discount}`);
+                location.reload();
+            } else {
+                showNotification('error', result.error);
+            }
+        } catch (error) {
+            console.error('Erro ao validar cupom:', error);
+            showNotification('error', 'Erro ao validar cupom');
+        }
+    });
+});
+</script>
+
+<%- include('../../partials/footer') %>
