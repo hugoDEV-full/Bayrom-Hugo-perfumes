@@ -155,7 +155,7 @@ async function startServer() {
             console.log(`🚀 Servidor Bayrom & Hugo Parfums rodando na porta ${PORT}`);
             console.log(`🌐 Ambiente: ${process.env.NODE_ENV || 'development'}`);
             console.log(`📍 URL: ${process.env.BASE_URL || `http://localhost:${PORT}`}`);
-            console.log(`🗄️  Banco: ${process.env.DATABASE_URL ? 'MySQL (Produção)' : 'SQLite (Local)'}`);
+            console.log(`🗄️  Banco: SQLite (Garantido)`);
         });
 
         return server;
