@@ -6,7 +6,3 @@ cmds = ["npm install --omit=dev", "npm run migrate"]
 
 [start]
 cmd = "npm start"
-
-[variables]
-NODE_VERSION = "20"
-NPM_VERSION = "10"
