@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contato - Bayrom & Hugo Parfums</title>
+    <meta name="description" content="Entre em contato com a Bayrom & Hugo Parfums. WhatsApp (61) 98297-6481 ou email hugo.leonardo.jobs@gmail.com">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;900&family=Montserrat:wght@300;400;500;600;700&family=Cormorant+Garamond:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/luxury.css">
+</head>
+<body>
+    <!-- Header -->
+    <%- include('../partials/header') %>
+    
+    <!-- Hero Section -->
+    <section class="contact-hero py-5 bg-gradient-luxury">
+        <div class="container">
+            <div class="row align-items-center min-vh-100">
+                <div class="col-lg-6">
+                    <div class="contact-hero-content">
+                        <div class="luxury-badge mb-4">
+                            <i class="fas fa-phone"></i>
+                            Entre em Contato
+                        </div>
+                        <h1 class="hero-title-luxury">
+                            <span class="title-line">Estamos Aqui</span>
+                            <span class="title-line accent">Para Você</span>
+                        </h1>
+                        <p class="hero-description-luxury">
+                            Tem alguma dúvida sobre nossos perfumes? Precisa de ajuda com seu pedido? 
+                            Nossa equipe está pronta para atender você com o máximo de profissionalismo 
+                            e dedicação.
+                        </p>
+                        <div class="contact-quick-info">
+                            <div class="quick-info-item">
+                                <i class="fab fa-whatsapp"></i>
+                                <a href="https://wa.me/5561982976481" target="_blank">
+                                    (61) 98297-6481
+                                </a>
+                            </div>
+                            <div class="quick-info-item">
+                                <i class="fas fa-envelope"></i>
+                                <a href="mailto:hugo.leonardo.jobs@gmail.com">
+                                    hugo.leonardo.jobs@gmail.com
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="contact-hero-image">
+                        <div class="contact-image-texture">
+                            <div class="texture-overlay"></div>
+                            <div class="d-flex h-100 align-items-center justify-content-center">
+                                <div class="text-center text-white">
+                                    <i class="fas fa-comments fa-5x mb-4"></i>
+                                    <h3>Atendimento Premium</h3>
+                                    <p>Resposta rápida e personalizada</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Contact Information -->
+    <section class="py-5 bg-light-luxury">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <i class="fab fa-whatsapp"></i>
+                        </div>
+                        <h4>WhatsApp</h4>
+                        <p>Atendimento rápido e direto</p>
+                        <a href="https://wa.me/5561982976481?text=Olá! Tenho interesse em seus produtos." 
+                           class="contact-link" target="_blank">
+                            (61) 98297-6481
+                        </a>
+                        <small class="text-muted d-block mt-2">Seg a Sex: 9h às 18h</small>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4">
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <h4>E-mail</h4>
+                        <p>Envie suas dúvidas e sugestões</p>
+                        <a href="mailto:hugo.leonardo.jobs@gmail.com" class="contact-link">
+                            hugo.leonardo.jobs@gmail.com
+                        </a>
+                        <small class="text-muted d-block mt-2">Resposta em até 24h</small>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4">
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <h4>Horário de Atendimento</h4>
+                        <p>Estamos disponíveis para você</p>
+                        <div class="schedule-info">
+                            <div class="schedule-item">
+                                <span>Segunda a Sexta:</span>
+                                <strong>9h - 18h</strong>
+                            </div>
+                            <div class="schedule-item">
+                                <span>Sábado:</span>
+                                <strong>9h - 14h</strong>
+                            </div>
+                            <div class="schedule-item">
+                                <span>Domingo:</span>
+                                <strong>Fechado</strong>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Contact Form -->
+    <section class="py-5 bg-white">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <div class="contact-form-container">
+                        <div class="text-center mb-5">
+                            <h2 class="section-title-luxury">Envie sua Mensagem</h2>
+                            <p class="section-subtitle-luxury">
+                                Preencha o formulário abaixo e retornaremos o mais rápido possível
+                            </p>
+                        </div>
+                        
+                        <form id="contactForm" class="luxury-contact-form">
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <label for="name" class="form-label">Nome Completo *</label>
+                                    <input type="text" class="form-control-luxury" id="name" name="name" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="email" class="form-label">E-mail *</label>
+                                    <input type="email" class="form-control-luxury" id="email" name="email" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="phone" class="form-label">Telefone</label>
+                                    <input type="tel" class="form-control-luxury" id="phone" name="phone" 
+                                           placeholder="(00) 00000-0000">
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="subject" class="form-label">Assunto *</label>
+                                    <select class="form-control-luxury" id="subject" name="subject" required>
+                                        <option value="">Selecione um assunto</option>
+                                        <option value="duvidas">Dúvidas sobre produtos</option>
+                                        <option value="pedido">Status do pedido</option>
+                                        <option value="troca">Troca e devolução</option>
+                                        <option value="revenda">Revenda</option>
+                                        <option value="outros">Outros</option>
+                                    </select>
+                                </div>
+                                <div class="col-12">
+                                    <label for="message" class="form-label">Mensagem *</label>
+                                    <textarea class="form-control-luxury" id="message" name="message" rows="5" 
+                                              placeholder="Descreva sua dúvida ou solicitação..." required></textarea>
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="newsletter" name="newsletter">
+                                        <label class="form-check-label" for="newsletter">
+                                            Deseja receber novidades e ofertas exclusivas?
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-12 text-center">
+                                    <button type="submit" class="btn-luxury btn-primary-luxury btn-lg">
+                                        <i class="fas fa-paper-plane"></i>
+                                        Enviar Mensagem
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- FAQ Section -->
+    <section class="py-5 bg-gradient-luxury">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title-luxury">Dúvidas Frequentes</h2>
+                <p class="section-subtitle-luxury">
+                    Encontre respostas rápidas para as perguntas mais comuns
+                </p>
+            </div>
+            
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <div class="accordion luxury-accordion" id="faqAccordion">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" 
+                                        data-bs-target="#faq1" aria-expanded="true">
+                                    <i class="fas fa-question-circle"></i>
+                                    Como faço para comprar?
+                                </button>
+                            </h2>
+                            <div id="faq1" class="accordion-collapse collapse show" 
+                                 data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    É muito fácil! Navegue por nossos produtos, escolha seus perfumes, 
+                                    adicione ao carrinho e finalize sua compra. Aceitamos diversas formas 
+                                    de pagamento e enviamos para todo o Brasil.
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" 
+                                        data-bs-target="#faq2" aria-expanded="false">
+                                    <i class="fas fa-truck"></i>
+                                    Qual o prazo de entrega?
+                                </button>
+                            </h2>
+                            <div id="faq2" class="accordion-collapse collapse" 
+                                 data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    O prazo de entrega varia de 1 a 15 dias úteis dependendo da sua localização. 
+                                    Enviamos pelos Correios e transportadoras especializadas com rastreamento online.
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" 
+                                        data-bs-target="#faq3" aria-expanded="false">
+                                    <i class="fas fa-exchange-alt"></i>
+                                    Posso fazer troca ou devolução?
+                                </button>
+                            </h2>
+                            <div id="faq3" class="accordion-collapse collapse" 
+                                 data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    Sim! Você tem até 7 dias após o recebimento para solicitar troca ou devolução. 
+                                    O produto deve estar na embalagem original e sem uso. Entre em contato 
+                                    pelo WhatsApp para iniciar o processo.
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" 
+                                        data-bs-target="#faq4" aria-expanded="false">
+                                    <i class="fas fa-certificate"></i>
+                                    Os produtos são originais?
+                                </button>
+                            </h2>
+                            <div id="faq4" class="accordion-collapse collapse" 
+                                 data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    Sim! Todos nossos produtos são 100% originais, com procedência garantida. 
+                                    Trabalhamos diretamente com distribuidores autorizados e oferecemos 
+                                    garantia de qualidade em todos os itens.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- WhatsApp CTA -->
+    <section class="py-5 bg-dark-luxury">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-8">
+                    <div class="luxury-content">
+                        <h2 class="luxury-title">
+                            <i class="fab fa-whatsapp"></i>
+                            Prefere falar pelo WhatsApp?
+                        </h2>
+                        <p class="luxury-description">
+                            Atendimento rápido e personalizado. Tire suas dúvidas, 
+                            faça seu pedido ou acompanhe sua entrega diretamente pelo WhatsApp.
+                        </p>
+                        <div class="mt-4">
+                            <a href="https://wa.me/5561982976481?text=Olá! Tenho interesse em seus produtos." 
+                               class="btn-luxury btn-success-luxury btn-lg" target="_blank">
+                                <i class="fab fa-whatsapp"></i>
+                                Chamar no WhatsApp
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="luxury-image-texture">
+                        <div class="texture-overlay"></div>
+                        <div class="d-flex h-100 align-items-center justify-content-center">
+                            <div class="text-center text-white">
+                                <i class="fab fa-whatsapp fa-5x mb-3"></i>
+                                <h4>Resposta Rápida</h4>
+                                <p>Atendimento imediato</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <%- include('../partials/footer') %>
+    
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/luxury.js"></script>
+    
+    <!-- Contact Form Script -->
+    <script>
+        document.getElementById('contactForm')?.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData);
+            
+            // Show loading
+            const submitBtn = this.querySelector('button[type="submit"]');
+            const originalText = submitBtn.innerHTML;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enviando...';
+            submitBtn.disabled = true;
+            
+            try {
+                const response = await fetch('/contato', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data)
+                });
+                
+                if (response.ok) {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Mensagem Enviada!',
+                        text: 'Recebemos sua mensagem e responderemos em breve.',
+                        timer: 4000,
+                        showConfirmButton: false
+                    });
+                    
+                    this.reset();
+                    
+                    // Redirect to WhatsApp after 2 seconds
+                    setTimeout(() => {
+                        window.open('https://wa.me/5561982976481?text=Olá! Acabei de enviar uma mensagem pelo site e gostaria de falar com alguém.', '_blank');
+                    }, 2000);
+                    
+                } else {
+                    throw new Error('Erro ao enviar mensagem');
+                }
+            } catch (error) {
+                console.error('Contact form error:', error);
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Erro ao Enviar',
+                    text: 'Ocorreu um erro. Por favor, tente novamente ou entre em contato diretamente pelo WhatsApp.',
+                    confirmButtonText: 'Entendido',
+                    confirmButtonColor: '#d4af37'
+                });
+            } finally {
+                submitBtn.innerHTML = originalText;
+                submitBtn.disabled = false;
+            }
+        });
+        
+        // Phone mask
+        document.getElementById('phone')?.addEventListener('input', function(e) {
+            let value = e.target.value.replace(/\D/g, '');
+            if (value.length > 11) value = value.slice(0, 11);
+            
+            if (value.length > 10) {
+                value = value.replace(/^(\d{2})(\d{5})(\d{4}).*/, '($1) $2-$3');
+            } else if (value.length > 6) {
+                value = value.replace(/^(\d{2})(\d{4})(\d{0,4}).*/, '($1) $2-$3');
+            } else if (value.length > 2) {
+                value = value.replace(/^(\d{2})(\d{0,5})/, '($1) $2');
+            }
+            
+            e.target.value = value;
+        });
+    </script>
+    
+    <style>
+        .contact-hero {
+            min-height: 100vh;
+            background: linear-gradient(135deg, var(--luxury-dark) 0%, #1a1a1a 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .contact-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="hero-pattern" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="10" cy="10" r="1" fill="rgba(212, 175, 55, 0.1)"/></pattern></defs><rect width="100" height="100" fill="url(%23hero-pattern)"/></svg>');
+        }
+        
+        .contact-hero-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .contact-quick-info {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-top: 30px;
+        }
+        
+        .quick-info-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 15px 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .quick-info-item:hover {
+            background: rgba(212, 175, 55, 0.1);
+            transform: translateX(10px);
+        }
+        
+        .quick-info-item i {
+            font-size: 1.5rem;
+            color: var(--luxury-gold);
+        }
+        
+        .quick-info-item a {
+            color: white;
+            text-decoration: none;
+            font-family: var(--font-secondary);
+            font-weight: 500;
+            font-size: 1.1rem;
+        }
+        
+        .contact-hero-image {
+            position: relative;
+            height: 500px;
+        }
+        
+        .contact-image-texture {
+            position: relative;
+            height: 100%;
+            border-radius: 20px;
+            overflow: hidden;
+            background: linear-gradient(135deg, var(--luxury-gold) 0%, var(--luxury-rose-gold) 100%);
+        }
+        
+        .texture-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="texture" width="10" height="10" patternUnits="userSpaceOnUse"><circle cx="5" cy="5" r="2" fill="rgba(255,255,255,0.1)"/></pattern></defs><rect width="100" height="100" fill="url(%23texture)"/></svg>');
+        }
+        
+        .contact-card {
+            background: white;
+            border-radius: 20px;
+            padding: 40px 30px;
+            text-align: center;
+            box-shadow: var(--shadow-soft);
+            transition: all 0.3s ease;
+            height: 100%;
+            border: 1px solid rgba(212, 175, 55, 0.1);
+        }
+        
+        .contact-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-luxury);
+            border-color: var(--luxury-gold);
+        }
+        
+        .contact-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(45deg, var(--luxury-gold), #f4e4bc);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 2rem;
+            color: var(--luxury-dark);
+        }
+        
+        .contact-card h4 {
+            font-family: var(--font-primary);
+            font-weight: 600;
+            color: var(--luxury-dark);
+            margin-bottom: 10px;
+        }
+        
+        .contact-card p {
+            color: var(--luxury-gray);
+            margin-bottom: 15px;
+        }
+        
+        .contact-link {
+            color: var(--luxury-gold);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: color 0.3s ease;
+        }
+        
+        .contact-link:hover {
+            color: var(--luxury-dark);
+        }
+        
+        .schedule-info {
+            text-align: left;
+            margin-top: 15px;
+        }
+        
+        .schedule-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+        }
+        
+        .schedule-item:last-child {
+            border-bottom: none;
+        }
+        
+        .schedule-item span {
+            color: var(--luxury-gray);
+            font-size: 14px;
+        }
+        
+        .schedule-item strong {
+            color: var(--luxury-dark);
+            font-weight: 600;
+        }
+        
+        .contact-form-container {
+            background: white;
+            border-radius: 25px;
+            padding: 50px;
+            box-shadow: var(--shadow-luxury);
+            border: 1px solid rgba(212, 175, 55, 0.1);
+        }
+        
+        .form-control-luxury {
+            background: var(--luxury-light-gray);
+            border: 2px solid rgba(212, 175, 55, 0.1);
+            border-radius: 15px;
+            padding: 15px 20px;
+            font-family: var(--font-secondary);
+            transition: all 0.3s ease;
+        }
+        
+        .form-control-luxury:focus {
+            border-color: var(--luxury-gold);
+            box-shadow: 0 0 0 4px rgba(212, 175, 55, 0.1);
+            background: white;
+        }
+        
+        .luxury-accordion .accordion-item {
+            background: white;
+            border: 1px solid rgba(212, 175, 55, 0.1);
+            border-radius: 15px;
+            margin-bottom: 15px;
+            overflow: hidden;
+        }
+        
+        .luxury-accordion .accordion-button {
+            background: white;
+            color: var(--luxury-dark);
+            font-family: var(--font-secondary);
+            font-weight: 500;
+            padding: 20px;
+            border: none;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .luxury-accordion .accordion-button:not(.collapsed) {
+            background: linear-gradient(45deg, rgba(212, 175, 55, 0.1), rgba(212, 175, 55, 0.05));
+            color: var(--luxury-dark);
+        }
+        
+        .luxury-accordion .accordion-button i {
+            color: var(--luxury-gold);
+            font-size: 1.2rem;
+        }
+        
+        .luxury-accordion .accordion-body {
+            padding: 20px;
+            color: var(--luxury-gray);
+            line-height: 1.6;
+        }
+        
+        .btn-success-luxury {
+            background: linear-gradient(45deg, #25D366, #128C7E);
+            border: none;
+            color: white;
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-success-luxury:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(37, 211, 102, 0.3);
+        }
+        
+        @media (max-width: 768px) {
+            .contact-hero {
+                min-height: auto;
+                padding: 100px 0;
+            }
+            
+            .contact-form-container {
+                padding: 30px 20px;
+            }
+            
+            .contact-card {
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</body>
+</html>

@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enciclopédia de Perfumes - Bayrom & Hugo Parfums</title>
+    <meta name="description" content="Enciclopédia completa de perfumes com notas olfativas, informações detalhadas e busca de inspirações. Encontre seu perfume ideal.">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;900&family=Montserrat:wght@300;400;500;600;700&family=Cormorant+Garamond:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/luxury.css">
+</head>
+<body>
+    <!-- Header -->
+    <%- include('../partials/header') %>
+    
+    <!-- Hero Section Encyclopedia -->
+    <section class="encyclopedia-hero py-5 bg-dark-luxury">
+        <div class="container">
+            <div class="row align-items-center min-vh-100">
+                <div class="col-lg-8">
+                    <div class="encyclopedia-hero-content">
+                        <div class="luxury-badge mb-4">
+                            <i class="fas fa-book-open"></i>
+                            Enciclopédia de Perfumes
+                        </div>
+                        <h1 class="hero-title-luxury">
+                            <span class="title-line">Explore o Mundo</span>
+                            <span class="title-line accent">das Fragrâncias</span>
+                            <span class="title-line">Exclusivas</span>
+                        </h1>
+                        <p class="hero-description-luxury">
+                            Descubra a composição detalhada dos perfumes mais desejados do mundo. 
+                            Nossa enciclopédia completa oferece informações sobre notas olfativas, 
+                            famílias de fragrâncias e inspirações para encontrar seu perfume ideal.
+                        </p>
+                        <div class="hero-actions-luxury">
+                            <a href="#perfume-database" class="btn-luxury btn-primary-luxury">
+                                <i class="fas fa-search"></i>
+                                Explorar Perfumes
+                            </a>
+                            <a href="https://www.fragrantica.com.br/notas/" target="_blank" class="btn-luxury btn-outline-luxury">
+                                <i class="fas fa-external-link-alt"></i>
+                                Visitar Fragrantica
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="encyclopedia-features">
+                        <div class="feature-card">
+                            <i class="fas fa-flask"></i>
+                            <h5>+500 Perfumes</h5>
+                            <p>Banco de dados completo</p>
+                        </div>
+                        <div class="feature-card">
+                            <i class="fas fa-leaf"></i>
+                            <h5>Notas Detalhadas</h5>
+                            <p>Composição olfativa completa</p>
+                        </div>
+                        <div class="feature-card">
+                            <i class="fas fa-link"></i>
+                            <h5>Integração Fragrantica</h5>
+                            <p>Informações atualizadas</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Search and Filter Section -->
+    <section id="search-section" class="py-5 bg-gradient-luxury">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <div class="search-container">
+                        <h3 class="text-center mb-4 section-title-luxury">Buscar Perfume</h3>
+                        <div class="luxury-search-form">
+                            <div class="search-input-group">
+                                <input type="text" id="perfumeSearch" class="form-control-luxury" 
+                                       placeholder="Digite o nome do perfume, marca ou nota olfativa...">
+                                <button onclick="searchPerfumes()" class="luxury-search-btn">
+                                    <i class="fas fa-search"></i>
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <!-- Quick Filters -->
+                        <div class="quick-filters mt-4">
+                            <div class="filter-group">
+                                <label><i class="fas fa-filter"></i> Filtros Rápidos:</label>
+                                <div class="filter-buttons">
+                                    <button class="filter-btn active" data-filter="all">Todos</button>
+                                    <button class="filter-btn" data-filter="feminino">Feminino</button>
+                                    <button class="filter-btn" data-filter="masculino">Masculino</button>
+                                    <button class="filter-btn" data-filter="unisex">Unisex</button>
+                                    <button class="filter-btn" data-filter="niche">Nicho</button>
+                                    <button class="filter-btn" data-filter="luxury">Luxo</button>
+                                </div>
+                            </div>
+                            
+                            <div class="filter-group">
+                                <label><i class="fas fa-leaf"></i> Família Olfativa:</label>
+                                <div class="filter-buttons">
+                                    <button class="family-btn" data-family="floral">🌸 Floral</button>
+                                    <button class="family-btn" data-family="citrus">🍋 Cítrico</button>
+                                    <button class="family-btn" data-family="woody">🌲 Amadeirado</button>
+                                    <button class="family-btn" data-family="oriental">🌙 Oriental</button>
+                                    <button class="family-btn" data-family="fresh">💧 Fresco</button>
+                                    <button class="family-btn" data-family="gourmand">🍮 Gourmet</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Perfume Database -->
+    <section id="perfume-database" class="py-5 bg-light-luxury">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title-luxury">Banco de Dados de Perfumes</h2>
+                <p class="section-subtitle-luxury">
+                    Explore nossa coleção completa com informações detalhadas e links para o Fragrantica
+                </p>
+            </div>
+            
+            <!-- Featured Perfumes -->
+            <div class="featured-perfumes mb-5">
+                <h3 class="mb-4"><i class="fas fa-star"></i> Perfumes em Destaque</h3>
+                <div class="row g-4" id="featuredPerfumes">
+                    <!-- Perfume cards will be dynamically loaded here -->
+                </div>
+            </div>
+            
+            <!-- All Perfumes Grid -->
+            <div class="all-perfumes">
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <h3><i class="fas fa-th"></i> Todos os Perfumes</h3>
+                    <div class="view-options">
+                        <button class="view-btn active" data-view="grid">
+                            <i class="fas fa-th"></i>
+                        </button>
+                        <button class="view-btn" data-view="list">
+                            <i class="fas fa-list"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="row g-4" id="allPerfumesGrid">
+                    <!-- Perfume cards will be dynamically loaded here -->
+                </div>
+            </div>
+            
+            <!-- Load More -->
+            <div class="text-center mt-5">
+                <button onclick="loadMorePerfumes()" class="btn-luxury btn-primary-luxury">
+                    <i class="fas fa-plus-circle"></i>
+                    Carregar Mais Perfumes
+                </button>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Fragrantica Integration -->
+    <section class="py-5 bg-dark-luxury">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-8">
+                    <div class="luxury-content">
+                        <h2 class="luxury-title">
+                            <i class="fas fa-external-link-alt"></i>
+                            Integração com Fragrantica
+                        </h2>
+                        <p class="luxury-description">
+                            A Fragrantica é a maior enciclopédia online de perfumes do mundo. 
+                            Nossa integração permite que você explore informações detalhadas, 
+                            avaliações de usuários e descubra novas fragrâncias.
+                        </p>
+                        <div class="luxury-features">
+                            <div class="luxury-feature">
+                                <i class="fas fa-database"></i>
+                                <h5>Banco de Dados Completo</h5>
+                                <p>Acesso a milhares de perfumes com informações detalhadas</p>
+                            </div>
+                            <div class="luxury-feature">
+                                <i class="fas fa-users"></i>
+                                <h5>Avaliações da Comunidade</h5>
+                                <p>Opiniões e experiências de perfumistas do mundo todo</p>
+                            </div>
+                            <div class="luxury-feature">
+                                <i class="fas fa-sync"></i>
+                                <h5>Informações Atualizadas</h5>
+                                <p>Dados sempre atualizados com lançamentos e tendências</p>
+                            </div>
+                        </div>
+                        <div class="mt-4">
+                            <a href="https://www.fragrantica.com.br/notas/" target="_blank" 
+                               class="btn-luxury btn-primary-luxury">
+                                <i class="fas fa-external-link-alt"></i>
+                                Explorar Fragrantica
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="luxury-image-texture">
+                        <div class="texture-overlay"></div>
+                        <div class="d-flex h-100 align-items-center justify-content-center">
+                            <div class="text-center text-white">
+                                <i class="fas fa-globe-americas fa-4x mb-3"></i>
+                                <h4>Conectado ao Mundo</h4>
+                                <p>da Perfumaria</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <%- include('../partials/footer') %>
+    
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Custom JavaScript -->
+    <script src="/js/luxury.js"></script>
+    <script src="/js/encyclopedia.js"></script>
+</body>
+</html>

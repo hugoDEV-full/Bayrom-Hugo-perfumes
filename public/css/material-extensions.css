@@ -1,0 +1,347 @@
+/* Extensões dos Estilos de Materiais Preciosos */
+
+/* Cards de Materiais com Efeitos Avançados */
+.material-card {
+    position: relative;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 30px;
+    text-align: center;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    cursor: pointer;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.material-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    transform: rotate(45deg);
+    transition: all 0.6s;
+    opacity: 0;
+}
+
+.material-card:hover::before {
+    animation: shimmer 0.6s ease-in-out;
+}
+
+@keyframes shimmer {
+    0% {
+        transform: translateX(-100%) translateY(-100%) rotate(45deg);
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateX(100%) translateY(100%) rotate(45deg);
+        opacity: 0;
+    }
+}
+
+.material-card-content {
+    position: relative;
+    z-index: 2;
+}
+
+.material-icon-large {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+    font-size: 2rem;
+    color: white;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+}
+
+.material-card:hover .material-icon-large {
+    transform: scale(1.1) rotate(5deg);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+}
+
+/* Perfume Material Cards */
+.perfume-material-card {
+    position: relative;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    overflow: hidden;
+    transition: all 0.4s ease;
+    cursor: pointer;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.material-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.material-shimmer {
+    position: absolute;
+    top: -100%;
+    left: -100%;
+    width: 300%;
+    height: 300%;
+    background: linear-gradient(
+        45deg,
+        transparent 30%,
+        rgba(255, 255, 255, 0.1) 50%,
+        transparent 70%
+    );
+    animation: shimmerLoop 3s infinite;
+}
+
+@keyframes shimmerLoop {
+    0% {
+        transform: translateX(-100%) translateY(-100%) rotate(45deg);
+    }
+    100% {
+        transform: translateX(100%) translateY(100%) rotate(45deg);
+    }
+}
+
+.perfume-material-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.perfume-material-card .card-body {
+    position: relative;
+    z-index: 2;
+}
+
+/* Material Badges */
+.material-badge {
+    display: inline-block;
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: white;
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: all 0.3s ease;
+}
+
+.material-badge:hover {
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Preços com Estilo de Material */
+.price-material-gold,
+.price-material-diamond,
+.price-material-ruby,
+.price-material-emerald,
+.price-material-sapphire,
+.price-material-amethyst,
+.price-material-platinum,
+.price-material-rose-gold {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, var(--material-color), #ffffff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Botões com Estilo de Material */
+.btn-material-gold,
+.btn-material-diamond,
+.btn-material-ruby,
+.btn-material-emerald,
+.btn-material-sapphire,
+.btn-material-amethyst,
+.btn-material-platinum,
+.btn-material-rose-gold {
+    background: linear-gradient(135deg, var(--material-color), var(--material-color-dark));
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 25px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-material-gold:hover,
+.btn-material-diamond:hover,
+.btn-material-ruby:hover,
+.btn-material-emerald:hover,
+.btn-material-sapphire:hover,
+.btn-material-amethyst:hover,
+.btn-material-platinum:hover,
+.btn-material-rose-gold:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+}
+
+/* Partículas de Material */
+.gold-particle {
+    background: linear-gradient(135deg, #FFD700, #D4AF37);
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.8);
+}
+
+.diamond-particle {
+    background: linear-gradient(135deg, #FFFFFF, #B9F2FF);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+}
+
+.ruby-particle {
+    background: linear-gradient(135deg, #E0115F, #9B111E);
+    box-shadow: 0 0 10px rgba(224, 17, 95, 0.8);
+}
+
+.emerald-particle {
+    background: linear-gradient(135deg, #50C878, #006B3C);
+    box-shadow: 0 0 10px rgba(80, 200, 120, 0.8);
+}
+
+.sapphire-particle {
+    background: linear-gradient(135deg, #0F52BA, #002366);
+    box-shadow: 0 0 10px rgba(15, 82, 186, 0.8);
+}
+
+.amethyst-particle {
+    background: linear-gradient(135deg, #9966CC, #6A0DAD);
+    box-shadow: 0 0 10px rgba(153, 102, 204, 0.8);
+}
+
+.platinum-particle {
+    background: linear-gradient(135deg, #E5E4E2, #C0C0C0);
+    box-shadow: 0 0 10px rgba(229, 228, 226, 0.8);
+}
+
+.rose-gold-particle {
+    background: linear-gradient(135deg, #E0BFB8, #D4A76A);
+    box-shadow: 0 0 10px rgba(224, 191, 184, 0.8);
+}
+
+/* Efeito de Brilho nos Cards */
+.material-glow {
+    animation: glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+    from {
+        box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+    }
+    to {
+        box-shadow: 0 0 30px rgba(255, 215, 0, 0.6), 0 0 40px rgba(255, 215, 0, 0.3);
+    }
+}
+
+/* Seção Material Showcase */
+.material-showcase {
+    padding: 80px 0;
+    background: linear-gradient(135deg, rgba(26, 26, 26, 0.95), rgba(45, 45, 45, 0.95));
+    position: relative;
+    overflow: hidden;
+}
+
+.material-showcase::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="rgba(255,255,255,0.03)"/><circle cx="75" cy="75" r="1" fill="rgba(255,255,255,0.03)"/><circle cx="50" cy="10" r="0.5" fill="rgba(255,255,255,0.02)"/><circle cx="10" cy="50" r="0.5" fill="rgba(255,255,255,0.02)"/><circle cx="90" cy="30" r="0.5" fill="rgba(255,255,255,0.02)"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+    opacity: 0.5;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .material-card {
+        padding: 20px;
+        margin-bottom: 20px;
+    }
+    
+    .material-icon-large {
+        width: 60px;
+        height: 60px;
+        font-size: 1.5rem;
+    }
+    
+    .perfume-material-card {
+        margin-bottom: 20px;
+    }
+    
+    .material-badge {
+        font-size: 0.65rem;
+        padding: 4px 12px;
+    }
+    
+    .price-material-gold,
+    .price-material-diamond,
+    .price-material-ruby,
+    .price-material-emerald,
+    .price-material-sapphire,
+    .price-material-amethyst,
+    .price-material-platinum,
+    .price-material-rose-gold {
+        font-size: 1.2rem;
+    }
+}
+
+/* Animações de Entrada */
+.material-card {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 0.6s ease forwards;
+}
+
+.material-card:nth-child(1) { animation-delay: 0.1s; }
+.material-card:nth-child(2) { animation-delay: 0.2s; }
+.material-card:nth-child(3) { animation-delay: 0.3s; }
+.material-card:nth-child(4) { animation-delay: 0.4s; }
+.material-card:nth-child(5) { animation-delay: 0.5s; }
+.material-card:nth-child(6) { animation-delay: 0.6s; }
+.material-card:nth-child(7) { animation-delay: 0.7s; }
+.material-card:nth-child(8) { animation-delay: 0.8s; }
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Variações de Cores para Materiais */
+:root {
+    --material-gold: #FFD700;
+    --material-gold-dark: #D4AF37;
+    --material-diamond: #FFFFFF;
+    --material-diamond-dark: #B9F2FF;
+    --material-ruby: #E0115F;
+    --material-ruby-dark: #9B111E;
+    --material-emerald: #50C878;
+    --material-emerald-dark: #006B3C;
+    --material-sapphire: #0F52BA;
+    --material-sapphire-dark: #002366;
+    --material-amethyst: #9966CC;
+    --material-amethyst-dark: #6A0DAD;
+    --material-platinum: #E5E4E2;
+    --material-platinum-dark: #C0C0C0;
+    --material-rose-gold: #E0BFB8;
+    --material-rose-gold-dark: #D4A76A;
+}

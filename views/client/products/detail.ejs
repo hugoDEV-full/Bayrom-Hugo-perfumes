@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <meta name="description" content="<%= description %>">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;900&family=Montserrat:wght@300;400;500;600;700&family=Cormorant+Garamond:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/luxury.css">
+</head>
+<body>
+    <!-- Header -->
+    <%- include('../../partials/header') %>
+    
+    <!-- Product Detail Section -->
+    <section class="py-5 bg-light-luxury">
+        <div class="container">
+            <div class="row">
+                <!-- Product Images -->
+                <div class="col-lg-6">
+                    <div class="product-gallery">
+                        <div class="main-image">
+                            <div class="image-placeholder-luxury">
+                                <i class="fas fa-spray-can"></i>
+                            </div>
+                            <% if (product.sale_price && product.sale_price < (product.regular_price || product.original_price || 0)) { %>
+                                <span class="luxury-badge-sale">
+                                    <span class="badge-text">OFERTA</span>
+                                </span>
+                            <% } %>
+                        </div>
+                        
+                        <div class="image-thumbnails">
+                            <div class="thumbnail active">
+                                <div class="image-placeholder-luxury small">
+                                    <i class="fas fa-spray-can"></i>
+                                </div>
+                            </div>
+                            <div class="thumbnail">
+                                <div class="image-placeholder-luxury small">
+                                    <i class="fas fa-box"></i>
+                                </div>
+                            </div>
+                            <div class="thumbnail">
+                                <div class="image-placeholder-luxury small">
+                                    <i class="fas fa-tag"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product Info -->
+                <div class="col-lg-6">
+                    <div class="product-info">
+                        <div class="product-meta">
+                            <span class="brand"><%= product.brand %></span>
+                            <% if (product.is_featured) { %>
+                                <span class="featured-badge">
+                                    <i class="fas fa-star"></i>
+                                    Destaque
+                                </span>
+                            <% } %>
+                        </div>
+                        
+                        <h1 class="product-title"><%= product.name %></h1>
+                        
+                        <div class="product-rating">
+                            <div class="stars">
+                                <% for(let i = 1; i <= 5; i++) { %>
+                                    <% if (i <= Math.round(product.rating_average || 0)) { %>
+                                        <i class="fas fa-star"></i>
+                                    <% } else { %>
+                                        <i class="far fa-star"></i>
+                                    <% } %>
+                                <% } %>
+                            </div>
+                            <span class="rating-text">
+                                (<%= product.rating_average || 0 %> | <%= product.sales_count || 0 %> vendas)
+                            </span>
+                        </div>
+                        
+                        <div class="product-price">
+                            <% if (product.sale_price && product.sale_price < (product.regular_price || product.original_price || 0)) { %>
+                                <span class="original-price">R$ <%= (product.regular_price || product.original_price || 0).toFixed(2).replace('.', ',') %></span>
+                                <span class="sale-price">R$ <%= product.sale_price.toFixed(2).replace('.', ',') %></span>
+                                <span class="discount-badge">
+                                    -<%= Math.round((1 - product.sale_price / (product.regular_price || product.original_price || 1)) * 100) %>%
+                                </span>
+                            <% } else { %>
+                                <span class="current-price">R$ <%= (product.sale_price || product.regular_price || product.original_price || 0).toFixed(2).replace('.', ',') %></span>
+                            <% } %>
+                        </div>
+                        
+                        <div class="product-description">
+                            <p><%= product.description %></p>
+                        </div>
+                        
+                        <% if (product.notes) { %>
+                            <div class="fragrance-notes">
+                                <h4><i class="fas fa-leaf"></i> Notas Olfativas</h4>
+                                <div class="notes-container">
+                                    <% if (product.notes.top && product.notes.top.length > 0) { %>
+                                        <div class="note-group">
+                                            <h5>Topo</h5>
+                                            <div class="notes">
+                                                <% product.notes.top.forEach(note => { %>
+                                                    <span class="note top-note"><%= note %></span>
+                                                <% }); %>
+                                            </div>
+                                        </div>
+                                    <% } %>
+                                    
+                                    <% if (product.notes.middle && product.notes.middle.length > 0) { %>
+                                        <div class="note-group">
+                                            <h5>Coração</h5>
+                                            <div class="notes">
+                                                <% product.notes.middle.forEach(note => { %>
+                                                    <span class="note middle-note"><%= note %></span>
+                                                <% }); %>
+                                            </div>
+                                        </div>
+                                    <% } %>
+                                    
+                                    <% if (product.notes.base && product.notes.base.length > 0) { %>
+                                        <div class="note-group">
+                                            <h5>Fundo</h5>
+                                            <div class="notes">
+                                                <% product.notes.base.forEach(note => { %>
+                                                    <span class="note base-note"><%= note %></span>
+                                                <% }); %>
+                                            </div>
+                                        </div>
+                                    <% } %>
+                                </div>
+                            </div>
+                        <% } %>
+                        
+                        <div class="product-actions">
+                            <div class="quantity-selector">
+                                <label>Quantidade:</label>
+                                <div class="quantity-controls">
+                                    <button class="quantity-btn minus">-</button>
+                                    <input type="number" value="1" min="1" max="10" class="quantity-input">
+                                    <button class="quantity-btn plus">+</button>
+                                </div>
+                            </div>
+                            
+                            <div class="action-buttons">
+                                <button class="btn-luxury btn-primary-luxury add-to-cart" data-product-id="<%= product.id %>">
+                                    <i class="fas fa-shopping-bag"></i>
+                                    Adicionar ao Carrinho
+                                </button>
+                                <button class="btn-luxury btn-outline-luxury buy-now" data-product-id="<%= product.id %>">
+                                    <i class="fas fa-bolt"></i>
+                                    Comprar Agora
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="product-features">
+                            <div class="feature">
+                                <i class="fas fa-shipping-fast"></i>
+                                <span>Entrega Rápida</span>
+                            </div>
+                            <div class="feature">
+                                <i class="fas fa-shield-alt"></i>
+                                <span>Compra Segura</span>
+                            </div>
+                            <div class="feature">
+                                <i class="fas fa-exchange-alt"></i>
+                                <span>7 Dias para Troca</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Product Details Tabs -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 mx-auto">
+                    <div class="product-tabs">
+                        <ul class="nav nav-tabs" id="productTabs" role="tablist">
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link active" id="details-tab" data-bs-toggle="tab" 
+                                        data-bs-target="#details" type="button" role="tab">
+                                    <i class="fas fa-info-circle"></i>
+                                    Detalhes
+                                </button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="composition-tab" data-bs-toggle="tab" 
+                                        data-bs-target="#composition" type="button" role="tab">
+                                    <i class="fas fa-flask"></i>
+                                    Composição
+                                </button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="usage-tab" data-bs-toggle="tab" 
+                                        data-bs-target="#usage" type="button" role="tab">
+                                    <i class="fas fa-spray-can"></i>
+                                    Modo de Usar
+                                </button>
+                            </li>
+                        </ul>
+                        
+                        <div class="tab-content" id="productTabsContent">
+                            <div class="tab-pane fade show active" id="details" role="tabpanel">
+                                <div class="tab-content-inner">
+                                    <div class="product-details-grid">
+                                        <div class="detail-item">
+                                            <strong>Categoria:</strong>
+                                            <span><%= product.category || 'Não informado' %></span>
+                                        </div>
+                                        <div class="detail-item">
+                                            <strong>Família Olfativa:</strong>
+                                            <span><%= product.fragrance_family || 'Não informado' %></span>
+                                        </div>
+                                        <div class="detail-item">
+                                            <strong>Inspiração:</strong>
+                                            <span><%= product.inspiration || 'Não informado' %></span>
+                                        </div>
+                                        <div class="detail-item">
+                                            <strong>Tamanhos:</strong>
+                                            <span><%= product.sizes ? product.sizes.join(', ') : 'Não informado' %></span>
+                                        </div>
+                                        <div class="detail-item">
+                                            <strong>Estoque:</strong>
+                                            <span><%= product.stock || 0 %> unidades disponíveis</span>
+                                        </div>
+                                        <div class="detail-item">
+                                            <strong>Código:</strong>
+                                            <span>#<%= product.id.toString().padStart(6, '0') %></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="tab-pane fade" id="composition" role="tabpanel">
+                                <div class="tab-content-inner">
+                                    <% if (product.composition) { %>
+                                        <% if (product.composition.description) { %>
+                                            <p><%= product.composition.description %></p>
+                                        <% } %>
+                                        
+                                        <% if (product.composition.ingredients && product.composition.ingredients.length > 0) { %>
+                                            <h5>Ingredientes Principais:</h5>
+                                            <ul>
+                                                <% product.composition.ingredients.forEach(ingredient => { %>
+                                                    <li><%= ingredient %></li>
+                                                <% }); %>
+                                            </ul>
+                                        <% } %>
+                                        
+                                        <% if (product.composition.luxury_value) { %>
+                                            <div class="luxury-value-info">
+                                                <i class="fas fa-gem"></i>
+                                                <span><%= product.composition.luxury_value %></span>
+                                            </div>
+                                        <% } %>
+                                    <% } else { %>
+                                        <p>Informações sobre composição não disponíveis no momento.</p>
+                                    <% } %>
+                                </div>
+                            </div>
+                            
+                            <div class="tab-pane fade" id="usage" role="tabpanel">
+                                <div class="tab-content-inner">
+                                    <div class="usage-instructions">
+                                        <h5>Como Aplicar seu Perfume:</h5>
+                                        <ol>
+                                            <li>Aplique em áreas de pulsação como pulsos, pescoço e atrás das orelhas</li>
+                                            <li>Mantenha o frasco a 15-20cm de distância da pele</li>
+                                            <li>Evite esfregar o perfume na pele após aplicação</li>
+                                            <li>Para maior durabilidade, aplique após o banho</li>
+                                            <li>Considere sua pele oleosa ou seca para ajustar a quantidade</li>
+                                        </ol>
+                                        
+                                        <div class="usage-tips">
+                                            <h6><i class="fas fa-lightbulb"></i> Dicas Extras:</h6>
+                                            <ul>
+                                                <li>Armazene em local fresco e longe da luz solar</li>
+                                                <li>Evite contato com roupas claras para prevenir manchas</li>
+                                                <li>Camadas diferentes podem criar fragrâncias únicas</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Related Products -->
+    <% if (relatedProducts && relatedProducts.length > 0) { %>
+        <section class="py-5 bg-light-luxury">
+            <div class="container">
+                <div class="text-center mb-5">
+                    <h3 class="section-title-luxury">Produtos Relacionados</h3>
+                    <p class="section-subtitle-luxury">Quem comprou este produto também amou:</p>
+                </div>
+                
+                <div class="row g-4">
+                    <% relatedProducts.forEach(relatedProduct => { %>
+                        <div class="col-lg-3 col-md-6">
+                            <div class="product-luxury-card">
+                                <div class="product-luxury-image">
+                                    <div class="image-placeholder-luxury">
+                                        <i class="fas fa-spray-can"></i>
+                                    </div>
+                                    
+                                    <% if (relatedProduct.sale_price && relatedProduct.sale_price < (relatedProduct.regular_price || relatedProduct.original_price || 0)) { %>
+                                        <span class="luxury-badge-sale">
+                                            <span class="badge-text">OFERTA</span>
+                                        </span>
+                                    <% } %>
+                                </div>
+                                
+                                <div class="product-luxury-content">
+                                    <div class="product-brand">
+                                        <%= relatedProduct.brand %>
+                                    </div>
+                                    <h6 class="product-title">
+                                        <%= relatedProduct.name %>
+                                    </h6>
+                                    
+                                    <div class="product-price">
+                                        <% if (relatedProduct.sale_price && relatedProduct.sale_price < (relatedProduct.regular_price || relatedProduct.original_price || 0)) { %>
+                                            <span class="sale-price">R$ <%= relatedProduct.sale_price.toFixed(2).replace('.', ',') %></span>
+                                        <% } else { %>
+                                            <span class="current-price">R$ <%= (relatedProduct.sale_price || relatedProduct.regular_price || relatedProduct.original_price || 0).toFixed(2).replace('.', ',') %></span>
+                                        <% } %>
+                                    </div>
+                                    
+                                    <div class="product-actions">
+                                        <a href="/products/<%= relatedProduct.slug %>" class="btn-luxury btn-outline-luxury btn-sm">
+                                            <i class="fas fa-eye"></i>
+                                            Ver
+                                        </a>
+                                        <button class="btn-luxury btn-primary-luxury btn-sm add-to-cart" data-product-id="<%= relatedProduct.id %>">
+                                            <i class="fas fa-shopping-bag"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    <% }); %>
+                </div>
+            </div>
+        </section>
+    <% } %>
+    
+    <!-- Footer -->
+    <%- include('../../partials/footer') %>
+    
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/luxury.js"></script>
+    
+    <style>
+        .product-gallery {
+            position: sticky;
+            top: 20px;
+        }
+        
+        .main-image {
+            position: relative;
+            margin-bottom: 20px;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+        
+        .image-placeholder-luxury.small {
+            height: 80px;
+            font-size: 2rem;
+        }
+        
+        .image-thumbnails {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .thumbnail {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+        
+        .thumbnail:hover,
+        .thumbnail.active {
+            border-color: var(--luxury-gold);
+            transform: scale(1.05);
+        }
+        
+        .product-info {
+            padding: 20px 0;
+        }
+        
+        .product-meta {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+        
+        .brand {
+            font-family: var(--font-secondary);
+            font-weight: 600;
+            color: var(--luxury-gold);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .featured-badge {
+            background: linear-gradient(45deg, var(--luxury-purple), var(--luxury-blue));
+            color: white;
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .product-title {
+            font-family: var(--font-primary);
+            font-weight: 700;
+            font-size: 2.5rem;
+            color: var(--luxury-dark);
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+        
+        .product-rating {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .stars {
+            color: var(--luxury-gold);
+        }
+        
+        .rating-text {
+            color: var(--luxury-gray);
+            font-size: 0.9rem;
+        }
+        
+        .product-price {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+        
+        .original-price {
+            font-size: 1.2rem;
+            color: var(--luxury-gray);
+            text-decoration: line-through;
+        }
+        
+        .sale-price,
+        .current-price {
+            font-family: var(--font-primary);
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--luxury-dark);
+        }
+        
+        .discount-badge {
+            background: var(--luxury-ruby);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+        
+        .product-description {
+            margin-bottom: 30px;
+            line-height: 1.8;
+            color: var(--luxury-gray);
+        }
+        
+        .fragrance-notes {
+            margin-bottom: 30px;
+        }
+        
+        .fragrance-notes h4 {
+            font-family: var(--font-primary);
+            font-weight: 600;
+            color: var(--luxury-dark);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .fragrance-notes h4 i {
+            color: var(--luxury-gold);
+        }
+        
+        .note-group {
+            margin-bottom: 20px;
+        }
+        
+        .note-group h5 {
+            font-weight: 600;
+            color: var(--luxury-dark);
+            margin-bottom: 10px;
+            font-size: 1rem;
+        }
+        
+        .notes {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        
+        .note {
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+        
+        .top-note {
+            background: rgba(255, 193, 7, 0.1);
+            color: #f57c00;
+        }
+        
+        .middle-note {
+            background: rgba(76, 175, 80, 0.1);
+            color: #2e7d32;
+        }
+        
+        .base-note {
+            background: rgba(121, 85, 72, 0.1);
+            color: #5d4037;
+        }
+        
+        .quantity-selector {
+            margin-bottom: 20px;
+        }
+        
+        .quantity-selector label {
+            font-weight: 600;
+            color: var(--luxury-dark);
+            margin-bottom: 10px;
+            display: block;
+        }
+        
+        .quantity-controls {
+            display: flex;
+            align-items: center;
+            width: 150px;
+        }
+        
+        .quantity-btn {
+            width: 40px;
+            height: 40px;
+            border: 2px solid var(--luxury-gold);
+            background: white;
+            color: var(--luxury-gold);
+            border-radius: 50%;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .quantity-btn:hover {
+            background: var(--luxury-gold);
+            color: white;
+        }
+        
+        .quantity-input {
+            flex: 1;
+            text-align: center;
+            border: none;
+            border-top: 2px solid var(--luxury-gold);
+            border-bottom: 2px solid var(--luxury-gold);
+            font-weight: 600;
+        }
+        
+        .action-buttons {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+        
+        .product-features {
+            display: flex;
+            gap: 20px;
+            padding-top: 20px;
+            border-top: 1px solid var(--luxury-light-gray);
+        }
+        
+        .feature {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.9rem;
+            color: var(--luxury-gray);
+        }
+        
+        .feature i {
+            color: var(--luxury-gold);
+        }
+        
+        .product-tabs {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow-soft);
+        }
+        
+        .nav-tabs {
+            border-bottom: 2px solid var(--luxury-light-gray);
+        }
+        
+        .nav-tabs .nav-link {
+            border: none;
+            color: var(--luxury-gray);
+            font-weight: 500;
+            padding: 20px 30px;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-tabs .nav-link:hover {
+            color: var(--luxury-dark);
+            background: rgba(212, 175, 55, 0.05);
+        }
+        
+        .nav-tabs .nav-link.active {
+            color: var(--luxury-dark);
+            background: linear-gradient(45deg, rgba(212, 175, 55, 0.1), rgba(212, 175, 55, 0.05));
+            border-bottom: 3px solid var(--luxury-gold);
+        }
+        
+        .nav-tabs .nav-link i {
+            margin-right: 8px;
+            color: var(--luxury-gold);
+        }
+        
+        .tab-content-inner {
+            padding: 30px;
+        }
+        
+        .product-details-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        
+        .detail-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 15px;
+            background: var(--luxury-light-gray);
+            border-radius: 10px;
+        }
+        
+        .detail-item strong {
+            color: var(--luxury-dark);
+        }
+        
+        .luxury-value-info {
+            background: linear-gradient(45deg, rgba(212, 175, 55, 0.1), rgba(212, 175, 55, 0.05));
+            border: 2px solid var(--luxury-gold);
+            border-radius: 15px;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .luxury-value-info i {
+            font-size: 1.5rem;
+            color: var(--luxury-gold);
+        }
+        
+        .luxury-value-info span {
+            font-weight: 600;
+            color: var(--luxury-dark);
+        }
+        
+        .usage-instructions ol {
+            margin-bottom: 20px;
+        }
+        
+        .usage-instructions li {
+            margin-bottom: 10px;
+            line-height: 1.6;
+        }
+        
+        .usage-tips {
+            background: rgba(212, 175, 55, 0.05);
+            border-left: 4px solid var(--luxury-gold);
+            padding: 20px;
+            border-radius: 8px;
+        }
+        
+        .usage-tips h6 {
+            color: var(--luxury-dark);
+            margin-bottom: 10px;
+        }
+        
+        @media (max-width: 768px) {
+            .product-title {
+                font-size: 2rem;
+            }
+            
+            .action-buttons {
+                flex-direction: column;
+            }
+            
+            .product-features {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .product-details-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .nav-tabs .nav-link {
+                padding: 15px 20px;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</body>
+</html>

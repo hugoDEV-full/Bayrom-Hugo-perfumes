@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %> - Bayrom & Hugo Parfums</title>
+    <meta name="description" content="<%= description %>">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;900&family=Montserrat:wght@300;400;500;600;700&family=Cormorant+Garamond:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/luxury.css">
+</head>
+<body>
+    <!-- Header -->
+    <%- include('../partials/header') %>
+    
+    <!-- Search Hero Section -->
+    <section class="py-5 bg-gradient-luxury">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-8 mx-auto text-center">
+                    <div class="luxury-badge mb-4">
+                        <i class="fas fa-search"></i>
+                        RESULTADOS DA BUSCA
+                    </div>
+                    <h1 class="section-title-luxury">
+                        <% if (searchQuery) { %>
+                            "<%= searchQuery %>"
+                        <% } else { %>
+                            Buscar Produtos
+                        <% } %>
+                    </h1>
+                    <p class="section-subtitle-luxury">
+                        Encontre a fragrância perfeita entre nossa coleção premium
+                    </p>
+                    
+                    <!-- Search Form -->
+                    <div class="search-form-luxury">
+                        <form method="GET" action="/buscar" class="d-flex gap-3 justify-content-center">
+                            <div class="search-input-group">
+                                <input type="text" 
+                                       name="q" 
+                                       value="<%= searchQuery || '' %>"
+                                       class="form-control form-control-luxury" 
+                                       placeholder="Buscar perfumes, marcas, notas..."
+                                       style="min-width: 400px;">
+                                <i class="fas fa-search search-icon"></i>
+                            </div>
+                            <button type="submit" class="btn-luxury btn-primary-luxury">
+                                <i class="fas fa-search"></i>
+                                Buscar
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Filters Section -->
+    <section class="py-4 bg-light-luxury">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3">
+                    <!-- Filters Sidebar -->
+                    <div class="filter-sidebar">
+                        <h5 class="filter-title">
+                            <i class="fas fa-filter"></i>
+                            Filtros
+                        </h5>
+                        
+                        <form method="GET" action="/buscar" id="filterForm">
+                            <input type="hidden" name="q" value="<%= searchQuery || '' %>">
+                            
+                            <!-- Category Filter -->
+                            <div class="filter-group">
+                                <h6 class="filter-group-title">Categoria</h6>
+                                <select name="category" class="form-select">
+                                    <option value="">Todas as Categorias</option>
+                                    <% categories.forEach(cat => { %>
+                                        <option value="<%= cat.slug %>" <%= filters.category === cat.slug ? 'selected' : '' %>>
+                                            <%= cat.name %>
+                                        </option>
+                                    <% }); %>
+                                </select>
+                            </div>
+                            
+                            <!-- Price Range -->
+                            <div class="filter-group">
+                                <h6 class="filter-group-title">Faixa de Preço</h6>
+                                <div class="price-range-inputs">
+                                    <div class="input-group">
+                                        <span class="input-group-text">R$</span>
+                                        <input type="number" 
+                                               name="price_min" 
+                                               value="<%= filters.price_min || '' %>"
+                                               class="form-control" 
+                                               placeholder="Min">
+                                    </div>
+                                    <div class="input-group">
+                                        <span class="input-group-text">R$</span>
+                                        <input type="number" 
+                                               name="price_max" 
+                                               value="<%= filters.price_max || '' %>"
+                                               class="form-control" 
+                                               placeholder="Max">
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Sort -->
+                            <div class="filter-group">
+                                <h6 class="filter-group-title">Ordenar por</h6>
+                                <select name="sort" class="form-select">
+                                    <option value="relevance" <%= filters.sort === 'relevance' ? 'selected' : '' %>>Relevância</option>
+                                    <option value="price-low" <%= filters.sort === 'price-low' ? 'selected' : '' %>>Menor Preço</option>
+                                    <option value="price-high" <%= filters.sort === 'price-high' ? 'selected' : '' %>>Maior Preço</option>
+                                    <option value="newest" <%= filters.sort === 'newest' ? 'selected' : '' %>>Mais Novos</option>
+                                    <option value="bestselling" <%= filters.sort === 'bestselling' ? 'selected' : '' %>>Mais Vendidos</option>
+                                    <option value="rating" <%= filters.sort === 'rating' ? 'selected' : '' %>>Melhor Avaliados</option>
+                                </select>
+                            </div>
+                            
+                            <button type="submit" class="btn-luxury btn-primary-luxury w-100">
+                                <i class="fas fa-filter"></i>
+                                Aplicar Filtros
+                            </button>
+                        </form>
+                    </div>
+                </div>
+                
+                <div class="col-lg-9">
+                    <!-- Results Header -->
+                    <div class="results-header">
+                        <div class="d-flex justify-content-between align-items-center mb-4">
+                            <h5 class="results-count">
+                                <% if (products.length > 0) { %>
+                                    <%= products.length %> produto<%= products.length !== 1 ? 's' : '' %> encontrado<%= products.length !== 1 ? 's' : '' %>
+                                <% } else { %>
+                                    Nenhum produto encontrado
+                                <% } %>
+                            </h5>
+                            
+                            <!-- Quick Sort -->
+                            <div class="quick-sort">
+                                <select class="form-select" onchange="window.location.href=`/buscar?q=<%= searchQuery || '' %>&sort=${this.value}`">
+                                    <option value="relevance" <%= filters.sort === 'relevance' ? 'selected' : '' %>>Relevância</option>
+                                    <option value="price-low" <%= filters.sort === 'price-low' ? 'selected' : '' %>>Menor Preço</option>
+                                    <option value="price-high" <%= filters.sort === 'price-high' ? 'selected' : '' %>>Maior Preço</option>
+                                    <option value="newest" <%= filters.sort === 'newest' ? 'selected' : '' %>>Mais Novos</option>
+                                    <option value="bestselling" <%= filters.sort === 'bestselling' ? 'selected' : '' %>>Mais Vendidos</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Products Grid -->
+                    <% if (products.length > 0) { %>
+                        <div class="row g-4">
+                            <% products.forEach(product => { %>
+                                <div class="col-lg-4 col-md-6">
+                                    <div class="product-luxury-card">
+                                        <div class="product-luxury-image">
+                                            <div class="image-placeholder-luxury">
+                                                <i class="fas fa-spray-can"></i>
+                                            </div>
+                                            
+                                            <% if (product.sale_price && product.sale_price < product.regular_price) { %>
+                                                <span class="luxury-badge-sale">
+                                                    <span class="badge-text">OFERTA</span>
+                                                </span>
+                                            <% } %>
+                                            
+                                            <% if (product.is_featured) { %>
+                                                <span class="luxury-badge-featured">
+                                                    <i class="fas fa-star"></i>
+                                                    DESTAQUE
+                                                </span>
+                                            <% } %>
+                                        </div>
+                                        
+                                        <div class="product-luxury-content">
+                                            <div class="product-brand">
+                                                <%= product.brand %>
+                                            </div>
+                                            <h5 class="product-title">
+                                                <%= product.name %>
+                                            </h5>
+                                            
+                                            <div class="product-rating">
+                                                <div class="stars">
+                                                    <% for(let i = 1; i <= 5; i++) { %>
+                                                        <% if (i <= Math.round(product.rating_average || 0)) { %>
+                                                            <i class="fas fa-star"></i>
+                                                        <% } else { %>
+                                                            <i class="far fa-star"></i>
+                                                        <% } %>
+                                                    <% } %>
+                                                </div>
+                                                <span class="rating-text">
+                                                    (<%= product.rating_average || 0 %>)
+                                                </span>
+                                            </div>
+                                            
+                                            <div class="product-price">
+                                                <% if (product.sale_price && product.sale_price < product.regular_price) { %>
+                                                    <span class="original-price">R$ <%= (product.regular_price || product.original_price || 0).toFixed(2).replace('.', ',') %></span>
+                                                    <span class="sale-price">R$ <%= product.sale_price.toFixed(2).replace('.', ',') %></span>
+                                                <% } else { %>
+                                                    <span class="current-price">R$ <%= (product.sale_price || product.regular_price || product.original_price || 0).toFixed(2).replace('.', ',') %></span>
+                                                <% } %>
+                                            </div>
+                                            
+                                            <div class="product-actions">
+                                                <a href="/products/<%= product.slug %>" class="btn-luxury btn-outline-luxury">
+                                                    <i class="fas fa-eye"></i>
+                                                    Ver Detalhes
+                                                </a>
+                                                <button class="btn-luxury btn-primary-luxury add-to-cart" data-product-id="<%= product.id %>">
+                                                    <i class="fas fa-shopping-bag"></i>
+                                                    Comprar
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            <% }); %>
+                        </div>
+                    <% } else { %>
+                        <!-- No Results -->
+                        <div class="no-results">
+                            <div class="no-results-content">
+                                <i class="fas fa-search fa-4x mb-4"></i>
+                                <h4>Nenhum produto encontrado</h4>
+                                <p>Tente usar termos diferentes ou remova alguns filtros.</p>
+                                <div class="no-results-actions">
+                                    <a href="/products" class="btn-luxury btn-primary-luxury">
+                                        <i class="fas fa-th"></i>
+                                        Ver Todos os Produtos
+                                    </a>
+                                    <a href="/buscar" class="btn-luxury btn-outline-luxury">
+                                        <i class="fas fa-redo"></i>
+                                        Limpar Busca
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    <% } %>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Newsletter Section -->
+    <section class="py-5 bg-light-luxury">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <div class="newsletter-luxury text-center">
+                        <h3 class="luxury-title">
+                            <i class="fas fa-envelope"></i>
+                            Receba Ofertas Exclusivas
+                        </h3>
+                        <p class="luxury-description">
+                            Cadastre-se e receba novidades, promoções e lançamentos em primeiro lugar.
+                        </p>
+                        <form class="newsletter-form" method="POST" action="/newsletter">
+                            <div class="input-group">
+                                <input type="email" 
+                                       name="email" 
+                                       class="form-control form-control-luxury" 
+                                       placeholder="Seu melhor email"
+                                       required>
+                                <button class="btn-luxury btn-primary-luxury" type="submit">
+                                    <i class="fas fa-paper-plane"></i>
+                                    Cadastrar
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <%- include('../partials/footer') %>
+    
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/luxury.js"></script>
+    
+    <style>
+        .search-form-luxury {
+            margin-top: 2rem;
+        }
+        
+        .search-input-group {
+            position: relative;
+        }
+        
+        .form-control-luxury {
+            border: 2px solid var(--luxury-gold);
+            border-radius: 50px;
+            padding: 15px 25px;
+            font-family: var(--font-secondary);
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .form-control-luxury:focus {
+            border-color: var(--luxury-rose-gold);
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+            outline: none;
+        }
+        
+        .search-icon {
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--luxury-gold);
+            font-size: 1.2rem;
+        }
+        
+        .filter-sidebar {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: var(--shadow-soft);
+            border: 1px solid rgba(212, 175, 55, 0.1);
+        }
+        
+        .filter-title {
+            font-family: var(--font-primary);
+            font-weight: 600;
+            color: var(--luxury-dark);
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .filter-group {
+            margin-bottom: 25px;
+        }
+        
+        .filter-group-title {
+            font-weight: 600;
+            color: var(--luxury-dark);
+            margin-bottom: 10px;
+            font-size: 0.9rem;
+        }
+        
+        .price-range-inputs {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        
+        .results-header {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: var(--shadow-soft);
+        }
+        
+        .results-count {
+            font-family: var(--font-primary);
+            font-weight: 600;
+            color: var(--luxury-dark);
+            margin: 0;
+        }
+        
+        .quick-sort {
+            min-width: 200px;
+        }
+        
+        .no-results {
+            text-align: center;
+            padding: 60px 20px;
+        }
+        
+        .no-results-content {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: var(--shadow-soft);
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        
+        .no-results-content i {
+            color: var(--luxury-gold);
+            opacity: 0.5;
+        }
+        
+        .no-results-content h4 {
+            font-family: var(--font-primary);
+            color: var(--luxury-dark);
+            margin: 20px 0 10px;
+        }
+        
+        .no-results-content p {
+            color: var(--luxury-gray);
+            margin-bottom: 30px;
+        }
+        
+        .no-results-actions {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+        }
+        
+        .luxury-badge-featured {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: linear-gradient(45deg, var(--luxury-purple), var(--luxury-blue));
+            color: white;
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            z-index: 10;
+        }
+        
+        @media (max-width: 768px) {
+            .search-input-group input {
+                min-width: auto !important;
+            }
+            
+            .results-header {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .no-results-actions {
+                flex-direction: column;
+            }
+        }
+    </style>
+</body>
+</html>

@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Como Comprar - Bayrom & Hugo Parfums</title>
+    <meta name="description" content="Aprenda como comprar em nossa loja de forma segura e fácil. Guia completo de compra na Bayrom & Hugo Parfums.">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;900&family=Montserrat:wght@300;400;500;600;700&family=Cormorant+Garamond:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/luxury.css">
+</head>
+<body>
+    <!-- Header -->
+    <%- include('../partials/header') %>
+    
+    <!-- Hero Section -->
+    <section class="page-hero py-5 bg-gradient-luxury">
+        <div class="container">
+            <div class="row align-items-center min-vh-100">
+                <div class="col-lg-8 mx-auto text-center">
+                    <div class="page-hero-content">
+                        <div class="luxury-badge mb-4">
+                            <i class="fas fa-shopping-bag"></i>
+                            Guia de Compra
+                        </div>
+                        <h1 class="hero-title-luxury">
+                            <span class="title-line">Como Comprar</span>
+                            <span class="title-line accent">Fácil e Seguro</span>
+                        </h1>
+                        <p class="hero-description-luxury">
+                            Siga nosso passo a passo e descubra como é simples 
+                            adquirir suas fragrâncias favoritas na Bayrom & Hugo Parfums.
+                        </p>
+                        <div class="hero-actions-luxury">
+                            <a href="/products" class="btn-luxury btn-primary-luxury">
+                                <i class="fas fa-shopping-bag"></i>
+                                Comprar Agora
+                            </a>
+                            <a href="https://wa.me/5561982976481" class="btn-luxury btn-outline-luxury" target="_blank">
+                                <i class="fab fa-whatsapp"></i>
+                                Ajuda via WhatsApp
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Steps Section -->
+    <section class="py-5 bg-light-luxury">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title-luxury">Passo a Passo</h2>
+                <p class="section-subtitle-luxury">
+                    Comprar na Bayrom & Hugo é muito simples!
+                </p>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-lg-3 col-md-6">
+                    <div class="step-card">
+                        <div class="step-number">1</div>
+                        <div class="step-icon">
+                            <i class="fas fa-search"></i>
+                        </div>
+                        <h4>Escolha seu Perfume</h4>
+                        <p>
+                            Navegue por nossas categorias, use a busca 
+                            ou explore nossa enciclopédia para encontrar 
+                            a fragrância perfeita para você.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-6">
+                    <div class="step-card">
+                        <div class="step-number">2</div>
+                        <div class="step-icon">
+                            <i class="fas fa-shopping-cart"></i>
+                        </div>
+                        <h4>Adicione ao Carrinho</h4>
+                        <p>
+                            Selecione a quantidade desejada e clique 
+                            em "Adicionar ao Carrinho". Continue 
+                            comprando ou finalize sua compra.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-6">
+                    <div class="step-card">
+                        <div class="step-number">3</div>
+                        <div class="step-icon">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <h4>Faça Login ou Cadastre-se</h4>
+                        <p>
+                            Crie sua conta ou faça login para acompanhar 
+                            seu pedido. É rápido, seguro e dá acesso 
+                            a benefícios exclusivos.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-6">
+                    <div class="step-card">
+                        <div class="step-number">4</div>
+                        <div class="step-icon">
+                            <i class="fas fa-credit-card"></i>
+                        </div>
+                        <h4>Pague e Aguarde</h4>
+                        <p>
+                            Escolha a forma de pagamento, confirme seu 
+                            endereço e finalize. Receba seu produto 
+                            com rapidez e segurança.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Payment Methods -->
+    <section class="py-5 bg-white">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <div class="payment-content">
+                        <h2 class="section-title-luxury">Formas de Pagamento</h2>
+                        <p class="section-subtitle-luxury">
+                            Escolha a opção que melhor te atende
+                        </p>
+                        <div class="payment-methods">
+                            <div class="payment-method">
+                                <i class="fas fa-credit-card"></i>
+                                <div class="payment-info">
+                                    <h5>Cartão de Crédito</h5>
+                                    <p>Parcele em até 12x sem juros</p>
+                                    <span>Visa, Mastercard, Amex, Elo</span>
+                                </div>
+                            </div>
+                            
+                            <div class="payment-method">
+                                <i class="fas fa-barcode"></i>
+                                <div class="payment-info">
+                                    <h5>Boleto Bancário</h5>
+                                    <p>5% de desconto à vista</p>
+                                    <span>Pague no banco, lotérica ou online</span>
+                                </div>
+                            </div>
+                            
+                            <div class="payment-method">
+                                <i class="fab fa-pix"></i>
+                                <div class="payment-info">
+                                    <h5>Pix</h5>
+                                    <p>Transferência instantânea</p>
+                                    <span>Desconto de 5% na compra</span>
+                                </div>
+                            </div>
+                            
+                            <div class="payment-method">
+                                <i class="fab fa-paypal"></i>
+                                <div class="payment-info">
+                                    <h5>PayPal</h5>
+                                    <p>Seguro e reconhecido mundialmente</p>
+                                    <span>Proteção comprador PayPal</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-6">
+                    <div class="payment-security">
+                        <div class="security-card">
+                            <div class="security-icon">
+                                <i class="fas fa-shield-alt"></i>
+                            </div>
+                            <h4>Compra 100% Segura</h4>
+                            <p>
+                                Seus dados estão protegidos com criptografia SSL 
+                                e as melhores práticas de segurança do mercado.
+                            </p>
+                            <ul class="security-features">
+                                <li><i class="fas fa-check"></i> Certificado SSL</li>
+                                <li><i class="fas fa-check"></i> Dados criptografados</li>
+                                <li><i class="fas fa-check"></i> Antifraude ativo</li>
+                                <li><i class="fas fa-check"></i> Compra garantida</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- FAQ Section -->
+    <section class="py-5 bg-gradient-luxury">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title-luxury">Dúvidas Frequentes</h2>
+                <p class="section-subtitle-luxury">
+                    Tudo que você precisa saber sobre sua compra
+                </p>
+            </div>
+            
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <div class="accordion luxury-accordion" id="buyFaqAccordion">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" 
+                                        data-bs-target="#buyfaq1" aria-expanded="true">
+                                    <i class="fas fa-question-circle"></i>
+                                    Preciso me cadastrar para comprar?
+                                </button>
+                            </h2>
+                            <div id="buyfaq1" class="accordion-collapse collapse show" 
+                                 data-bs-parent="#buyFaqAccordion">
+                                <div class="accordion-body">
+                                    Não é obrigatório, mas recomendamos! Com cadastro você acompanha 
+                                    seu pedido, tem histórico de compras e acesso a ofertas exclusivas. 
+                                    O cadastro é rápido e leva menos de 1 minuto.
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" 
+                                        data-bs-target="#buyfaq2" aria-expanded="false">
+                                    <i class="fas fa-credit-card"></i>
+                                    Posso parcelar no cartão?
+                                </button>
+                            </h2>
+                            <div id="buyfaq2" class="accordion-collapse collapse" 
+                                 data-bs-parent="#buyFaqAccordion">
+                                <div class="accordion-body">
+                                    Sim! Parcelamos em até 12x sem juros em todos os cartões de crédito. 
+                                    Para compras acima de R$100, você também pode optar por parcelar 
+                                    com juros em até 24x.
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" 
+                                        data-bs-target="#buyfaq3" aria-expanded="false">
+                                    <i class="fas fa-truck"></i>
+                                    Como funciona o frete?
+                                </button>
+                            </h2>
+                            <div id="buyfaq3" class="accordion-collapse collapse" 
+                                 data-bs-parent="#buyFaqAccordion">
+                                <div class="accordion-body">
+                                    Enviamos para todo Brasil via Correios e transportadoras. 
+                                    O prazo varia de 1 a 15 dias úteis dependendo da sua localidade. 
+                                    O valor do frete é calculado automaticamente no checkout.
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" 
+                                        data-bs-target="#buyfaq4" aria-expanded="false">
+                                    <i class="fas fa-exchange-alt"></i>
+                                    E se eu não gostar do produto?
+                                </button>
+                            </h2>
+                            <div id="buyfaq4" class="accordion-collapse collapse" 
+                                 data-bs-parent="#buyFaqAccordion">
+                                <div class="accordion-body">
+                                    Você tem 7 dias após o recebimento para solicitar troca ou devolução. 
+                                    O produto deve estar na embalagem original e sem uso. 
+                                    Entre em contato pelo WhatsApp e vamos te ajudar!
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Tips Section -->
+    <section class="py-5 bg-light-luxury">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title-luxury">Dicas de Compra</h2>
+                <p class="section-subtitle-luxury">
+                    Aproveite ao máximo sua experiência de compra
+                </p>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6">
+                    <div class="tip-card">
+                        <div class="tip-icon">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                        <h4>Crie sua Wishlist</h4>
+                        <p>
+                            Salve seus perfumes favoritos na lista de desejos 
+                            e não perca nenhuma oferta ou lançamento.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6">
+                    <div class="tip-card">
+                        <div class="tip-icon">
+                            <i class="fas fa-bell"></i>
+                        </div>
+                        <h4>Ative Notificações</h4>
+                        <p>
+                            Receba alertas de produtos em estoque, 
+                            promoções exclusivas e novidades por email.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6">
+                    <div class="tip-card">
+                        <div class="tip-icon">
+                            <i class="fas fa-gift"></i>
+                        </div>
+                        <h4>Presentes Personalizados</h4>
+                        <p>
+                            Adicione mensagem personalizada e embalagem 
+                            especial para presentear alguém especial.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- CTA Section -->
+    <section class="py-5 bg-dark-luxury">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-8">
+                    <div class="luxury-content">
+                        <h2 class="luxury-title">
+                            <i class="fas fa-shopping-bag"></i>
+                            Pronto para Comprar?
+                        </h2>
+                        <p class="luxury-description">
+                            Comece agora mesmo sua jornada no mundo das fragrâncias 
+                            premium. Qualidade, segurança e o melhor atendimento 
+                            esperam por você.
+                        </p>
+                        <div class="mt-4">
+                            <a href="/products" class="btn-luxury btn-primary-luxury btn-lg">
+                                <i class="fas fa-shopping-bag"></i>
+                                Ir para Loja
+                            </a>
+                            <a href="https://wa.me/5561982976481" class="btn-luxury btn-success-luxury btn-lg ms-3" target="_blank">
+                                <i class="fab fa-whatsapp"></i>
+                                Ajuda via WhatsApp
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="luxury-image-texture">
+                        <div class="texture-overlay"></div>
+                        <div class="d-flex h-100 align-items-center justify-content-center">
+                            <div class="text-center text-white">
+                                <i class="fas fa-shopping-cart fa-5x mb-3"></i>
+                                <h4>Compra Segura</h4>
+                                <p>Satisfação garantida</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <%- include('../partials/footer') %>
+    
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/luxury.js"></script>
+    
+    <style>
+        .page-hero {
+            min-height: 100vh;
+            background: linear-gradient(135deg, var(--luxury-dark) 0%, #1a1a1a 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .page-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="hero-pattern" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="10" cy="10" r="1" fill="rgba(212, 175, 55, 0.1)"/></pattern></defs><rect width="100" height="100" fill="url(%23hero-pattern)"/></svg>');
+        }
+        
+        .page-hero-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .step-card {
+            background: white;
+            border-radius: 20px;
+            padding: 40px 30px;
+            text-align: center;
+            box-shadow: var(--shadow-soft);
+            transition: all 0.3s ease;
+            height: 100%;
+            position: relative;
+            border: 1px solid rgba(212, 175, 55, 0.1);
+        }
+        
+        .step-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-luxury);
+            border-color: var(--luxury-gold);
+        }
+        
+        .step-number {
+            position: absolute;
+            top: -15px;
+            left: -15px;
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(45deg, var(--luxury-gold), #f4e4bc);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-primary);
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: var(--luxury-dark);
+            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
+        }
+        
+        .step-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(45deg, rgba(212, 175, 55, 0.1), rgba(212, 175, 55, 0.05));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 2rem;
+            color: var(--luxury-gold);
+            border: 2px solid rgba(212, 175, 55, 0.2);
+        }
+        
+        .step-card h4 {
+            font-family: var(--font-primary);
+            font-weight: 600;
+            color: var(--luxury-dark);
+            margin-bottom: 15px;
+        }
+        
+        .step-card p {
+            color: var(--luxury-gray);
+            line-height: 1.6;
+        }
+        
+        .payment-methods {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        .payment-method {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            padding: 25px;
+            background: var(--luxury-light-gray);
+            border-radius: 15px;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(212, 175, 55, 0.1);
+        }
+        
+        .payment-method:hover {
+            background: rgba(212, 175, 55, 0.05);
+            transform: translateX(10px);
+            border-color: var(--luxury-gold);
+        }
+        
+        .payment-method i {
+            font-size: 2rem;
+            color: var(--luxury-gold);
+            width: 60px;
+            text-align: center;
+        }
+        
+        .payment-info h5 {
+            font-family: var(--font-primary);
+            font-weight: 600;
+            color: var(--luxury-dark);
+            margin-bottom: 5px;
+        }
+        
+        .payment-info p {
+            color: var(--luxury-gray);
+            margin-bottom: 5px;
+        }
+        
+        .payment-info span {
+            font-size: 12px;
+            color: var(--luxury-gray);
+            opacity: 0.8;
+        }
+        
+        .security-card {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+            box-shadow: var(--shadow-soft);
+            border: 1px solid rgba(212, 175, 55, 0.1);
+        }
+        
+        .security-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(45deg, #28a745, #20c997);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 2rem;
+            color: white;
+        }
+        
+        .security-card h4 {
+            font-family: var(--font-primary);
+            font-weight: 600;
+            color: var(--luxury-dark);
+            margin-bottom: 15px;
+        }
+        
+        .security-card p {
+            color: var(--luxury-gray);
+            margin-bottom: 25px;
+        }
+        
+        .security-features {
+            list-style: none;
+            padding: 0;
+            text-align: left;
+        }
+        
+        .security-features li {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 0;
+            color: var(--luxury-gray);
+        }
+        
+        .security-features i {
+            color: #28a745;
+            font-size: 14px;
+        }
+        
+        .tip-card {
+            background: white;
+            border-radius: 20px;
+            padding: 40px 30px;
+            text-align: center;
+            box-shadow: var(--shadow-soft);
+            transition: all 0.3s ease;
+            height: 100%;
+            border: 1px solid rgba(212, 175, 55, 0.1);
+        }
+        
+        .tip-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-luxury);
+            border-color: var(--luxury-gold);
+        }
+        
+        .tip-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(45deg, var(--luxury-gold), #f4e4bc);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 2rem;
+            color: var(--luxury-dark);
+        }
+        
+        .tip-card h4 {
+            font-family: var(--font-primary);
+            font-weight: 600;
+            color: var(--luxury-dark);
+            margin-bottom: 15px;
+        }
+        
+        .tip-card p {
+            color: var(--luxury-gray);
+            line-height: 1.6;
+        }
+        
+        .luxury-accordion .accordion-item {
+            background: white;
+            border: 1px solid rgba(212, 175, 55, 0.1);
+            border-radius: 15px;
+            margin-bottom: 15px;
+            overflow: hidden;
+        }
+        
+        .luxury-accordion .accordion-button {
+            background: white;
+            color: var(--luxury-dark);
+            font-family: var(--font-secondary);
+            font-weight: 500;
+            padding: 20px;
+            border: none;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .luxury-accordion .accordion-button:not(.collapsed) {
+            background: linear-gradient(45deg, rgba(212, 175, 55, 0.1), rgba(212, 175, 55, 0.05));
+            color: var(--luxury-dark);
+        }
+        
+        .luxury-accordion .accordion-button i {
+            color: var(--luxury-gold);
+            font-size: 1.2rem;
+        }
+        
+        .luxury-accordion .accordion-body {
+            padding: 20px;
+            color: var(--luxury-gray);
+            line-height: 1.6;
+        }
+        
+        @media (max-width: 768px) {
+            .page-hero {
+                min-height: auto;
+                padding: 100px 0;
+            }
+            
+            .step-card {
+                padding: 30px 20px;
+            }
+            
+            .payment-method {
+                padding: 20px;
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .security-card {
+                padding: 30px 20px;
+            }
+            
+            .tip-card {
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</body>
+</html>

@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %> - Bayrom & Hugo Parfums</title>
+    <meta name="description" content="<%= description %>">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;900&family=Montserrat:wght@300;400;500;600;700&family=Cormorant+Garamond:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/luxury.css">
+</head>
+<body>
+    <!-- Header -->
+    <%- include('../partials/header') %>
+    
+    <!-- Hero Section -->
+    <section class="py-5 bg-gradient-luxury">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-8 mx-auto text-center">
+                    <div class="luxury-badge mb-4">
+                        <i class="fas fa-exchange-alt"></i>
+                        POLÍTICA DE TROCA
+                    </div>
+                    <h1 class="section-title-luxury">
+                        Satisfação Garantida
+                    </h1>
+                    <p class="section-subtitle-luxury">
+                        Política clara e transparente para sua tranquilidade e confiança.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Return Policy Content -->
+    <section class="py-5 bg-light-luxury">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 mx-auto">
+                    <div class="return-content">
+                        <div class="return-intro">
+                            <p class="lead">
+                                Na <strong>Bayrom & Hugo Parfums</strong>, sua satisfação é nossa prioridade. 
+                                Oferecemos uma política de troca justa e transparente para garantir 
+                                que você fique totalmente satisfeito com suas compras.
+                            </p>
+                            <div class="guarantee-badges">
+                                <div class="guarantee-badge">
+                                    <i class="fas fa-shield-alt"></i>
+                                    <span>7 Dias para Arrependimento</span>
+                                </div>
+                                <div class="guarantee-badge">
+                                    <i class="fas fa-award"></i>
+                                    <span>30 Dias Garantia Fabricação</span>
+                                </div>
+                                <div class="guarantee-badge">
+                                    <i class="fas fa-truck"></i>
+                                    <span>Troca Rápida e Segura</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Policy Sections -->
+                        <div class="policy-sections">
+                            <div class="policy-section">
+                                <h3><i class="fas fa-undo"></i> Direito de Arrependimento</h3>
+                                <div class="section-content">
+                                    <div class="policy-highlight">
+                                        <h4>7 Dias para Desistir da Compra</h4>
+                                        <p>Conforme o Código de Defesa do Consumidor, você tem 7 dias corridos 
+                                        a partir do recebimento do produto para desistir da compra, sem necessidade 
+                                        de justificativa.</p>
+                                    </div>
+                                    
+                                    <h5>Condições para Arrependimento:</h5>
+                                    <ul>
+                                        <li>Produto não utilizado e sem sinais de uso</li>
+                                        <li>Embalagem original intacta e lacrada</li>
+                                        <li>Caixa, manual e acessórios completos</li>
+                                        <li>Nota fiscal ou comprovante de compra</li>
+                                    </ul>
+                                    
+                                    <h5>Como Solicitar:</h5>
+                                    <ol>
+                                        <li>Entre em contato via WhatsApp ou email</li>
+                                        <li>Informe número do pedido e motivo da devolução</li>
+                                        <li>Aguarde instruções de envio</li>
+                                        <li>Envie o produto dentro do prazo de 7 dias</li>
+                                    </ol>
+                                </div>
+                            </div>
+                            
+                            <div class="policy-section">
+                                <h3><i class="fas fa-tools"></i> Defeitos de Fabricação</h3>
+                                <div class="section-content">
+                                    <div class="policy-highlight">
+                                        <h4>30 Dias de Garantia</h4>
+                                        <p>Produtos com defeitos de fabricação serão trocados imediatamente 
+                                        dentro de 30 dias a partir do recebimento.</p>
+                                    </div>
+                                    
+                                    <h5>Consideram-se Defeitos de Fabricação:</h5>
+                                    <ul>
+                                        <li>Vazamento no frasco ou embalagem</li>
+                                        <li>Problemas no spray (não funciona ou falha)</li>
+                                        <li>Erro no rótulo ou embalagem danificada</li>
+                                        <li>Diferença significativa no aroma</li>
+                                        <li>Quantidade incorreta do produto</li>
+                                    </ul>
+                                    
+                                    <h5>Não Consideram Defeito:</h5>
+                                    <ul>
+                                        <li>Desagrado pessoal com a fragrância</li>
+                                        <li>Diferenças sutis no aroma (variação normal)</li>
+                                        <li>Produto usado incorretamente</li>
+                                        <li>Danos causados pelo cliente</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <div class="policy-section">
+                                <h3><i class="fas fa-shipping-fast"></i> Processo de Envio da Troca</h3>
+                                <div class="section-content">
+                                    <h5>Para Defeitos de Fabricação:</h5>
+                                    <ul>
+                                        <li><strong>Frete por nossa conta</strong> - Enviamos correio na sua casa</li>
+                                        <li>Coleta agendada em até 48 horas úteis</li>
+                                        <li>Etiqueta de envio já paga inclusa</li>
+                                        <li>Troca enviada após confirmação do recebimento</li>
+                                    </ul>
+                                    
+                                    <h5>Para Arrependimento:</h5>
+                                    <ul>
+                                        <li><strong>Frete por conta do cliente</strong></li>
+                                        <li>Use embalagem original ou similar</li>
+                                        <li>Guarde o comprovante de envio</li>
+                                        <li>Reembolso em até 10 dias após recebimento</li>
+                                    </ul>
+                                    
+                                    <div class="shipping-tips">
+                                        <h6><i class="fas fa-lightbulb"></i> Dicas para Envio Seguro:</h6>
+                                        <ul>
+                                            <li>Embalagem bem protegida contra choques</li>
+                                            <li>Proteja o frasco contra quebras</li>
+                                            <li>Remova todo o ar do spray antes de enviar</li>
+                                            <li>Tire fotos do produto antes de embalar</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="policy-section">
+                                <h3><i class="fas fa-coins"></i> Reembolso e Créditos</h3>
+                                <div class="section-content">
+                                    <h5>Opções de Reembolso:</h5>
+                                    <ul>
+                                        <li><strong>Estorno na fatura:</strong> Para cartão de crédito</li>
+                                        <li><strong>Transferência bancária:</strong> Para conta corrente/poupança</li>
+                                        <li><strong>Pix:</strong> Transferência instantânea</li>
+                                        <li><strong>Crédito em loja:</strong> Bônus de 5% sobre o valor</li>
+                                    </ul>
+                                    
+                                    <h5>Prazos de Processamento:</h5>
+                                    <ul>
+                                        <li>Cartão de crédito: até 2 faturas seguintes</li>
+                                        <li>Transferência/Pix: até 5 dias úteis</li>
+                                        <li>Crédito em loja: imediato após aprovação</li>
+                                    </ul>
+                                    
+                                    <div class="refund-info">
+                                        <p><strong>Importante:</strong> O reembolso será processado após 
+                                        confirmação do recebimento e análise do produto devolvido.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="policy-section">
+                                <h3><i class="fas fa-exclamation-triangle"></i> Situações Não Cobertas</h3>
+                                <div class="section-content">
+                                    <h5>Não Aceitamos Trocas Quando:</h5>
+                                    <ul>
+                                        <li>Produto com mais de 7 dias (arrependimento)</li>
+                                        <li>Produto com mais de 30 dias (defeito fabricação)</li>
+                                        <li>Embalem danificada ou produto usado</li>
+                                        <li>Faltando componentes da embalagem</li>
+                                        <li>Produto sem nota fiscal ou comprovante</li>
+                                        <li>Danos causados por mau uso ou armazenamento inadequado</li>
+                                        <li>Produtos de promoções especiais (salvo indicação contrária)</li>
+                                    </ul>
+                                    
+                                    <div class="exception-note">
+                                        <p><i class="fas fa-info-circle"></i> 
+                                        Em casos excepcionais, analisaremos individualmente 
+                                        para encontrar a melhor solução para o cliente.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="policy-section">
+                                <h3><i class="fas fa-headset"></i> Suporte e Atendimento</h3>
+                                <div class="section-content">
+                                    <div class="support-channels">
+                                        <div class="support-channel">
+                                            <i class="fab fa-whatsapp"></i>
+                                            <h6>WhatsApp</h6>
+                                            <p>(61) 98297-6481</p>
+                                            <span>Resposta em até 2 horas</span>
+                                        </div>
+                                        
+                                        <div class="support-channel">
+                                            <i class="fas fa-envelope"></i>
+                                            <h6>Email</h6>
+                                            <p>hugo.leonardo.jobs@gmail.com</p>
+                                            <span>Resposta em até 24 horas</span>
+                                        </div>
+                                        
+                                        <div class="support-channel">
+                                            <i class="fas fa-phone"></i>
+                                            <h6>Telefone</h6>
+                                            <p>(61) 98297-6481</p>
+                                            <span>Seg-Sex, 9h às 18h</span>
+                                        </div>
+                                    </div>
+                                    
+                                    <h5>Informações Necessárias para Contato:</h5>
+                                    <ul>
+                                        <li>Número do pedido</li>
+                                        <li>Nome completo do comprador</li>
+                                        <li>Descrição detalhada do problema</li>
+                                        <li>Fotos ou vídeos (se aplicável)</li>
+                                        <li>Preferência de solução (troca/reembolso)</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- FAQ Section -->
+                        <div class="faq-section">
+                            <h3><i class="fas fa-question-circle"></i> Dúvidas Frequentes</h3>
+                            <div class="accordion luxury-accordion" id="returnFaqAccordion">
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header">
+                                        <button class="accordion-button" type="button" data-bs-toggle="collapse" 
+                                                data-bs-target="#faq1" aria-expanded="true">
+                                            <i class="fas fa-question-circle"></i>
+                                            Posso testar o perfume antes de decidir pela troca?
+                                        </button>
+                                    </h2>
+                                    <div id="faq1" class="accordion-collapse collapse show" 
+                                         data-bs-parent="#returnFaqAccordion">
+                                        <div class="accordion-body">
+                                            Para direito de arrependimento, o produto não pode ter sido testado. 
+                                            Para defeitos, faça uma pequena aplicação no pulso para verificação. 
+                                            Se for apenas desagrado, não podemos aceitar a troca.
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header">
+                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" 
+                                                data-bs-target="#faq2" aria-expanded="false">
+                                            <i class="fas fa-question-circle"></i>
+                                            E se o produto chegar danificado pelo Correios?
+                                        </button>
+                                    </h2>
+                                    <div id="faq2" class="accordion-collapse collapse" 
+                                         data-bs-parent="#returnFaqAccordion">
+                                        <div class="accordion-body">
+                                            Tire fotos imediatamente ao receber. Enviamos troca imediata 
+                                            sem custos para você. Não se preocupe, todos nossos envios 
+                                            são segurados contra esse tipo de situação.
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header">
+                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" 
+                                                data-bs-target="#faq3" aria-expanded="false">
+                                            <i class="fas fa-question-circle"></i>
+                                            O que acontece se eu perder o prazo de 7 dias?
+                                        </button>
+                                    </h2>
+                                    <div id="faq3" class="accordion-collapse collapse" 
+                                         data-bs-parent="#returnFaqAccordion">
+                                        <div class="accordion-body">
+                                            Perdido o prazo de arrependimento, só aceitamos trocas 
+                                            por defeitos de fabricação (30 dias). Entre em contato 
+                                            mesmo assim, avaliaremos seu caso individualmente.
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Contact CTA -->
+                        <div class="contact-cta">
+                            <div class="cta-card">
+                                <h4><i class="fas fa-comments"></i> Ainda com Dúvidas?</h4>
+                                <p>Nossa equipe especializada está pronta para ajudar você!</p>
+                                <div class="cta-actions">
+                                    <a href="https://wa.me/5561982976481" class="btn-luxury btn-success-luxury" target="_blank">
+                                        <i class="fab fa-whatsapp"></i>
+                                        WhatsApp Agora
+                                    </a>
+                                    <a href="/contato" class="btn-luxury btn-outline-luxury">
+                                        <i class="fas fa-envelope"></i>
+                                        Enviar Email
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <%- include('../partials/footer') %>
+    
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/luxury.js"></script>
+    
+    <style>
+        .return-content {
+            background: white;
+            border-radius: 25px;
+            padding: 50px;
+            box-shadow: var(--shadow-soft);
+        }
+        
+        .return-intro {
+            text-align: center;
+            margin-bottom: 50px;
+            padding-bottom: 30px;
+            border-bottom: 2px solid var(--luxury-light-gray);
+        }
+        
+        .return-intro .lead {
+            font-family: var(--font-secondary);
+            font-size: 1.2rem;
+            color: var(--luxury-gray);
+            line-height: 1.8;
+        }
+        
+        .guarantee-badges {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .guarantee-badge {
+            background: linear-gradient(45deg, var(--luxury-gold), #f4e4bc);
+            color: var(--luxury-dark);
+            padding: 15px 25px;
+            border-radius: 20px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 8px 20px rgba(212, 175, 55, 0.3);
+        }
+        
+        .guarantee-badge i {
+            font-size: 1.3rem;
+        }
+        
+        .policy-sections {
+            margin-bottom: 50px;
+        }
+        
+        .policy-section {
+            margin-bottom: 40px;
+            padding: 30px;
+            background: linear-gradient(135deg, 
+                rgba(212, 175, 55, 0.05), 
+                rgba(233, 180, 160, 0.03));
+            border-radius: 20px;
+            border: 1px solid rgba(212, 175, 55, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .policy-section:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-luxury);
+            border-color: var(--luxury-gold);
+        }
+        
+        .policy-section h3 {
+            font-family: var(--font-primary);
+            font-weight: 600;
+            color: var(--luxury-dark);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .policy-section h3 i {
+            color: var(--luxury-gold);
+            font-size: 1.3rem;
+        }
+        
+        .policy-highlight {
+            background: linear-gradient(135deg, 
+                rgba(212, 175, 55, 0.1), 
+                rgba(233, 180, 160, 0.05));
+            border: 2px solid var(--luxury-gold);
+            border-radius: 15px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        
+        .policy-highlight h4 {
+            font-family: var(--font-primary);
+            color: var(--luxury-dark);
+            margin-bottom: 10px;
+        }
+        
+        .section-content h5 {
+            font-family: var(--font-secondary);
+            font-weight: 600;
+            color: var(--luxury-dark);
+            margin: 20px 0 10px;
+            font-size: 1.1rem;
+        }
+        
+        .section-content h6 {
+            font-weight: 600;
+            color: var(--luxury-dark);
+            margin: 15px 0 10px;
+        }
+        
+        .section-content ul, .section-content ol {
+            list-style: none;
+            padding: 0;
+            margin: 15px 0;
+        }
+        
+        .section-content li {
+            padding: 8px 0;
+            padding-left: 25px;
+            position: relative;
+            color: var(--luxury-gray);
+            line-height: 1.6;
+        }
+        
+        .section-content ul li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--luxury-gold);
+            font-weight: bold;
+        }
+        
+        .section-content ol li::before {
+            content: counter(list-item);
+            position: absolute;
+            left: 0;
+            color: var(--luxury-gold);
+            font-weight: bold;
+        }
+        
+        .section-content strong {
+            color: var(--luxury-dark);
+            font-weight: 600;
+        }
+        
+        .shipping-tips, .refund-info, .exception-note {
+            background: rgba(212, 175, 55, 0.05);
+            border-left: 4px solid var(--luxury-gold);
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+        
+        .support-channels {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+        
+        .support-channel {
+            text-align: center;
+            padding: 25px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: var(--shadow-soft);
+            border: 1px solid rgba(212, 175, 55, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .support-channel:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-luxury);
+            border-color: var(--luxury-gold);
+        }
+        
+        .support-channel i {
+            font-size: 2.5rem;
+            color: var(--luxury-gold);
+            margin-bottom: 15px;
+        }
+        
+        .support-channel h6 {
+            font-family: var(--font-primary);
+            font-weight: 600;
+            color: var(--luxury-dark);
+            margin: 10px 0 5px;
+        }
+        
+        .support-channel p {
+            font-weight: 600;
+            color: var(--luxury-dark);
+            margin: 5px 0;
+        }
+        
+        .support-channel span {
+            font-size: 0.85rem;
+            color: var(--luxury-gray);
+        }
+        
+        .faq-section {
+            margin-bottom: 50px;
+        }
+        
+        .faq-section h3 {
+            font-family: var(--font-primary);
+            font-weight: 600;
+            color: var(--luxury-dark);
+            margin-bottom: 30px;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+        }
+        
+        .luxury-accordion .accordion-item {
+            background: white;
+            border: 1px solid rgba(212, 175, 55, 0.1);
+            border-radius: 15px;
+            margin-bottom: 15px;
+            overflow: hidden;
+        }
+        
+        .luxury-accordion .accordion-button {
+            background: white;
+            color: var(--luxury-dark);
+            font-family: var(--font-secondary);
+            font-weight: 500;
+            padding: 20px;
+            border: none;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .luxury-accordion .accordion-button:not(.collapsed) {
+            background: linear-gradient(45deg, rgba(212, 175, 55, 0.1), rgba(212, 175, 55, 0.05));
+            color: var(--luxury-dark);
+        }
+        
+        .luxury-accordion .accordion-button i {
+            color: var(--luxury-gold);
+            font-size: 1.2rem;
+        }
+        
+        .luxury-accordion .accordion-body {
+            padding: 20px;
+            color: var(--luxury-gray);
+            line-height: 1.6;
+        }
+        
+        .contact-cta {
+            margin-top: 50px;
+        }
+        
+        .cta-card {
+            background: linear-gradient(135deg, var(--luxury-dark), #2a2a2a);
+            color: white;
+            padding: 40px;
+            border-radius: 25px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cta-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 30% 70%, rgba(212, 175, 55, 0.1) 0%, transparent 60%),
+                radial-gradient(circle at 70% 30%, rgba(233, 180, 160, 0.08) 0%, transparent 60%);
+            pointer-events: none;
+        }
+        
+        .cta-card h4 {
+            font-family: var(--font-primary);
+            font-weight: 600;
+            margin-bottom: 15px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .cta-card h4 i {
+            color: var(--luxury-gold);
+            margin-right: 10px;
+        }
+        
+        .cta-card p {
+            margin-bottom: 25px;
+            opacity: 0.9;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .cta-actions {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            position: relative;
+            z-index: 2;
+        }
+        
+        @media (max-width: 768px) {
+            .return-content {
+                padding: 30px 20px;
+            }
+            
+            .guarantee-badges {
+                flex-direction: column;
+            }
+            
+            .policy-section {
+                padding: 20px;
+            }
+            
+            .support-channels {
+                grid-template-columns: 1fr;
+            }
+            
+            .cta-actions {
+                flex-direction: column;
+            }
+            
+            .cta-card {
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</body>
+</html>

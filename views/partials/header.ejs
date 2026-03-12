@@ -16,10 +16,13 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;900&family=Montserrat:wght@300;400;500;600;700&family=Cormorant+Garamond:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <!-- Custom CSS -->
     <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/luxury.css">
+    <link rel="stylesheet" href="/css/luxury-materials.css">
+    <link rel="stylesheet" href="/css/material-extensions.css">
     
     <!-- Structured Data -->
     <% if (typeof product !== 'undefined') { %>
@@ -45,102 +48,203 @@
     <% } %>
 </head>
 <body>
-    <!-- Top Bar -->
-    <div class="top-bar bg-dark text-white py-2">
+    <!-- Luxury Top Bar -->
+    <div class="luxury-top-bar">
         <div class="container">
             <div class="row align-items-center">
-                <div class="col-md-6">
-                    <div class="d-flex align-items-center gap-3">
-                        <small><i class="fas fa-phone"></i> (11) 94220-0022</small>
-                        <small><i class="fas fa-envelope"></i> contato@bayromhugoperfumes.com.br</small>
+                <div class="col-lg-6">
+                    <div class="luxury-contact">
+                        <span><i class="fas fa-phone-alt"></i> (11) 94220-0022</span>
+                        <span><i class="fas fa-envelope"></i> contato@bayromhugoperfumes.com.br</span>
                     </div>
                 </div>
-                <div class="col-md-6 text-end">
-                    <div class="d-flex align-items-center justify-content-end gap-3">
-                        <small><i class="fas fa-truck"></i> Frete grátis acima de R$ 250</small>
-                        <small><i class="fas fa-shield-alt"></i> Compra segura</small>
+                <div class="col-lg-6 text-end">
+                    <div class="luxury-benefits">
+                        <span><i class="fas fa-crown"></i> Clube VIP</span>
+                        <span><i class="fas fa-shield-alt"></i> Garantia Bayrom</span>
+                        <span><i class="fas fa-truck"></i> Entrega Expressa</span>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Main Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top shadow-sm">
+    <!-- Luxury Navigation -->
+    <nav class="luxury-navbar">
         <div class="container">
-            <a class="navbar-brand" href="/">
-                <img src="/images/logo.png" alt="Bayrom & Hugo Parfums" height="40">
-            </a>
-            
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            
-            <div class="collapse navbar-collapse" id="mainNav">
-                <ul class="navbar-nav mx-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="/">Início</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
-                            Masculino
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="/products?category=masculino">Todos Masculinos</a></li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="/products?category=masculino&fragrance_family=citrico">Cítricos</a></li>
-                            <li><a class="dropdown-item" href="/products?category=masculino&fragrance_family=amadeirado">Amadeirados</a></li>
-                            <li><a class="dropdown-item" href="/products?category=masculino&fragrance_family=oriental">Orientais</a></li>
-                            <li><a class="dropdown-item" href="/products?category=masculino&fragrance_family=aquatico">Aquáticos</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
-                            Feminino
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="/products?category=feminino">Todos Femininos</a></li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="/products?category=feminino&fragrance_family=floral">Florais</a></li>
-                            <li><a class="dropdown-item" href="/products?category=feminino&fragrance_family=frutal">Frutais</a></li>
-                            <li><a class="dropdown-item" href="/products?category=feminino&fragrance_family=doce">Doces</a></li>
-                            <li><a class="dropdown-item" href="/products?category=feminino&fragrance_family=oriental">Orientais</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/products?category=unisex">Unisex</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/sobre-nos">Sobre Nós</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/contato">Contato</a>
-                    </li>
-                </ul>
+            <div class="luxury-nav-wrapper">
+                <!-- Logo -->
+                <div class="luxury-brand">
+                    <a href="/" class="brand-link">
+                        <div class="brand-icon">
+                            <i class="fas fa-crown"></i>
+                        </div>
+                        <div class="brand-text">
+                            <div class="brand-name">BAYROM & HUGO</div>
+                            <div class="brand-tagline">PARFUMS</div>
+                        </div>
+                    </a>
+                </div>
                 
-                <!-- Search and User Actions -->
-                <div class="d-flex align-items-center gap-3">
+                <!-- Mobile Menu Toggle -->
+                <button class="luxury-mobile-toggle" onclick="toggleLuxuryMenu()">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                
+                <!-- Main Navigation -->
+                <div class="luxury-nav-menu" id="luxuryNavMenu">
+                    <ul class="luxury-nav-list">
+                        <li class="luxury-nav-item">
+                            <a href="/" class="luxury-nav-link">Início</a>
+                        </li>
+                        <li class="luxury-nav-item">
+                            <a href="/encyclopedia" class="luxury-nav-link">
+                                <i class="fas fa-book-open"></i> Enciclopédia
+                            </a>
+                        </li>
+                        <li class="luxury-nav-item">
+                            <a href="/materiais-preciosos" class="luxury-nav-link">
+                                <i class="fas fa-gem"></i> Materiais Preciosos
+                            </a>
+                        </li>
+                        <li class="luxury-nav-item dropdown-luxury">
+                            <a href="#" class="luxury-nav-link dropdown-toggle-luxury" onclick="toggleDropdown('masculino')">
+                                Masculino <i class="fas fa-chevron-down"></i>
+                            </a>
+                            <div class="luxury-dropdown" id="masculino-dropdown">
+                                <div class="luxury-dropdown-content">
+                                    <div class="dropdown-section">
+                                        <h6>Categorias</h6>
+                                        <a href="/products?category=masculino">Todos Masculinos</a>
+                                        <a href="/products?category=masculino&fragrance_family=citrico">Cítricos Frescos</a>
+                                        <a href="/products?category=masculino&fragrance_family=amadeirado">Amadeirados Elegantes</a>
+                                        <a href="/products?category=masculino&fragrance_family=oriental">Orientais Poderosos</a>
+                                        <a href="/products?category=masculino&fragrance_family=aquatico">Aquáticos Modernos</a>
+                                    </div>
+                                    <div class="dropdown-featured">
+                                        <h6>Destaques</h6>
+                                        <div class="featured-item">
+                                            <i class="fas fa-star"></i>
+                                            <span>Inspirado em Aventus</span>
+                                        </div>
+                                        <div class="featured-item">
+                                            <i class="fas fa-star"></i>
+                                            <span>Inspirado em Sauvage</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="luxury-nav-item dropdown-luxury">
+                            <a href="#" class="luxury-nav-link dropdown-toggle-luxury" onclick="toggleDropdown('feminino')">
+                                Feminino <i class="fas fa-chevron-down"></i>
+                            </a>
+                            <div class="luxury-dropdown" id="feminino-dropdown">
+                                <div class="luxury-dropdown-content">
+                                    <div class="dropdown-section">
+                                        <h6>Categorias</h6>
+                                        <a href="/products?category=feminino">Todos Femininos</a>
+                                        <a href="/products?category=feminino&fragrance_family=floral">Florais Românticos</a>
+                                        <a href="/products?category=feminino&fragrance_family=frutal">Frutais Vibrantes</a>
+                                        <a href="/products?category=feminino&fragrance_family=doce">Doces Sedutores</a>
+                                        <a href="/products?category=feminino&fragrance_family=oriental">Orientais Misteriosos</a>
+                                    </div>
+                                    <div class="dropdown-featured">
+                                        <h6>Destaques</h6>
+                                        <div class="featured-item">
+                                            <i class="fas fa-star"></i>
+                                            <span>Inspirado em Chanel No. 5</span>
+                                        </div>
+                                        <div class="featured-item">
+                                            <i class="fas fa-star"></i>
+                                            <span>Inspirado em Black Opium</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="luxury-nav-item">
+                            <a href="/products?category=unisex" class="luxury-nav-link">Unisex</a>
+                        </li>
+                        <li class="luxury-nav-item">
+                            <a href="/sobre-nos" class="luxury-nav-link">Nossa História</a>
+                        </li>
+                        <li class="luxury-nav-item">
+                            <a href="/contato" class="luxury-nav-link">Contato VIP</a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Right Actions -->
+                <div class="luxury-actions">
                     <!-- Search -->
-                    <div class="search-box">
-                        <input type="text" class="form-control" placeholder="Buscar perfumes..." id="searchInput">
-                        <button class="btn btn-link text-dark" onclick="performSearch()">
+                    <div class="luxury-search">
+                        <button class="search-toggle" onclick="toggleSearch()">
                             <i class="fas fa-search"></i>
                         </button>
+                        <div class="search-dropdown" id="luxurySearch">
+                            <form onsubmit="performLuxurySearch(event)">
+                                <input type="text" class="luxury-search-input" placeholder="Buscar fragrâncias exclusivas..." required>
+                                <button type="submit" class="luxury-search-btn">
+                                    <i class="fas fa-search"></i>
+                                </button>
+                            </form>
+                        </div>
                     </div>
+                    
+                    <!-- WhatsApp -->
+                    <a href="https://wa.me/5561982976481?text=Olá! Tenho interesse em seus produtos." 
+                       class="luxury-action-link whatsapp-link" target="_blank">
+                        <i class="fab fa-whatsapp"></i>
+                        <span>WhatsApp</span>
+                    </a>
                     
                     <!-- User Account -->
                     <% if (user) { %>
-                        <div class="dropdown">
-                            <button class="btn btn-link text-dark dropdown-toggle" data-bs-toggle="dropdown">
+                        <div class="luxury-user dropdown-luxury">
+                            <button class="luxury-user-btn" onclick="toggleDropdown('user')">
                                 <i class="fas fa-user"></i>
-                                <span class="d-none d-md-inline"><%= user.name.split(' ')[0] %></span>
+                                <span class="user-name"><%= user.name.split(' ')[0] %></span>
+                                <i class="fas fa-chevron-down"></i>
                             </button>
-                            <ul class="dropdown-menu dropdown-menu-end">
-                                <li><a class="dropdown-item" href="/account/profile"><i class="fas fa-user"></i> Meu Perfil</a></li>
-                                <li><a class="dropdown-item" href="/account/orders"><i class="fas fa-box"></i> Meus Pedidos</a></li>
-                                <li><a class="dropdown-item" href="/account/wishlist"><i class="fas fa-heart"></i> Favoritos</a></li>
-                                <li><a class="dropdown-item" href="/account/addresses"><i class="fas fa-map-marker-alt"></i> Endereços</a></li>
-                                <% if (user.role === 'admin') { %>
+                            <div class="luxury-dropdown user-dropdown" id="user-dropdown">
+                                <div class="luxury-dropdown-content">
+                                    <a href="/account/profile"><i class="fas fa-user"></i> Meu Perfil</a>
+                                    <a href="/account/orders"><i class="fas fa-box"></i> Meus Pedidos</a>
+                                    <a href="/account/wishlist"><i class="fas fa-heart"></i> Favoritos</a>
+                                    <a href="/account/addresses"><i class="fas fa-map-marker-alt"></i> Endereços</a>
+                                    <% if (user.role === 'admin') { %>
+                                        <a href="/admin"><i class="fas fa-cog"></i> Painel Admin</a>
+                                    <% } %>
+                                    <hr class="luxury-divider">
+                                    <a href="/logout"><i class="fas fa-sign-out-alt"></i> Sair</a>
+                                </div>
+                            </div>
+                        </div>
+                    <% } else { %>
+                        <a href="/login" class="luxury-action-link">
+                            <i class="fas fa-user"></i>
+                            <span>Entrar</span>
+                        </a>
+                    <% } %>
+                    
+                    <!-- Wishlist -->
+                    <a href="/account/wishlist" class="luxury-action-link">
+                        <i class="fas fa-heart"></i>
+                        <span class="action-count" id="wishlistCount">0</span>
+                    </a>
+                    
+                    <!-- Cart -->
+                    <a href="/cart" class="luxury-action-link cart-link">
+                        <i class="fas fa-shopping-bag"></i>
+                        <span class="action-count" id="cartCount">0</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
                                 <li><hr class="dropdown-divider"></li>
                                 <li><a class="dropdown-item" href="/admin"><i class="fas fa-cog"></i> Painel Admin</a></li>
                                 <% } %>
@@ -183,3 +287,6 @@
     <% } %>
 
     <!-- Main Content -->
+
+    <!-- Luxury JavaScript -->
+    <script src="/js/luxury.js"></script>

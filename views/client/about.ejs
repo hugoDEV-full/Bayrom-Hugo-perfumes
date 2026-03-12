@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sobre Nós - Bayrom & Hugo Parfums</title>
+    <meta name="description" content="Conheça a história da Bayrom & Hugo Parfums e nossa paixão por fragrâncias excepcionais. Perfumes premium inspirados nas grandes marcas.">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;900&family=Montserrat:wght@300;400;500;600;700&family=Cormorant+Garamond:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/luxury.css">
+</head>
+<body>
+    <!-- Header -->
+    <%- include('../partials/header') %>
+    
+    <!-- Hero Section -->
+    <section class="about-hero py-5 bg-gradient-luxury">
+        <div class="container">
+            <div class="row align-items-center min-vh-100">
+                <div class="col-lg-6">
+                    <div class="about-hero-content">
+                        <div class="luxury-badge mb-4">
+                            <i class="fas fa-crown"></i>
+                            Nossa História
+                        </div>
+                        <h1 class="hero-title-luxury">
+                            <span class="title-line">Paixão por</span>
+                            <span class="title-line accent">Fragrâncias</span>
+                            <span class="title-line">Excepcionais</span>
+                        </h1>
+                        <p class="hero-description-luxury">
+                            Na Bayrom & Hugo Parfums, transformamos a arte da perfumaria em 
+                            experiências inesquecíveis. Cada fragrância conta uma história, 
+                            desperta emoções e expressa personalidades únicas.
+                        </p>
+                        <div class="hero-actions-luxury">
+                            <a href="/products" class="btn-luxury btn-primary-luxury">
+                                <i class="fas fa-shopping-bag"></i>
+                                Conhecer Nossos Perfumes
+                            </a>
+                            <a href="/contato" class="btn-luxury btn-outline-luxury">
+                                <i class="fas fa-phone"></i>
+                                Fale Conosco
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="about-hero-image">
+                        <div class="about-image-texture">
+                            <div class="texture-overlay"></div>
+                            <div class="d-flex h-100 align-items-center justify-content-center">
+                                <div class="text-center text-white">
+                                    <i class="fas fa-spa fa-6x mb-4"></i>
+                                    <h3>Arte e Ciência</h3>
+                                    <p>da Perfumaria</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Our Story -->
+    <section class="py-5 bg-light-luxury">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <div class="story-image">
+                        <div class="image-placeholder-luxury">
+                            <i class="fas fa-history fa-4x"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="story-content">
+                        <h2 class="section-title-luxury">Nossa História</h2>
+                        <p class="section-subtitle-luxury">
+                            Uma jornada de paixão e dedicação ao mundo das fragrâncias
+                        </p>
+                        <div class="story-text">
+                            <p>
+                                A Bayrom & Hugo Parfums nasceu do sonho de tornar a perfumaria 
+                                premium acessível a todos. Com anos de experiência no setor, 
+                                identificamos uma oportunidade de oferecer fragrâncias inspiradas 
+                                nas grandes marcas internacionais com qualidade excepcional e preços justos.
+                            </p>
+                            <p>
+                                Nossa missão vai além de vender perfumes - queremos criar 
+                                experiências olfativas que elevem o dia a dia de nossos clientes, 
+                                proporcionando confiança, elegância e sofisticação em cada gota.
+                            </p>
+                            <div class="story-highlights">
+                                <div class="highlight-item">
+                                    <i class="fas fa-award"></i>
+                                    <span>+5 anos de mercado</span>
+                                </div>
+                                <div class="highlight-item">
+                                    <i class="fas fa-users"></i>
+                                    <span>10.000+ clientes satisfeitos</span>
+                                </div>
+                                <div class="highlight-item">
+                                    <i class="fas fa-globe"></i>
+                                    <span>Entrega para todo Brasil</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Our Values -->
+    <section class="py-5 bg-white">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title-luxury">Nossos Valores</h2>
+                <p class="section-subtitle-luxury">
+                    Os princípios que guiam cada decisão e cada produto
+                </p>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-lg-3 col-md-6">
+                    <div class="value-card">
+                        <div class="value-icon">
+                            <i class="fas fa-gem"></i>
+                        </div>
+                        <h4>Qualidade Premium</h4>
+                        <p>
+                            Selecionamos apenas as melhores matérias-primas 
+                            e seguimos rigorosos padrões de controle de qualidade.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-6">
+                    <div class="value-card">
+                        <div class="value-icon">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                        <h4>Paixão pelo Cliente</h4>
+                        <p>
+                            Cada cliente é especial. Oferecemos atendimento 
+                            personalizado e soluções que superam expectativas.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-6">
+                    <div class="value-card">
+                        <div class="value-icon">
+                            <i class="fas fa-flask"></i>
+                        </div>
+                        <h4>Inovação Constante</h4>
+                        <p>
+                            Buscamos sempre as últimas tendências e tecnologias 
+                            em perfumaria para oferecer o melhor do mercado.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-6">
+                    <div class="value-card">
+                        <div class="value-icon">
+                            <i class="fas fa-leaf"></i>
+                        </div>
+                        <h4>Sustentabilidade</h4>
+                        <p>
+                            Comprometidos com práticas sustentáveis e 
+                            embalagens ecologicamente responsáveis.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Our Difference -->
+    <section class="py-5 bg-gradient-luxury">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 order-lg-2">
+                    <div class="difference-image">
+                        <div class="image-placeholder-luxury">
+                            <i class="fas fa-star fa-4x"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 order-lg-1">
+                    <div class="difference-content">
+                        <h2 class="section-title-luxury">Nosso Diferencial</h2>
+                        <p class="section-subtitle-luxury">
+                            O que torna a Bayrom & Hugo Parfums única
+                        </p>
+                        <div class="difference-list">
+                            <div class="difference-item">
+                                <div class="difference-icon">
+                                    <i class="fas fa-check-circle"></i>
+                                </div>
+                                <div class="difference-text">
+                                    <h5>Fragrâncias Inspiradas</h5>
+                                    <p>Perfumes com inspiração nas grandes marcas internacionais</p>
+                                </div>
+                            </div>
+                            
+                            <div class="difference-item">
+                                <div class="difference-icon">
+                                    <i class="fas fa-check-circle"></i>
+                                </div>
+                                <div class="difference-text">
+                                    <h5>Preços Acessíveis</h5>
+                                    <p>Qualidade premium sem os preços exorbitantes do mercado</p>
+                                </div>
+                            </div>
+                            
+                            <div class="difference-item">
+                                <div class="difference-icon">
+                                    <i class="fas fa-check-circle"></i>
+                                </div>
+                                <div class="difference-text">
+                                    <h5>Garantia de Satisfação</h5>
+                                    <p>7 dias para troca ou devolução, sem complicações</p>
+                                </div>
+                            </div>
+                            
+                            <div class="difference-item">
+                                <div class="difference-icon">
+                                    <i class="fas fa-check-circle"></i>
+                                </div>
+                                <div class="difference-text">
+                                    <h5>Atendimento Excepcional</h5>
+                                    <p>Equipe especializada pronta para ajudar você</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Team Section -->
+    <section class="py-5 bg-light-luxury">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title-luxury">Nossa Equipe</h2>
+                <p class="section-subtitle-luxury">
+                    As pessoas que fazem da Bayrom & Hugo uma empresa especial
+                </p>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6">
+                    <div class="team-card">
+                        <div class="team-image">
+                            <div class="team-avatar">
+                                <i class="fas fa-user-tie fa-3x"></i>
+                            </div>
+                        </div>
+                        <div class="team-content">
+                            <h4>Hugo Leonardo</h4>
+                            <p class="team-role">Fundador & CEO</p>
+                            <p class="team-description">
+                                Perfumista com mais de 10 anos de experiência, 
+                                apaixonado por criar experiências olfativas únicas.
+                            </p>
+                            <div class="team-social">
+                                <a href="https://wa.me/5561982976481" target="_blank">
+                                    <i class="fab fa-whatsapp"></i>
+                                </a>
+                                <a href="mailto:hugo.leonardo.jobs@gmail.com">
+                                    <i class="fas fa-envelope"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6">
+                    <div class="team-card">
+                        <div class="team-image">
+                            <div class="team-avatar">
+                                <i class="fas fa-user-tie fa-3x"></i>
+                            </div>
+                        </div>
+                        <div class="team-content">
+                            <h4>Bayrom</h4>
+                            <p class="team-role">Co-fundador & Diretor Criativo</p>
+                            <p class="team-description">
+                                Especialista em tendências de mercado e desenvolvimento 
+                                de fragrâncias inovadoras.
+                            </p>
+                            <div class="team-social">
+                                <a href="https://wa.me/5561982976481" target="_blank">
+                                    <i class="fab fa-whatsapp"></i>
+                                </a>
+                                <a href="mailto:hugo.leonardo.jobs@gmail.com">
+                                    <i class="fas fa-envelope"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6">
+                    <div class="team-card">
+                        <div class="team-image">
+                            <div class="team-avatar">
+                                <i class="fas fa-users fa-3x"></i>
+                            </div>
+                        </div>
+                        <div class="team-content">
+                            <h4>Equipe Especializada</h4>
+                            <p class="team-role">Atendimento & Suporte</p>
+                            <p class="team-description">
+                                Profissionais dedicados a oferecer o melhor 
+                                atendimento e suporte pós-venda.
+                            </p>
+                            <div class="team-social">
+                                <a href="https://wa.me/5561982976481" target="_blank">
+                                    <i class="fab fa-whatsapp"></i>
+                                </a>
+                                <a href="mailto:hugo.leonardo.jobs@gmail.com">
+                                    <i class="fas fa-envelope"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- CTA Section -->
+    <section class="py-5 bg-dark-luxury">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-8">
+                    <div class="luxury-content">
+                        <h2 class="luxury-title">
+                            <i class="fas fa-spa"></i>
+                            Pronto para Descobrir Sua Fragrância Ideal?
+                        </h2>
+                        <p class="luxury-description">
+                            Explore nossa coleção exclusiva e encontre a fragrância 
+                            que representa quem você é. Qualidade, elegância e sofisticação 
+                            esperam por você.
+                        </p>
+                        <div class="mt-4">
+                            <a href="/products" class="btn-luxury btn-primary-luxury btn-lg">
+                                <i class="fas fa-shopping-bag"></i>
+                                Explorar Perfumes
+                            </a>
+                            <a href="/encyclopedia" class="btn-luxury btn-outline-luxury btn-lg ms-3">
+                                <i class="fas fa-book-open"></i>
+                                Enciclopédia
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="luxury-image-texture">
+                        <div class="texture-overlay"></div>
+                        <div class="d-flex h-100 align-items-center justify-content-center">
+                            <div class="text-center text-white">
+                                <i class="fas fa-crown fa-5x mb-3"></i>
+                                <h4>Experiência Premium</h4>
+                                <p>Desde 2019</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <%- include('../partials/footer') %>
+    
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/luxury.js"></script>
+    
+    <style>
+        .about-hero {
+            min-height: 100vh;
+            background: linear-gradient(135deg, var(--luxury-dark) 0%, #1a1a1a 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .about-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="hero-pattern" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="10" cy="10" r="1" fill="rgba(212, 175, 55, 0.1)"/></pattern></defs><rect width="100" height="100" fill="url(%23hero-pattern)"/></svg>');
+        }
+        
+        .about-hero-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .about-hero-image {
+            position: relative;
+            height: 500px;
+        }
+        
+        .about-image-texture {
+            position: relative;
+            height: 100%;
+            border-radius: 20px;
+            overflow: hidden;
+            background: linear-gradient(135deg, var(--luxury-gold) 0%, var(--luxury-rose-gold) 100%);
+        }
+        
+        .texture-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="texture" width="10" height="10" patternUnits="userSpaceOnUse"><circle cx="5" cy="5" r="2" fill="rgba(255,255,255,0.1)"/></pattern></defs><rect width="100" height="100" fill="url(%23texture)"/></svg>');
+        }
+        
+        .story-image, .difference-image {
+            position: relative;
+            height: 400px;
+        }
+        
+        .image-placeholder-luxury {
+            height: 100%;
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.1), rgba(212, 175, 55, 0.05));
+            border: 2px solid var(--luxury-gold);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--luxury-gold);
+        }
+        
+        .story-content, .difference-content {
+            padding: 40px 20px;
+        }
+        
+        .story-text {
+            font-family: var(--font-secondary);
+            color: var(--luxury-gray);
+            line-height: 1.8;
+            margin-bottom: 30px;
+        }
+        
+        .story-highlights {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .highlight-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 20px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: var(--shadow-soft);
+            border: 1px solid rgba(212, 175, 55, 0.1);
+        }
+        
+        .highlight-item i {
+            font-size: 1.5rem;
+            color: var(--luxury-gold);
+        }
+        
+        .highlight-item span {
+            font-family: var(--font-secondary);
+            font-weight: 600;
+            color: var(--luxury-dark);
+        }
+        
+        .value-card {
+            background: white;
+            border-radius: 20px;
+            padding: 40px 30px;
+            text-align: center;
+            box-shadow: var(--shadow-soft);
+            transition: all 0.3s ease;
+            height: 100%;
+            border: 1px solid rgba(212, 175, 55, 0.1);
+        }
+        
+        .value-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-luxury);
+            border-color: var(--luxury-gold);
+        }
+        
+        .value-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(45deg, var(--luxury-gold), #f4e4bc);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 2rem;
+            color: var(--luxury-dark);
+        }
+        
+        .value-card h4 {
+            font-family: var(--font-primary);
+            font-weight: 600;
+            color: var(--luxury-dark);
+            margin-bottom: 15px;
+        }
+        
+        .value-card p {
+            color: var(--luxury-gray);
+            line-height: 1.6;
+        }
+        
+        .difference-list {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+        
+        .difference-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            padding: 25px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(212, 175, 55, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .difference-item:hover {
+            background: rgba(212, 175, 55, 0.1);
+            transform: translateX(10px);
+        }
+        
+        .difference-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(45deg, var(--luxury-gold), #f4e4bc);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--luxury-dark);
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+        
+        .difference-text h5 {
+            font-family: var(--font-primary);
+            font-weight: 600;
+            color: var(--luxury-dark);
+            margin-bottom: 5px;
+        }
+        
+        .difference-text p {
+            color: var(--luxury-gray);
+            margin: 0;
+        }
+        
+        .team-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow-soft);
+            transition: all 0.3s ease;
+            height: 100%;
+            border: 1px solid rgba(212, 175, 55, 0.1);
+        }
+        
+        .team-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-luxury);
+        }
+        
+        .team-image {
+            padding: 40px;
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.05), rgba(212, 175, 55, 0.1));
+            text-align: center;
+        }
+        
+        .team-avatar {
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(45deg, var(--luxury-gold), #f4e4bc);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
+            color: var(--luxury-dark);
+        }
+        
+        .team-content {
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .team-content h4 {
+            font-family: var(--font-primary);
+            font-weight: 600;
+            color: var(--luxury-dark);
+            margin-bottom: 5px;
+        }
+        
+        .team-role {
+            color: var(--luxury-gold);
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+        
+        .team-description {
+            color: var(--luxury-gray);
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        
+        .team-social {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+        
+        .team-social a {
+            width: 40px;
+            height: 40px;
+            background: var(--luxury-light-gray);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--luxury-gray);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .team-social a:hover {
+            background: var(--luxury-gold);
+            color: var(--luxury-dark);
+            transform: translateY(-3px);
+        }
+        
+        @media (max-width: 768px) {
+            .about-hero {
+                min-height: auto;
+                padding: 100px 0;
+            }
+            
+            .story-content, .difference-content {
+                padding: 20px 0;
+            }
+            
+            .story-highlights {
+                grid-template-columns: 1fr;
+            }
+            
+            .difference-item {
+                padding: 20px;
+            }
+            
+            .team-image {
+                padding: 30px;
+            }
+            
+            .team-avatar {
+                width: 100px;
+                height: 100px;
+            }
+        }
+    </style>
+</body>
+</html>

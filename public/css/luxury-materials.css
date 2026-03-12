@@ -1,0 +1,656 @@
+/* Bayrom & Hugo Parfums - Sistema Visual de Metais e Gemas Preciosas */
+
+:root {
+    /* Metais Preciosos */
+    --gold-24k: #FFD700;
+    --gold-18k: #F4C430;
+    --gold-14k: #D4AF37;
+    --gold-rose: #E0BFB8;
+    --gold-white: #F5F5F5;
+    --platinum: #E5E4E2;
+    --silver: #C0C0C0;
+    --silver-sterling: #BFC1C2;
+    --copper: #B87333;
+    --bronze: #CD7F32;
+    --palladium: #E5E4E2;
+    
+    /* Gemas Preciosas */
+    --diamond: #B9F2FF;
+    --diamond-clear: #FFFFFF;
+    --ruby: #E0115F;
+    --ruby-deep: #9B111E;
+    --sapphire: #0F52BA;
+    --sapphire-blue: #002366;
+    --emerald: #50C878;
+    --emerald-deep: #006B3C;
+    --alexandrite: #00BFFF;
+    --alexandrite-purple: #8A2BE2;
+    --tanzanite: #7366BD;
+    --tanzanite-deep: #5D4E8C;
+    --topaz: #FFC87C;
+    --topaz-imperial: #FF6347;
+    --amethyst: #9966CC;
+    --amethyst-deep: #6A0DAD;
+    --aquamarine: #7FFFD4;
+    --aquamarine-deep: #00CED1;
+    --garnet: #972A38;
+    --garnet-deep: #8B0000;
+    --peridot: #B5E550;
+    --peridot-deep: #6B8E23;
+    --opal: #E6BE8A;
+    --opal-fire: #FF4500;
+    --pearl: #F8F6FF;
+    --pearl-black: #1C1C1C;
+    --turquoise: #40E0D0;
+    --turquoise-deep: #046307;
+    --citrine: #E4D00A;
+    --citrine-deep: #DAA520;
+    --jade: #00A86B;
+    --jade-deep: #005249;
+    --onyx: #0F0F0F;
+    --moonstone: #F1F1F1;
+    --bloodstone: #006A4E;
+    --lapis-lazuli: #26619C;
+    --lapis-deep: #1E3A8A;
+    
+    /* Gradients de Luxo */
+    --gold-gradient: linear-gradient(135deg, #FFD700, #F4C430, #D4AF37);
+    --rose-gold-gradient: linear-gradient(135deg, #E0BFB8, #D4A76A, #C19A6B);
+    --platinum-gradient: linear-gradient(135deg, #E5E4E2, #FFFFFF, #C0C0C0);
+    --silver-gradient: linear-gradient(135deg, #C0C0C0, #E5E4E2, #BFC1C2);
+    --copper-gradient: linear-gradient(135deg, #B87333, #CD7F32, #B87333);
+    --bronze-gradient: linear-gradient(135deg, #CD7F32, #B87333, #8B4513);
+    
+    /* Gradients de Gemas */
+    --diamond-gradient: linear-gradient(135deg, #FFFFFF, #B9F2FF, #E0FFFF);
+    --ruby-gradient: linear-gradient(135deg, #E0115F, #FF1744, #9B111E);
+    --sapphire-gradient: linear-gradient(135deg, #0F52BA, #4169E1, #002366);
+    --emerald-gradient: linear-gradient(135deg, #50C878, #00FF7F, #006B3C);
+    --amethyst-gradient: linear-gradient(135deg, #9966CC, #8A2BE2, #6A0DAD);
+    --topaz-gradient: linear-gradient(135deg, #FFC87C, #FFD700, #FF6347);
+    --tanzanite-gradient: linear-gradient(135deg, #7366BD, #9370DB, #5D4E8C);
+    --aquamarine-gradient: linear-gradient(135deg, #7FFFD4, #00CED1, #40E0D0);
+    --peridot-gradient: linear-gradient(135deg, #B5E550, #9ACD32, #6B8E23);
+    --garnet-gradient: linear-gradient(135deg, #972A38, #DC143C, #8B0000);
+    --citrine-gradient: linear-gradient(135deg, #E4D00A, #FFD700, #DAA520);
+    --jade-gradient: linear-gradient(135deg, #00A86B, #00FF7F, #005249);
+    --onyx-gradient: linear-gradient(135deg, #0F0F0F, #2C2C2C, #000000);
+    --moonstone-gradient: linear-gradient(135deg, #F1F1F1, #F8F8FF, #E6E6FA);
+    --turquoise-gradient: linear-gradient(135deg, #40E0D0, #48D1CC, #046307);
+    --lapis-gradient: linear-gradient(135deg, #26619C, #4169E1, #1E3A8A);
+    --pearl-gradient: linear-gradient(135deg, #F8F6FF, #FFF8DC, #FAF0E6);
+    --black-pearl-gradient: linear-gradient(135deg, #1C1C1C, #2F4F4F, #000000);
+}
+
+/* Classes de Materiais por Categoria de Perfume */
+
+/* Perfumes Masculinos - Ouro e Diamante */
+.material-masculine-gold {
+    background: var(--gold-gradient);
+    box-shadow: 0 10px 30px rgba(255, 215, 0, 0.3);
+    border: 2px solid var(--gold-24k);
+}
+
+.material-masculine-diamond {
+    background: var(--diamond-gradient);
+    box-shadow: 0 10px 30px rgba(185, 242, 255, 0.5);
+    border: 2px solid var(--diamond-clear);
+}
+
+.material-masculine-platinum {
+    background: var(--platinum-gradient);
+    box-shadow: 0 10px 30px rgba(229, 228, 226, 0.4);
+    border: 2px solid var(--platinum);
+}
+
+/* Perfumes Femininos - Rubi e Esmeralda */
+.material-feminine-ruby {
+    background: var(--ruby-gradient);
+    box-shadow: 0 10px 30px rgba(224, 17, 95, 0.4);
+    border: 2px solid var(--ruby-deep);
+}
+
+.material-feminine-emerald {
+    background: var(--emerald-gradient);
+    box-shadow: 0 10px 30px rgba(80, 200, 120, 0.4);
+    border: 2px solid var(--emerald-deep);
+}
+
+.material-feminine-rose-gold {
+    background: var(--rose-gold-gradient);
+    box-shadow: 0 10px 30px rgba(224, 191, 184, 0.3);
+    border: 2px solid var(--gold-rose);
+}
+
+/* Perfumes Unisex - Safira e Ametista */
+.material-unisex-sapphire {
+    background: var(--sapphire-gradient);
+    box-shadow: 0 10px 30px rgba(15, 82, 186, 0.4);
+    border: 2px solid var(--sapphire-blue);
+}
+
+.material-unisex-amethyst {
+    background: var(--amethyst-gradient);
+    box-shadow: 0 10px 30px rgba(153, 102, 204, 0.4);
+    border: 2px solid var(--amethyst-deep);
+}
+
+.material-unisex-tanzanite {
+    background: var(--tanzanite-gradient);
+    box-shadow: 0 10px 30px rgba(115, 102, 189, 0.4);
+    border: 2px solid var(--tanzanite-deep);
+}
+
+/* Perfumes de Luxo - Diamante e Platina */
+.material-luxury-diamond {
+    background: var(--diamond-gradient);
+    box-shadow: 0 15px 40px rgba(255, 255, 255, 0.6);
+    border: 3px solid var(--diamond-clear);
+    position: relative;
+}
+
+.material-luxury-diamond::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(45deg, #FFD700, #FFFFFF, #E0115F, #0F52BA, #50C878);
+    border-radius: inherit;
+    z-index: -1;
+    animation: diamondShine 3s linear infinite;
+}
+
+@keyframes diamondShine {
+    0%, 100% { opacity: 0.7; }
+    50% { opacity: 1; }
+}
+
+.material-luxury-platinum {
+    background: var(--platinum-gradient);
+    box-shadow: 0 15px 40px rgba(229, 228, 226, 0.5);
+    border: 3px solid var(--platinum);
+}
+
+/* Perfumes Exóticos - Cobre e Bronze */
+.material-exotic-copper {
+    background: var(--copper-gradient);
+    box-shadow: 0 10px 30px rgba(184, 115, 51, 0.4);
+    border: 2px solid var(--copper);
+}
+
+.material-exotic-bronze {
+    background: var(--bronze-gradient);
+    box-shadow: 0 10px 30px rgba(205, 127, 50, 0.4);
+    border: 2px solid var(--bronze);
+}
+
+/* Perfumes Frescos - Prata e Água-Marinha */
+.material-fresh-silver {
+    background: var(--silver-gradient);
+    box-shadow: 0 10px 30px rgba(192, 192, 192, 0.4);
+    border: 2px solid var(--silver);
+}
+
+.material-fresh-aquamarine {
+    background: var(--aquamarine-gradient);
+    box-shadow: 0 10px 30px rgba(127, 255, 212, 0.4);
+    border: 2px solid var(--aquamarine-deep);
+}
+
+/* Perfumes Orientais - Topázio e Citrino */
+.material-oriental-topaz {
+    background: var(--topaz-gradient);
+    box-shadow: 0 10px 30px rgba(255, 200, 124, 0.4);
+    border: 2px solid var(--topaz-imperial);
+}
+
+.material-oriental-citrine {
+    background: var(--citrine-gradient);
+    box-shadow: 0 10px 30px rgba(228, 208, 10, 0.4);
+    border: 2px solid var(--citrine-deep);
+}
+
+/* Perfumes Madeira - Jade e Ônix */
+.material-woody-jade {
+    background: var(--jade-gradient);
+    box-shadow: 0 10px 30px rgba(0, 168, 107, 0.4);
+    border: 2px solid var(--jade-deep);
+}
+
+.material-woody-onyx {
+    background: var(--onyx-gradient);
+    box-shadow: 0 10px 30px rgba(15, 15, 15, 0.6);
+    border: 2px solid var(--onyx);
+}
+
+/* Perfumes Frutados - Granada e Peridoto */
+.material-fruity-garnet {
+    background: var(--garnet-gradient);
+    box-shadow: 0 10px 30px rgba(151, 42, 56, 0.4);
+    border: 2px solid var(--garnet-deep);
+}
+
+.material-fruity-peridot {
+    background: var(--peridot-gradient);
+    box-shadow: 0 10px 30px rgba(181, 229, 80, 0.4);
+    border: 2px solid var(--peridot-deep);
+}
+
+/* Sistema de Brilho e Reflexo */
+.material-shine {
+    position: relative;
+    overflow: hidden;
+}
+
+.material-shine::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+        45deg,
+        transparent 30%,
+        rgba(255, 255, 255, 0.3) 50%,
+        transparent 70%
+    );
+    animation: materialShine 3s infinite;
+}
+
+@keyframes materialShine {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Partículas de Material */
+.material-particles {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.material-particle {
+    position: absolute;
+    border-radius: 50%;
+    animation: floatParticle 4s infinite ease-in-out;
+}
+
+@keyframes floatParticle {
+    0%, 100% { 
+        transform: translateY(0) translateX(0) scale(1);
+        opacity: 0.7;
+    }
+    50% { 
+        transform: translateY(-20px) translateX(10px) scale(1.2);
+        opacity: 1;
+    }
+}
+
+/* Partículas de Ouro */
+.gold-particle {
+    background: radial-gradient(circle, var(--gold-24k), var(--gold-14k));
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.6);
+}
+
+/* Partículas de Diamante */
+.diamond-particle {
+    background: radial-gradient(circle, var(--diamond-clear), var(--diamond));
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.8);
+}
+
+/* Partículas de Rubi */
+.ruby-particle {
+    background: radial-gradient(circle, var(--ruby), var(--ruby-deep));
+    box-shadow: 0 0 12px rgba(224, 17, 95, 0.6);
+}
+
+/* Partículas de Esmeralda */
+.emerald-particle {
+    background: radial-gradient(circle, var(--emerald), var(--emerald-deep));
+    box-shadow: 0 0 12px rgba(80, 200, 120, 0.6);
+}
+
+/* Partículas de Safira */
+.sapphire-particle {
+    background: radial-gradient(circle, var(--sapphire), var(--sapphire-blue));
+    box-shadow: 0 0 12px rgba(15, 82, 186, 0.6);
+}
+
+/* Partículas de Prata */
+.silver-particle {
+    background: radial-gradient(circle, var(--silver), var(--silver-sterling));
+    box-shadow: 0 0 10px rgba(192, 192, 192, 0.6);
+}
+
+/* Partículas de Cobre */
+.copper-particle {
+    background: radial-gradient(circle, var(--copper), #8B4513);
+    box-shadow: 0 0 10px rgba(184, 115, 51, 0.6);
+}
+
+/* Badges de Material */
+.material-badge {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: white;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+.material-badge-gold {
+    background: var(--gold-gradient);
+}
+
+.material-badge-diamond {
+    background: var(--diamond-gradient);
+    color: #333;
+}
+
+.material-badge-ruby {
+    background: var(--ruby-gradient);
+}
+
+.material-badge-emerald {
+    background: var(--emerald-gradient);
+}
+
+.material-badge-sapphire {
+    background: var(--sapphire-gradient);
+}
+
+.material-badge-amethyst {
+    background: var(--amethyst-gradient);
+}
+
+.material-badge-rose-gold {
+    background: var(--rose-gold-gradient);
+}
+
+.material-badge-platinum {
+    background: var(--platinum-gradient);
+    color: #333;
+}
+
+.material-badge-silver {
+    background: var(--silver-gradient);
+    color: #333;
+}
+
+.material-badge-copper {
+    background: var(--copper-gradient);
+}
+
+.material-badge-citrine {
+    background: var(--citrine-gradient);
+}
+
+.material-badge-tanzanite {
+    background: var(--tanzanite-gradient);
+}
+
+.material-badge-aquamarine {
+    background: var(--aquamarine-gradient);
+    color: #333;
+}
+
+.material-badge-jade {
+    background: var(--jade-gradient);
+}
+
+.material-badge-onyx {
+    background: var(--onyx-gradient);
+}
+
+/* Ícones de Material */
+.material-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    font-size: 12px;
+    color: white;
+    margin-right: 8px;
+}
+
+.material-icon-gold {
+    background: var(--gold-24k);
+}
+
+.material-icon-diamond {
+    background: var(--diamond-gradient);
+    color: #333;
+}
+
+.material-icon-ruby {
+    background: var(--ruby);
+}
+
+.material-icon-emerald {
+    background: var(--emerald);
+}
+
+.material-icon-sapphire {
+    background: var(--sapphire);
+}
+
+.material-icon-amethyst {
+    background: var(--amethyst);
+}
+
+.material-icon-rose-gold {
+    background: var(--gold-rose);
+}
+
+.material-icon-platinum {
+    background: var(--platinum);
+    color: #333;
+}
+
+.material-icon-silver {
+    background: var(--silver);
+    color: #333;
+}
+
+.material-icon-copper {
+    background: var(--copper);
+}
+
+/* Cards de Material */
+.material-card {
+    border-radius: 20px;
+    padding: 2px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s ease;
+}
+
+.material-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+.material-card-content {
+    background: white;
+    border-radius: 18px;
+    padding: 20px;
+    position: relative;
+    z-index: 1;
+}
+
+/* Preços com Material */
+.price-material {
+    font-size: 1.8rem;
+    font-weight: 700;
+    background: var(--gold-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    display: inline-block;
+}
+
+.price-material-diamond {
+    background: var(--diamond-gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.price-material-ruby {
+    background: var(--ruby-gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.price-material-emerald {
+    background: var(--emerald-gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.price-material-sapphire {
+    background: var(--sapphire-gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.price-material-amethyst {
+    background: var(--amethyst-gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Botões com Material */
+.btn-material {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    color: white;
+}
+
+.btn-material:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.btn-material-gold {
+    background: var(--gold-gradient);
+}
+
+.btn-material-diamond {
+    background: var(--diamond-gradient);
+    color: #333;
+}
+
+.btn-material-ruby {
+    background: var(--ruby-gradient);
+}
+
+.btn-material-emerald {
+    background: var(--emerald-gradient);
+}
+
+.btn-material-sapphire {
+    background: var(--sapphire-gradient);
+}
+
+.btn-material-amethyst {
+    background: var(--amethyst-gradient);
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .material-card {
+        margin: 10px;
+    }
+    
+    .material-badge {
+        font-size: 0.65rem;
+        padding: 3px 8px;
+    }
+    
+    .price-material {
+        font-size: 1.4rem;
+    }
+    
+    .btn-material {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+    }
+}
+
+/* Animações Especiais */
+@keyframes materialGlow {
+    0%, 100% { 
+        box-shadow: 0 0 20px currentColor;
+    }
+    50% { 
+        box-shadow: 0 0 40px currentColor, 0 0 60px currentColor;
+    }
+}
+
+.material-glow {
+    animation: materialGlow 2s ease-in-out infinite;
+}
+
+@keyframes materialPulse {
+    0%, 100% { 
+        transform: scale(1);
+    }
+    50% { 
+        transform: scale(1.05);
+    }
+}
+
+.material-pulse {
+    animation: materialPulse 3s ease-in-out infinite;
+}
+
+/* Efeito de Reflexo de Material */
+.material-reflection {
+    position: relative;
+}
+
+.material-reflection::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.4),
+        transparent
+    );
+    animation: materialReflection 3s infinite;
+}
+
+@keyframes materialReflection {
+    0% { left: -100%; }
+    100% { left: 100%; }
+}

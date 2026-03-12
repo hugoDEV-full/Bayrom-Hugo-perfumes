@@ -102,6 +102,10 @@ app.use((req, res, next) => {
     next();
 });
 
+// Middleware de produtos mock para teste (descomentar para usar sem banco)
+// const mockProductsMiddleware = require('./test-products');
+// app.use(mockProductsMiddleware);
+
 // Importação de rotas
 const indexRoutes = require('./src/routes/index');
 const authRoutes = require('./src/routes/auth');

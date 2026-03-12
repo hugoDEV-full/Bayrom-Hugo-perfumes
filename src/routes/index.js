@@ -3,6 +3,14 @@ const router = express.Router();
 const Product = require('../models/Product');
 const Category = require('../models/Category');
 
+// Página de demonstração de materiais preciosos
+router.get('/materiais-preciosos', (req, res) => {
+    res.render('client/materials-demo', {
+        title: 'Materiais Preciosos - Bayrom & Hugo Parfums',
+        description: 'Descubra a conexão entre perfumes e gemas raras. Ouço, diamantes, rubis, esmeraldas e muito mais.'
+    });
+});
+
 // Página inicial
 router.get('/', async (req, res) => {
     try {
@@ -63,6 +71,15 @@ router.get('/', async (req, res) => {
             categories: []
         });
     }
+});
+
+// Página de enciclopédia de perfumes
+router.get('/encyclopedia', (req, res) => {
+    res.render('client/encyclopedia', {
+        title: 'Enciclopédia de Perfumes - Bayrom & Hugo Parfums',
+        description: 'Explore nossa enciclopédia completa de perfumes com notas olfativas, informações detalhadas e busca de inspirações.',
+        keywords: 'enciclopedia perfumes, notas olfativas, fragrâncias, perfume guide, fragrantica'
+    });
 });
 
 // Página sobre nós
@@ -226,6 +243,108 @@ router.get('/buscar', async (req, res) => {
         console.error('Erro na busca:', error);
         req.flash('error_msg', 'Ocorreu um erro ao buscar produtos');
         res.redirect('/');
+    }
+});
+
+// Página de produtos
+router.get('/products', async (req, res) => {
+    try {
+        const { category, brand, sort = 'newest' } = req.query;
+        
+        let whereClause = { status: 'active' };
+        let orderClause = [];
+
+        // Filtros
+        if (category) {
+            whereClause.category = category;
+        }
+        
+        if (brand) {
+            whereClause.brand = { [Product.sequelize.Sequelize.Op.like]: `%${brand}%` };
+        }
+
+        // Ordenação
+        switch (sort) {
+            case 'price-low':
+                orderClause.push(['sale_price', 'ASC']);
+                break;
+            case 'price-high':
+                orderClause.push(['sale_price', 'DESC']);
+                break;
+            case 'newest':
+                orderClause.push(['created_at', 'DESC']);
+                break;
+            case 'bestselling':
+                orderClause.push(['sales_count', 'DESC']);
+                break;
+            case 'rating':
+                orderClause.push(['rating_average', 'DESC']);
+                break;
+            default:
+                orderClause.push(['created_at', 'DESC']);
+        }
+
+        const products = await Product.findAll({
+            where: whereClause,
+            order: orderClause,
+            limit: 20
+        });
+
+        const categories = await Category.findAll({
+            where: { is_active: true },
+            order: [['name', 'ASC']]
+        });
+
+        res.render('client/products/list', {
+            title: 'Produtos - Bayrom & Hugo Parfums',
+            description: 'Conheça nossa coleção completa de perfumes premium.',
+            products,
+            categories,
+            filters: { category, brand, sort }
+        });
+    } catch (error) {
+        console.error('Erro ao carregar produtos:', error);
+        req.flash('error_msg', 'Ocorreu um erro ao carregar os produtos');
+        res.redirect('/');
+    }
+});
+
+// Página de detalhes do produto
+router.get('/products/:slug', async (req, res) => {
+    try {
+        const product = await Product.findOne({
+            where: { 
+                slug: req.params.slug,
+                status: 'active' 
+            }
+        });
+
+        if (!product) {
+            req.flash('error_msg', 'Produto não encontrado');
+            return res.redirect('/products');
+        }
+
+        // Produtos relacionados
+        const relatedProducts = await Product.findAll({
+            where: { 
+                category: product.category,
+                status: 'active',
+                id: { [Product.sequelize.Sequelize.Op.ne]: product.id }
+            },
+            limit: 4,
+            order: [['sales_count', 'DESC']]
+        });
+
+        res.render('client/products/detail', {
+            title: `${product.name} - Bayrom & Hugo Parfums`,
+            description: product.description,
+            product,
+            relatedProducts
+        });
+    } catch (error) {
+        console.error('Erro ao carregar produto:', error);
+        req.flash('error_msg', 'Ocorreu um erro ao carregar o produto');
+        res.redirect('/products');
     }
 });
 

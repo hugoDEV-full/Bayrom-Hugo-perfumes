@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frete e Entrega - Bayrom & Hugo Parfums</title>
+    <meta name="description" content="Informações sobre frete, prazos e métodos de entrega. Entregamos para todo Brasil com segurança e rapidez.">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;900&family=Montserrat:wght@300;400;500;600;700&family=Cormorant+Garamond:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/luxury.css">
+</head>
+<body>
+    <!-- Header -->
+    <%- include('../partials/header') %>
+    
+    <!-- Hero Section -->
+    <section class="page-hero py-5 bg-gradient-luxury">
+        <div class="container">
+            <div class="row align-items-center min-vh-100">
+                <div class="col-lg-8 mx-auto text-center">
+                    <div class="page-hero-content">
+                        <div class="luxury-badge mb-4">
+                            <i class="fas fa-truck"></i>
+                            Frete e Entrega
+                        </div>
+                        <h1 class="hero-title-luxury">
+                            <span class="title-line">Entrega Rápida</span>
+                            <span class="title-line accent">e Segura</span>
+                        </h1>
+                        <p class="hero-description-luxury">
+                            Levamos suas fragrâncias favoritas até você com 
+                            agilidade, segurança e o melhor custo-benefício 
+                            do mercado.
+                        </p>
+                        <div class="hero-actions-luxury">
+                            <a href="/products" class="btn-luxury btn-primary-luxury">
+                                <i class="fas fa-shopping-bag"></i>
+                                Comprar Agora
+                            </a>
+                            <a href="https://wa.me/5561982976481" class="btn-luxury btn-outline-luxury" target="_blank">
+                                <i class="fas fa-question-circle"></i>
+                                Dúvidas? Fale Conosco
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Shipping Options -->
+    <section class="py-5 bg-light-luxury">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title-luxury">Opções de Entrega</h2>
+                <p class="section-subtitle-luxury">
+                    Escolha a melhor opção para sua necessidade
+                </p>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6">
+                    <div class="shipping-card">
+                        <div class="shipping-icon">
+                            <i class="fas fa-shipping-fast"></i>
+                        </div>
+                        <h4>Entrega Expressa</h4>
+                        <div class="shipping-time">1-2 dias úteis</div>
+                        <p>
+                            Opção mais rápida para quem não pode esperar. 
+                            Ideal para presentes e emergências.
+                        </p>
+                        <div class="shipping-price">
+                            <small>A partir de</small>
+                            <span>R$ 29,90</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6">
+                    <div class="shipping-card featured">
+                        <div class="shipping-badge">Mais Popular</div>
+                        <div class="shipping-icon">
+                            <i class="fas fa-truck"></i>
+                        </div>
+                        <h4>Entrega Standard</h4>
+                        <div class="shipping-time">3-7 dias úteis</div>
+                        <p>
+                            Equilíbrio perfeito entre custo e tempo. 
+                            A opção preferida pela maioria dos clientes.
+                        </p>
+                        <div class="shipping-price">
+                            <small>A partir de</small>
+                            <span>R$ 14,90</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6">
+                    <div class="shipping-card">
+                        <div class="shipping-icon">
+                            <i class="fas fa-box"></i>
+                        </div>
+                        <h4>Entrega Econômica</h4>
+                        <div class="shipping-time">7-15 dias úteis</div>
+                        <p>
+                            Melhor custo-benefício para quem não tem pressa. 
+                            Ideal para compras planejadas.
+                        </p>
+                        <div class="shipping-price">
+                            <small>A partir de</small>
+                            <span>R$ 9,90</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Regions and Deadlines -->
+    <section class="py-5 bg-white">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <div class="regions-content">
+                        <h2 class="section-title-luxury">Prazos por Região</h2>
+                        <p class="section-subtitle-luxury">
+                            Saiba quanto tempo leva para sua região
+                        </p>
+                        <div class="regions-table">
+                            <div class="region-item">
+                                <div class="region-name">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    <span>Sudeste (SP, RJ, MG, ES)</span>
+                                </div>
+                                <div class="region-time">
+                                    <span class="time-express">1-2 dias</span>
+                                    <span class="time-standard">3-5 dias</span>
+                                    <span class="time-economic">5-8 dias</span>
+                                </div>
+                            </div>
+                            
+                            <div class="region-item">
+                                <div class="region-name">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    <span>Sul (PR, SC, RS)</span>
+                                </div>
+                                <div class="region-time">
+                                    <span class="time-express">2-3 dias</span>
+                                    <span class="time-standard">4-6 dias</span>
+                                    <span class="time-economic">6-10 dias</span>
+                                </div>
+                            </div>
+                            
+                            <div class="region-item">
+                                <div class="region-name">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    <span>Nordeste (BA, PE, CE, etc.)</span>
+                                </div>
+                                <div class="region-time">
+                                    <span class="time-express">3-4 dias</span>
+                                    <span class="time-standard">5-8 dias</span>
+                                    <span class="time-economic">8-12 dias</span>
+                                </div>
+                            </div>
+                            
+                            <div class="region-item">
+                                <div class="region-name">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    <span>Centro-Oeste (DF, GO, MT, MS)</span>
+                                </div>
+                                <div class="region-time">
+                                    <span class="time-express">2-3 dias</span>
+                                    <span class="time-standard">4-6 dias</span>
+                                    <span class="time-economic">6-10 dias</span>
+                                </div>
+                            </div>
+                            
+                            <div class="region-item">
+                                <div class="region-name">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    <span>Norte (AM, PA, RO, etc.)</span>
+                                </div>
+                                <div class="region-time">
+                                    <span class="time-express">4-6 dias</span>
+                                    <span class="time-standard">7-12 dias</span>
+                                    <span class="time-economic">10-15 dias</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-6">
+                    <div class="tracking-info">
+                        <div class="tracking-card">
+                            <div class="tracking-icon">
+                                <i class="fas fa-search-location"></i>
+                            </div>
+                            <h4>Rastreamento Online</h4>
+                            <p>
+                                Acompanhe seu pedido em tempo real pelo código 
+                                de rastreamento. Enviamos automaticamente 
+                                no seu email e WhatsApp.
+                            </p>
+                            <div class="tracking-steps">
+                                <div class="tracking-step">
+                                    <div class="step-number">1</div>
+                                    <div class="step-info">
+                                        <h5>Pedido Confirmado</h5>
+                                        <p>Recebemos seu pedido</p>
+                                    </div>
+                                </div>
+                                <div class="tracking-step">
+                                    <div class="step-number">2</div>
+                                    <div class="step-info">
+                                        <h5>Em Separação</h5>
+                                        <p>Preparando seu produto</p>
+                                    </div>
+                                </div>
+                                <div class="tracking-step">
+                                    <div class="step-number">3</div>
+                                    <div class="step-info">
+                                        <h5>Em Transporte</h5>
+                                        <p>A caminho do seu endereço</p>
+                                    </div>
+                                </div>
+                                <div class="tracking-step">
+                                    <div class="step-number">4</div>
+                                    <div class="step-info">
+                                        <h5>Entregue</h5>
+                                        <p>Produto em suas mãos</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Free Shipping -->
+    <section class="py-5 bg-gradient-luxury">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-8">
+                    <div class="luxury-content">
+                        <h2 class="luxury-title">
+                            <i class="fas fa-gift"></i>
+                            Frete Grátis em Compras Acima de R$199
+                        </h2>
+                        <p class="luxury-description">
+                            Aproveite nossa condição especial! Compras acima de R$199 
+                            ganham frete grátis para todo Brasil na modalidade Standard. 
+                            Economize e receba seus perfumes com a mesma qualidade.
+                        </p>
+                        <div class="free-shipping-features">
+                            <div class="feature-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Válido para todo Brasil</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Entrega em 3-7 dias úteis</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Rastreamento incluído</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Seguro contra perda</span>
+                            </div>
+                        </div>
+                        <div class="mt-4">
+                            <a href="/products" class="btn-luxury btn-primary-luxury btn-lg">
+                                <i class="fas fa-shopping-bag"></i>
+                                Aproveitar Frete Grátis
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="luxury-image-texture">
+                        <div class="texture-overlay"></div>
+                        <div class="d-flex h-100 align-items-center justify-content-center">
+                            <div class="text-center text-white">
+                                <i class="fas fa-truck fa-5x mb-3"></i>
+                                <h4>Frete Grátis</h4>
+                                <p>Acima de R$199</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- FAQ Section -->
+    <section class="py-5 bg-light-luxury">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title-luxury">Dúvidas sobre Entrega</h2>
+                <p class="section-subtitle-luxury">
+                    Tudo que você precisa saber sobre frete e entrega
+                </p>
+            </div>
+            
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <div class="accordion luxury-accordion" id="shippingFaqAccordion">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" 
+                                        data-bs-target="#shipfaq1" aria-expanded="true">
+                                    <i class="fas fa-question-circle"></i>
+                                    Como calculo o frete?
+                                </button>
+                            </h2>
+                            <div id="shipfaq1" class="accordion-collapse collapse show" 
+                                 data-bs-parent="#shippingFaqAccordion">
+                                <div class="accordion-body">
+                                    O frete é calculado automaticamente no carrinho baseado no seu CEP, 
+                                    peso do produto e modalidade escolhida. Simplesmente adicione 
+                                    os itens ao carrinho e informe seu CEP para ver as opções.
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" 
+                                        data-bs-target="#shipfaq2" aria-expanded="false">
+                                    <i class="fas fa-box"></i>
+                                    Como a embalagem é feita?
+                                </button>
+                            </h2>
+                            <div id="shipfaq2" class="accordion-collapse collapse" 
+                                 data-bs-parent="#shippingFaqAccordion">
+                                <div class="accordion-body">
+                                    Todos os produtos são embalados com máximo cuidado. 
+                                    Usamos caixas resistentes, proteção interna e embalagem 
+                                    discreta para garantir que seu perfume chegue perfeito e seguro.
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" 
+                                        data-bs-target="#shipfaq3" aria-expanded="false">
+                                    <i class="fas fa-home"></i>
+                                    Entregam em apartamentos?
+                                </button>
+                            </h2>
+                            <div id="shipfaq3" class="accordion-collapse collapse" 
+                                 data-bs-parent="#shippingFaqAccordion">
+                                <div class="accordion-body">
+                                    Sim! Entregamos em residências, apartamentos, empresas 
+                                    e endereços comerciais. O entregador tentará contato 
+                                    antes da entrega para garantir que você receba seu produto.
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" 
+                                        data-bs-target="#shipfaq4" aria-expanded="false">
+                                    <i class="fas fa-exchange-alt"></i>
+                                    E se eu não estiver no endereço?
+                                </button>
+                            </h2>
+                            <div id="shipfaq4" class="accordion-collapse collapse" 
+                                 data-bs-parent="#shippingFaqAccordion">
+                                <div class="accordion-body">
+                                    Caso não encontrem você no endereço, o entregador deixará 
+                                    um aviso e seu produto ficará retido na agência dos Correios 
+                                    por 7 dias. Você também pode autorizar entrega a terceiros.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- CTA Section -->
+    <section class="py-5 bg-dark-luxury">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-8">
+                    <div class="luxury-content">
+                        <h2 class="luxury-title">
+                            <i class="fas fa-shipping-fast"></i>
+                            Receba Seus Perfumes com Rapidez e Segurança
+                        </h2>
+                        <p class="luxury-description">
+                            Compre agora mesmo e receba suas fragrâncias favoritas 
+                            em qualquer lugar do Brasil. Agilidade, rastreamento 
+                            e qualidade garantida!
+                        </p>
+                        <div class="mt-4">
+                            <a href="/products" class="btn-luxury btn-primary-luxury btn-lg">
+                                <i class="fas fa-shopping-bag"></i>
+                                Comprar Agora
+                            </a>
+                            <a href="https://wa.me/5561982976481" class="btn-luxury btn-outline-luxury btn-lg ms-3" target="_blank">
+                                <i class="fas fa-question-circle"></i>
+                                Dúvidas sobre Frete
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="luxury-image-texture">
+                        <div class="texture-overlay"></div>
+                        <div class="d-flex h-100 align-items-center justify-content-center">
+                            <div class="text-center text-white">
+                                <i class="fas fa-globe-americas fa-5x mb-3"></i>
+                                <h4>Entrega para</h4>
+                                <p>Todo Brasil</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <%- include('../partials/footer') %>
+    
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/luxury.js"></script>
+    
+    <style>
+        .page-hero {
+            min-height: 100vh;
+            background: linear-gradient(135deg, var(--luxury-dark) 0%, #1a1a1a 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .page-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="hero-pattern" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="10" cy="10" r="1" fill="rgba(212, 175, 55, 0.1)"/></pattern></defs><rect width="100" height="100" fill="url(%23hero-pattern)"/></svg>');
+        }
+        
+        .page-hero-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .shipping-card {
+            background: white;
+            border-radius: 20px;
+            padding: 40px 30px;
+            text-align: center;
+            box-shadow: var(--shadow-soft);
+            transition: all 0.3s ease;
+            height: 100%;
+            position: relative;
+            border: 1px solid rgba(212, 175, 55, 0.1);
+        }
+        
+        .shipping-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-luxury);
+        }
+        
+        .shipping-card.featured {
+            border-color: var(--luxury-gold);
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.05), white);
+        }
+        
+        .shipping-badge {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(45deg, var(--luxury-gold), #f4e4bc);
+            color: var(--luxury-dark);
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-family: var(--font-secondary);
+            font-weight: 600;
+            font-size: 12px;
+            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
+        }
+        
+        .shipping-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(45deg, rgba(212, 175, 55, 0.1), rgba(212, 175, 55, 0.05));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 2rem;
+            color: var(--luxury-gold);
+            border: 2px solid rgba(212, 175, 55, 0.2);
+        }
+        
+        .shipping-card h4 {
+            font-family: var(--font-primary);
+            font-weight: 600;
+            color: var(--luxury-dark);
+            margin-bottom: 10px;
+        }
+        
+        .shipping-time {
+            color: var(--luxury-gold);
+            font-weight: 600;
+            margin-bottom: 15px;
+            font-family: var(--font-secondary);
+        }
+        
+        .shipping-card p {
+            color: var(--luxury-gray);
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        
+        .shipping-price {
+            margin-top: auto;
+        }
+        
+        .shipping-price small {
+            color: var(--luxury-gray);
+            font-size: 12px;
+        }
+        
+        .shipping-price span {
+            display: block;
+            font-family: var(--font-primary);
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--luxury-gold);
+        }
+        
+        .regions-table {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        .region-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background: var(--luxury-light-gray);
+            border-radius: 15px;
+            border: 1px solid rgba(212, 175, 55, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .region-item:hover {
+            background: rgba(212, 175, 55, 0.05);
+            border-color: var(--luxury-gold);
+        }
+        
+        .region-name {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            flex: 1;
+        }
+        
+        .region-name i {
+            color: var(--luxury-gold);
+            font-size: 1.2rem;
+        }
+        
+        .region-name span {
+            font-family: var(--font-secondary);
+            font-weight: 500;
+            color: var(--luxury-dark);
+        }
+        
+        .region-time {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .region-time span {
+            padding: 5px 12px;
+            border-radius: 10px;
+            font-size: 11px;
+            font-weight: 600;
+            text-align: center;
+            min-width: 60px;
+        }
+        
+        .time-express {
+            background: rgba(76, 175, 80, 0.1);
+            color: #4CAF50;
+        }
+        
+        .time-standard {
+            background: rgba(212, 175, 55, 0.1);
+            color: var(--luxury-gold);
+        }
+        
+        .time-economic {
+            background: rgba(255, 107, 107, 0.1);
+            color: #FF6B6B;
+        }
+        
+        .tracking-card {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: var(--shadow-soft);
+            border: 1px solid rgba(212, 175, 55, 0.1);
+        }
+        
+        .tracking-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(45deg, var(--luxury-gold), #f4e4bc);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 2rem;
+            color: var(--luxury-dark);
+        }
+        
+        .tracking-card h4 {
+            font-family: var(--font-primary);
+            font-weight: 600;
+            color: var(--luxury-dark);
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        
+        .tracking-card p {
+            color: var(--luxury-gray);
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        
+        .tracking-steps {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        .tracking-step {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            padding: 15px;
+            background: var(--luxury-light-gray);
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+        
+        .tracking-step:hover {
+            background: rgba(212, 175, 55, 0.05);
+            transform: translateX(10px);
+        }
+        
+        .step-number {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(45deg, var(--luxury-gold), #f4e4bc);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-primary);
+            font-weight: 700;
+            color: var(--luxury-dark);
+            flex-shrink: 0;
+        }
+        
+        .step-info h5 {
+            font-family: var(--font-secondary);
+            font-weight: 600;
+            color: var(--luxury-dark);
+            margin-bottom: 2px;
+            font-size: 14px;
+        }
+        
+        .step-info p {
+            color: var(--luxury-gray);
+            margin: 0;
+            font-size: 12px;
+        }
+        
+        .free-shipping-features {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin: 30px 0;
+        }
+        
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            backdrop-filter: blur(5px);
+        }
+        
+        .feature-item i {
+            color: var(--luxury-gold);
+            font-size: 1.2rem;
+        }
+        
+        .feature-item span {
+            color: white;
+            font-family: var(--font-secondary);
+            font-weight: 500;
+        }
+        
+        .luxury-accordion .accordion-item {
+            background: white;
+            border: 1px solid rgba(212, 175, 55, 0.1);
+            border-radius: 15px;
+            margin-bottom: 15px;
+            overflow: hidden;
+        }
+        
+        .luxury-accordion .accordion-button {
+            background: white;
+            color: var(--luxury-dark);
+            font-family: var(--font-secondary);
+            font-weight: 500;
+            padding: 20px;
+            border: none;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .luxury-accordion .accordion-button:not(.collapsed) {
+            background: linear-gradient(45deg, rgba(212, 175, 55, 0.1), rgba(212, 175, 55, 0.05));
+            color: var(--luxury-dark);
+        }
+        
+        .luxury-accordion .accordion-button i {
+            color: var(--luxury-gold);
+            font-size: 1.2rem;
+        }
+        
+        .luxury-accordion .accordion-body {
+            padding: 20px;
+            color: var(--luxury-gray);
+            line-height: 1.6;
+        }
+        
+        @media (max-width: 768px) {
+            .page-hero {
+                min-height: auto;
+                padding: 100px 0;
+            }
+            
+            .shipping-card {
+                padding: 30px 20px;
+            }
+            
+            .region-item {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+            }
+            
+            .region-time {
+                justify-content: center;
+            }
+            
+            .tracking-steps {
+                gap: 15px;
+            }
+            
+            .tracking-step {
+                padding: 12px;
+            }
+            
+            .free-shipping-features {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</body>
+</html>

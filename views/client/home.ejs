@@ -1,159 +1,1146 @@
 <%- include('../partials/header') %>
 
-<!-- Hero Section -->
-<section class="hero-section">
-    <div class="container">
-        <div class="row align-items-center">
-            <div class="col-lg-6">
-                <div class="hero-content">
-                    <h1 class="text-white">Fragrâncias Excepcionais</h1>
-                    <p class="text-white-50">Descubra perfumes premium inspirados nas grandes marcas mundiais. Qualidade excepcional com preços imbatíveis.</p>
-                    <div class="d-flex gap-3 flex-wrap">
-                        <a href="/products" class="btn btn-light btn-lg">
-                            <i class="fas fa-shopping-bag"></i> Comprar Agora
+<!-- Hero Section Luxuoso -->
+<section class="hero-luxury">
+    <div class="hero-overlay"></div>
+    <div class="container h-100">
+        <div class="row h-100 align-items-center">
+            <div class="col-lg-7">
+                <div class="hero-content-luxury">
+                    <div class="luxury-badge mb-3">
+                        <span class="badge-text">BAYROM & HUGO PARFUMS</span>
+                    </div>
+                    <h1 class="hero-title-luxury">
+                        <span class="title-line">A Arte da</span>
+                        <span class="title-line accent">Perfumaria</span>
+                        <span class="title-line">de Nicho</span>
+                    </h1>
+                    <p class="hero-description-luxury">
+                        Descubra fragrâncias excepcionais inspiradas nas mais prestigiadas casas de perfumes. 
+                        Cada nota é uma jornada sensorial única, criada para quem busca o extraordinário.
+                    </p>
+                    <div class="hero-actions-luxury">
+                        <a href="#inspiracoes" class="btn-luxury btn-primary-luxury">
+                            <span>Explorar Coleção</span>
+                            <i class="fas fa-crown"></i>
                         </a>
-                        <a href="/sobre-nos" class="btn btn-outline-light btn-lg">
-                            <i class="fas fa-info-circle"></i> Saiba Mais
+                        <a href="#sobre" class="btn-luxury btn-outline-luxury">
+                            <span>Nossa Filosofia</span>
+                            <i class="fas fa-compass"></i>
                         </a>
                     </div>
-                </div>
-            </div>
-            <div class="col-lg-6">
-                <div class="hero-image text-center">
-                    <img src="/images/hero-perfumes.png" alt="Perfumes Premium" class="img-fluid rounded-3 shadow-lg">
                 </div>
             </div>
         </div>
     </div>
-</section>
-
-<!-- Features Section -->
-<section class="py-5 bg-light">
-    <div class="container">
-        <div class="row g-4">
-            <div class="col-md-3 col-6">
-                <div class="text-center">
-                    <div class="feature-icon mb-3">
-                        <i class="fas fa-truck fa-3x text-primary"></i>
-                    </div>
-                    <h5>Frete Grátis</h5>
-                    <p class="text-muted small">Em compras acima de R$ 250</p>
-                </div>
-            </div>
-            <div class="col-md-3 col-6">
-                <div class="text-center">
-                    <div class="feature-icon mb-3">
-                        <i class="fas fa-shield-alt fa-3x text-success"></i>
-                    </div>
-                    <h5>Compra Segura</h5>
-                    <p class="text-muted small">100% protegido</p>
-                </div>
-            </div>
-            <div class="col-md-3 col-6">
-                <div class="text-center">
-                    <div class="feature-icon mb-3">
-                        <i class="fas fa-undo fa-3x text-warning"></i>
-                    </div>
-                    <h5>7 Dias para Troca</h5>
-                    <p class="text-muted small">Garantia de satisfação</p>
-                </div>
-            </div>
-            <div class="col-md-3 col-6">
-                <div class="text-center">
-                    <div class="feature-icon mb-3">
-                        <i class="fas fa-certificate fa-3x text-danger"></i>
-                    </div>
-                    <h5>Produtos Originais</h5>
-                    <p class="text-muted small">Qualidade garantida</p>
-                </div>
-            </div>
-        </div>
+    <div class="hero-scroll-indicator">
+        <i class="fas fa-chevron-down"></i>
     </div>
 </section>
 
-<!-- Categories Section -->
-<section class="py-5">
+<!-- Seção de Inspirações Olfativas -->
+<section id="inspiracoes" class="py-5 bg-gradient-luxury">
     <div class="container">
         <div class="text-center mb-5">
-            <h2 class="display-5">Nossas Categorias</h2>
-            <p class="text-muted">Escolha a fragrância perfeita para você</p>
+            <h2 class="section-title-luxury">Inspirações Olfativas</h2>
+            <p class="section-subtitle-luxury">Fragrâncias que contam histórias e despertam emoções</p>
         </div>
         
-        <div class="row g-4">
-            <div class="col-md-4">
-                <a href="/products?category=masculino" class="category-card d-block">
-                    <i class="fas fa-male"></i>
-                    <h3>Masculino</h3>
-                    <p>Fragrâncias fortes e marcantes</p>
-                </a>
+        <!-- Banner Enciclopédia -->
+        <div class="encyclopedia-banner mb-5">
+            <div class="banner-content">
+                <div class="banner-text">
+                    <div class="luxury-badge mb-3">
+                        <i class="fas fa-book-open"></i>
+                        NOVO: Enciclopédia de Perfumes
+                    </div>
+                    <h3>Explore o Mundo das Fragrâncias</h3>
+                    <p>
+                        Descubra informações detalhadas sobre +500 perfumes, notas olfativas, 
+                        famlias de fragrâncias e encontre sua inspiração perfeita. 
+                        Integrado com o maior banco de dados de perfumes do mundo.
+                    </p>
+                    <div class="banner-actions">
+                        <a href="/encyclopedia" class="btn-luxury btn-primary-luxury">
+                            <i class="fas fa-search"></i>
+                            Explorar Enciclopédia
+                        </a>
+                        <a href="https://www.fragrantica.com.br/notas/" target="_blank" class="btn-luxury btn-outline-luxury">
+                            <i class="fas fa-external-link-alt"></i>
+                            Visitar Fragrantica
+                        </a>
+                    </div>
+                </div>
+                <div class="banner-features">
+                    <div class="feature-item">
+                        <i class="fas fa-database"></i>
+                        <h5>+500 Perfumes</h5>
+                        <p>Banco de dados completo</p>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-leaf"></i>
+                        <h5>Notas Detalhadas</h5>
+                        <p>Composição olfativa completa</p>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-link"></i>
+                        <h5>Integração Fragrantica</h5>
+                        <p>Informações atualizadas</p>
+                    </div>
+                </div>
             </div>
-            <div class="col-md-4">
-                <a href="/products?category=feminino" class="category-card d-block">
-                    <i class="fas fa-female"></i>
-                    <h3>Feminino</h3>
-                    <p>Notas delicadas e envolventes</p>
-                </a>
+        </div>
+        
+        <!-- Legenda dos Acordes -->
+        <div class="chord-legend">
+            <div class="chord-legend-item">
+                <div class="chord-legend-icon top">T</div>
+                <span><strong>Notas de Topo:</strong> Primeira impressão, evaporam rapidamente (5-15 min)</span>
             </div>
-            <div class="col-md-4">
-                <a href="/products?category=unisex" class="category-card d-block">
-                    <i class="fas fa-venus-mars"></i>
-                    <h3>Unisex</h3>
-                    <p>Versáteis para qualquer ocasião</p>
-                </a>
+            <div class="chord-legend-item">
+                <div class="chord-legend-icon middle">C</div>
+                <span><strong>Notas de Coração:</strong> Personalidade da fragrância (20-60 min)</span>
+            </div>
+            <div class="chord-legend-icon base">F</div>
+            <span><strong>Notas de Fundo:</strong> Persistência final (horas a dias)</span>
+        </div>
+        
+        <!-- Material Showcase Section -->
+        <section class="material-showcase">
+            <div class="container">
+                <div class="text-center mb-5">
+                    <h2 class="display-4" style="font-family: 'Playfair Display', serif; color: var(--luxury-dark);">
+                        Materiais Preciosos
+                    </h2>
+                    <p class="lead text-muted">
+                        Cada perfume é único, assim como as gemas e metais que o representam
+                    </p>
+                </div>
+
+                <div class="row">
+                    <!-- Ouro -->
+                    <div class="col-lg-3 col-md-6 mb-4">
+                        <div class="material-card material-masculine-gold">
+                            <div class="material-card-content">
+                                <div class="material-icon-large" style="background: linear-gradient(135deg, #FFD700, #D4AF37);">
+                                    ♦
+                                </div>
+                                <h4>Ouro 24k</h4>
+                                <p class="text-muted">Pureza e sofisticação para perfumes masculinos icônicos</p>
+                                <small class="text-primary">Chanel • Dior • Versace</small>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Diamante -->
+                    <div class="col-lg-3 col-md-6 mb-4">
+                        <div class="material-card material-luxury-diamond">
+                            <div class="material-card-content">
+                                <div class="material-icon-large" style="background: linear-gradient(135deg, #FFFFFF, #B9F2FF); color: #333;">
+                                    ◆
+                                </div>
+                                <h4>Diamante</h4>
+                                <p class="text-muted">Exclusividade máxima para fragrâncias premium</p>
+                                <small class="text-primary">Chanel No. 5 • Creed • Louis Vuitton</small>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Rubi -->
+                    <div class="col-lg-3 col-md-6 mb-4">
+                        <div class="material-card material-feminine-ruby">
+                            <div class="material-card-content">
+                                <div class="material-icon-large" style="background: linear-gradient(135deg, #E0115F, #9B111E);">
+                                    ♥
+                                </div>
+                                <h4>Rubi</h4>
+                                <p class="text-muted">Paixão e intensidade para perfumes marcantes</p>
+                                <small class="text-primary">YSL Black Opium • Viktor&Rolf</small>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Esmeralda -->
+                    <div class="col-lg-3 col-md-6 mb-4">
+                        <div class="material-card material-feminine-emerald">
+                            <div class="material-card-content">
+                                <div class="material-icon-large" style="background: linear-gradient(135deg, #50C878, #006B3C);">
+                                    ♣
+                                </div>
+                                <h4>Esmeralda</h4>
+                                <p class="text-muted">Frescura e natureza para fragrâncias vibrantes</p>
+                                <small class="text-primary">Creed Aventus • Dior J'adore</small>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Safira -->
+                    <div class="col-lg-3 col-md-6 mb-4">
+                        <div class="material-card material-unisex-sapphire">
+                            <div class="material-card-content">
+                                <div class="material-icon-large" style="background: linear-gradient(135deg, #0F52BA, #002366);">
+                                    ♠
+                                </div>
+                                <h4>Safira</h4>
+                                <p class="text-muted">Elegância profunda para perfumes unisex</p>
+                                <small class="text-primary">Armani Code • Prada</small>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Ametista -->
+                    <div class="col-lg-3 col-md-6 mb-4">
+                        <div class="material-card material-unisex-amethyst">
+                            <div class="material-card-content">
+                                <div class="material-icon-large" style="background: linear-gradient(135deg, #9966CC, #6A0DAD);">
+                                    ✦
+                                </div>
+                                <h4>Ametista</h4>
+                                <p class="text-muted">Misticismo e sofisticação para fragrâncias únicas</p>
+                                <small class="text-primary">YSL • Prada Candy</small>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Platina -->
+                    <div class="col-lg-3 col-md-6 mb-4">
+                        <div class="material-card material-luxury-platinum">
+                            <div class="material-card-content">
+                                <div class="material-icon-large" style="background: linear-gradient(135deg, #E5E4E2, #C0C0C0); color: #333;">
+                                    ○
+                                </div>
+                                <h4>Platina</h4>
+                                <p class="text-muted">Raridade e prestígio para coleções exclusivas</p>
+                                <small class="text-primary">Tom Ford • Creed • Montblanc</small>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Ouro Rosa -->
+                    <div class="col-lg-3 col-md-6 mb-4">
+                        <div class="material-card material-feminine-rose-gold">
+                            <div class="material-card-content">
+                                <div class="material-icon-large" style="background: linear-gradient(135deg, #E0BFB8, #D4A76A);">
+                                    ✺
+                                </div>
+                                <h4>Ouro Rosa</h4>
+                                <p class="text-muted">Delicadeza e modernidade para perfumes femininos</p>
+                                <small class="text-primary">Chanel Coco • Hermès</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Perfumes com Materiais -->
+                <div class="row mt-5">
+                    <div class="col-12">
+                        <h3 class="text-center mb-4" style="font-family: 'Playfair Display', serif;">
+                            Perfumes e Seus Materiais
+                        </h3>
+                    </div>
+
+                    <!-- BP MFK Baccarat Rouge 540 - Platina e Rubi -->
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="perfume-material-card material-luxury-platinum">
+                            <div class="material-overlay">
+                                <div class="material-shimmer"></div>
+                            </div>
+                            <div class="card-body p-4">
+                                <div class="d-flex align-items-center mb-3">
+                                    <span class="material-badge material-badge-platinum me-2">Platina</span>
+                                    <span class="material-badge material-badge-ruby">Rubi</span>
+                                </div>
+                                <h5 class="card-title">BP MFK Baccarat Rouge 540</h5>
+                                <p class="card-text text-muted">A fragrância mais cobiçada com toque de platina e rubi</p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <span class="price-material-platinum">R$ 300,00</span>
+                                    <button class="btn btn-material-platinum">Ver Detalhes</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- BP Creed Aventus - Platina e Esmeralda -->
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="perfume-material-card material-luxury-platinum">
+                            <div class="material-overlay">
+                                <div class="material-shimmer"></div>
+                            </div>
+                            <div class="card-body p-4">
+                                <div class="d-flex align-items-center mb-3">
+                                    <span class="material-badge material-badge-platinum me-2">Platina</span>
+                                    <span class="material-badge material-badge-emerald">Esmeralda</span>
+                                </div>
+                                <h5 class="card-title">BP Creed Aventus</h5>
+                                <p class="card-text text-muted">O sucesso em frasco com platina e esmeralda</p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <span class="price-material-platinum">R$ 220,00</span>
+                                    <button class="btn btn-material-platinum">Ver Detalhes</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- BP Tom Ford Black Orchid - Ônix e Platina -->
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="perfume-material-card material-woody-onyx">
+                            <div class="material-overlay">
+                                <div class="material-shimmer"></div>
+                            </div>
+                            <div class="card-body p-4">
+                                <div class="d-flex align-items-center mb-3">
+                                    <span class="material-badge material-badge-onyx me-2">Ônix</span>
+                                    <span class="material-badge material-badge-platinum">Platina</span>
+                                </div>
+                                <h5 class="card-title">BP Tom Ford Black Orchid</h5>
+                                <p class="card-text text-muted">Escuridão luxuosa com ônix e platina</p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <span class="price-material-platinum">R$ 200,00</span>
+                                    <button class="btn btn-material-platinum">Ver Detalhes</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- BP Chanel No. 5 - Diamante e Platina -->
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="perfume-material-card material-luxury-diamond">
+                            <div class="material-overlay">
+                                <div class="material-shimmer"></div>
+                            </div>
+                            <div class="card-body p-4">
+                                <div class="d-flex align-items-center mb-3">
+                                    <span class="material-badge material-badge-diamond me-2">Diamante</span>
+                                    <span class="material-badge material-badge-platinum">Platina</span>
+                                </div>
+                                <h5 class="card-title">BP Chanel No. 5</h5>
+                                <p class="card-text text-muted">A icônica fragrância com diamante e platina</p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <span class="price-material-diamond">R$ 180,00</span>
+                                    <button class="btn btn-material-diamond">Ver Detalhes</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- BP YSL Black Opium - Ametista e Ouro -->
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="perfume-material-card material-unisex-amethyst">
+                            <div class="material-overlay">
+                                <div class="material-shimmer"></div>
+                            </div>
+                            <div class="card-body p-4">
+                                <div class="d-flex align-items-center mb-3">
+                                    <span class="material-badge material-badge-amethyst me-2">Ametista</span>
+                                    <span class="material-badge material-badge-gold">Ouro</span>
+                                </div>
+                                <h5 class="card-title">BP YSL Black Opium</h5>
+                                <p class="card-text text-muted">Paixão intensa com ametista e ouro</p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <span class="price-material-amethyst">R$ 190,00</span>
+                                    <button class="btn btn-material-amethyst">Ver Detalhes</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- BP Xerjoff Naxos - Ouro e Tanzanita -->
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="perfume-material-card material-masculine-gold">
+                            <div class="material-overlay">
+                                <div class="material-shimmer"></div>
+                            </div>
+                            <div class="card-body p-4">
+                                <div class="d-flex align-items-center mb-3">
+                                    <span class="material-badge material-badge-gold me-2">Ouro</span>
+                                    <span class="material-badge material-badge-tanzanite">Tanzanita</span>
+                                </div>
+                                <h5 class="card-title">BP Xerjoff Naxos</h5>
+                                <p class="card-text text-muted">Luxo siciliano com ouro e tanzanita</p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <span class="price-material-gold">R$ 280,00</span>
+                                    <button class="btn btn-material-gold">Ver Detalhes</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CSS de Materiais Preciosos -->
+    <link rel="stylesheet" href="/css/luxury-materials.css">
+    <style>
+        @import url("/css/material-extensions.css");
+    </style>
+    
+            <!-- Abas de Categorias -->
+            <div class="luxury-tabs mb-5">
+                <ul class="nav nav-pills justify-content-center" id="inspirationTabs" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active" id="feminino-tab" data-bs-toggle="pill" data-bs-target="#feminino" type="button">
+                            <i class="fas fa-female"></i>
+                            Feminino
+                    </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="masculino-tab" data-bs-toggle="pill" data-bs-target="#masculino" type="button">
+                        <i class="fas fa-male"></i>
+                        Masculino
+                    </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="unisex-tab" data-bs-toggle="pill" data-bs-target="#unisex" type="button">
+                        <i class="fas fa-venus-mars"></i>
+                        Para Ambos
+                    </button>
+                </li>
+            </ul>
+        </div>
+        
+        <!-- Conteúdo das Abas -->
+        <div class="tab-content" id="inspirationTabContent">
+            <!-- Feminino -->
+            <div class="tab-pane fade show active" id="feminino" role="tabpanel">
+                <div class="row g-4">
+                    <div class="col-lg-4 col-md-6">
+                        <div class="inspiration-card">
+                            <div class="inspiration-image">
+                                <div class="image-overlay"></div>
+                                <div class="inspiration-icon">
+                                    <i class="fas fa-gem"></i>
+                                </div>
+                            </div>
+                            <div class="inspiration-content">
+                                <h3>Floral Romântico</h3>
+                                <p class="inspiration-brand">Inspirado em Chanel No. 5</p>
+                                <div class="luxury-value-badge">
+                                    <i class="fas fa-crown"></i>
+                                    <span>Valor Original: $2.500/ml - Fragrância Milionária</span>
+                                </div>
+                                <p class="inspiration-description">
+                                    Uma sinfonia floral atemporal que representa a elegância e sofisticação feminina. 
+                                    Criada em 1921 por Ernest Beaux para Coco Chanel, esta fragrância revolucionou 
+                                    a perfumaria com uso massivo de jasmine e rosa de Grasse.
+                                </p>
+                                <div class="composition-details">
+                                    <h6><i class="fas fa-flask"></i> Composição Exclusiva:</h6>
+                                    <ul class="composition-list">
+                                        <li><strong>Extrato de Jasmine Grasse:</strong> 10.000 flores/kg - €25.000/kg</li>
+                                        <li><strong>Rosa de Maio Centifolia:</strong> 4.000 flores/kg - €18.000/kg</li>
+                                        <li><strong>Óleo de Neroli:</strong> 1.000kg de flores/kg - €12.000/kg</li>
+                                        <li><strong>Aldeídos C-12 M:</strong> Sintéticos premium - €8.000/kg</li>
+                                    </ul>
+                                </div>
+                                <div class="inspiration-notes">
+                                    <span class="note-top">🍋 Topo: Bergamota Siciliana, Limão, Neroli, Aldeídos</span>
+                                    <span class="note-middle">🌸 Coração: Jasmim Grasse, Rosa de Maio, Lírio do Vale, Íris</span>
+                                    <span class="note-base">🌿 Fundo: Patchouli Bali, Sândalo Mysore, Vétiver Haiti, Musgo</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-4 col-md-6">
+                        <div class="inspiration-card">
+                            <div class="inspiration-image">
+                                <div class="image-overlay"></div>
+                                <div class="inspiration-icon">
+                                    <i class="fas fa-moon"></i>
+                                </div>
+                            </div>
+                            <div class="inspiration-content">
+                                <h3>Oriental Sedutor</h3>
+                                <p class="inspiration-brand">Inspirado em Black Opium</p>
+                                <div class="luxury-value-badge">
+                                    <i class="fas fa-crown"></i>
+                                    <span>Valor Original: $1.800/ml - Fragrância Bilionária</span>
+                                </div>
+                                <p class="inspiration-description">
+                                    Uma fragrância ousada e viciante que captura a energia da noite urbana. 
+                                    Lançada em 2014, tornou-se instantaneamente um fenômeno global, 
+                                    usada por bilionárias e celebridades worldwide.
+                                </p>
+                                <div class="composition-details">
+                                    <h6><i class="fas fa-flask"></i> Composição Exclusiva:</h6>
+                                    <ul class="composition-list">
+                                        <li><strong>Óleo de Café:</strong> Grãos especiais colombianos - €15.000/kg</li>
+                                        <li><strong>Absoluto de Jasmim Sambac:</strong> Noturno - €22.000/kg</li>
+                                        <li><strong>Essência de Baunilha Bourbon:</strong> Madagascar - €20.000/kg</li>
+                                        <li><strong>Óleo de Pera Williams:</strong> Extração a frio - €6.000/kg</li>
+                                    </ul>
+                                </div>
+                                <div class="inspiration-notes">
+                                    <span class="note-top">🍐 Topo: Pera Williams, Laranja Sangria, Bergamota, Pimenta Rosa</span>
+                                    <span class="note-middle">☕ Coração: Jasmim Sambac, Café Moído, Flor de Laranjeira, Ameixa</span>
+                                    <span class="note-base">🍦 Fundo: Baunilha Bourbon, Patchouli, Caxemira, Almíscar</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-4 col-md-6">
+                        <div class="inspiration-card">
+                            <div class="inspiration-image">
+                                <div class="image-overlay"></div>
+                                <div class="inspiration-icon">
+                                    <i class="fas fa-crown"></i>
+                                </div>
+                            </div>
+                            <div class="inspiration-content">
+                                <h3>Amadeirado Elegante</h3>
+                                <p class="inspiration-brand">Inspirado em Good Girl</p>
+                                <div class="luxury-value-badge">
+                                    <i class="fas fa-crown"></i>
+                                    <span>Valor Original: $2.200/ml - Fragrância de Elite</span>
+                                </div>
+                                <p class="inspiration-description">
+                                    A dualidade da beleza e poder em uma fragrância amadeirada floral. 
+                                    Criada por Louise Turner e Anne Flipo, representa a mulher moderna 
+                                    que domina o mundo dos negócios bilionários.
+                                </p>
+                                <div class="composition-details">
+                                    <h6><i class="fas fa-flask"></i> Composição Exclusiva:</h6>
+                                    <ul class="composition-list">
+                                        <li><strong>Óleo de Amêndoa Tostada:</strong> Processo especial - €9.000/kg</li>
+                                        <li><strong>Absoluto de Tuberosa:</strong> Índia - €35.000/kg</li>
+                                        <li><strong>Essência de Cacao:</strong> Grãos criollos - €18.000/kg</li>
+                                        <li><strong>Óleo de Sândalo Australiano:</strong> Sustentável - €25.000/kg</li>
+                                    </ul>
+                                </div>
+                                <div class="inspiration-notes">
+                                    <span class="note-top">🌰 Topo: Amêndoa Tostada, Café Torrado, Pimenta Rosa</span>
+                                    <span class="note-middle">🌺 Coração: Tuberosa Índia, Jasmim Sambac, Ylang-Ylang</span>
+                                    <span class="note-base">🍫 Fundo: Baunilha Madagáscara, Cacao, Sândalo, Musgo</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Masculino -->
+            <div class="tab-pane fade" id="masculino" role="tabpanel">
+                <div class="row g-4">
+                    <div class="col-lg-4 col-md-6">
+                        <div class="inspiration-card">
+                            <div class="inspiration-image">
+                                <div class="image-overlay"></div>
+                                <div class="inspiration-icon">
+                                    <i class="fas fa-crown"></i>
+                                </div>
+                            </div>
+                            <div class="inspiration-content">
+                                <h3>Frutal Poderoso</h3>
+                                <p class="inspiration-brand">Inspirado em Aventus</p>
+                                <div class="luxury-value-badge">
+                                    <i class="fas fa-crown"></i>
+                                    <span>Valor Original: $3.000/ml - Fragrância de Bilionários</span>
+                                </div>
+                                <p class="inspiration-description">
+                                    Uma fragrância que define sucesso e poder. Inspirada em espíritos 
+                                    conquistadores, é a assinatura de CEOs, sheiks e magnatas. 
+                                    Usada por Elon Musk, Jeff Bezos e príncipes do Golfo.
+                                </p>
+                                <div class="composition-details">
+                                    <h6><i class="fas fa-flask"></i> Composição Exclusiva:</h6>
+                                    <ul class="composition-list">
+                                        <li><strong>Óleo de Abacaxi Costa Rica:</strong> Extração especial - €28.000/kg</li>
+                                        <li><strong>Bergamota Calábria:</strong> 1.000kg frutas/kg - €15.000/kg</li>
+                                        <li><strong>Patchouli Indonésio:</strong> Envelhecido 5 anos - €22.000/kg</li>
+                                        <li><strong>Musgo de Carvalho:</strong> Raro - €35.000/kg</li>
+                                    </ul>
+                                </div>
+                                <div class="inspiration-notes">
+                                    <span class="note-top">🍍 Topo: Abacaxi Costa Rica, Bergamota Italiana, Maçã Verde</span>
+                                    <span class="note-middle">🌿 Coração: Patchouli Indonésio, Jasmim, Rosa</span>
+                                    <span class="note-base">🌲 Fundo: Musgo de Carvalho, Vétiver, Âmbar Cinzento</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-4 col-md-6">
+                        <div class="inspiration-card">
+                            <div class="inspiration-image">
+                                <div class="image-overlay"></div>
+                                <div class="inspiration-icon">
+                                    <i class="fas fa-bolt"></i>
+                                </div>
+                            </div>
+                            <div class="inspiration-content">
+                                <h3>Cítrico Fresco</h3>
+                                <p class="inspiration-brand">Inspirado em Sauvage</p>
+                                <div class="luxury-value-badge">
+                                    <i class="fas fa-crown"></i>
+                                    <span>Valor Original: $2.100/ml - Fragrância de Elite</span>
+                                </div>
+                                <p class="inspiration-description">
+                                    A liberdade selvagem em uma fragrância. Poderosa e instintiva, 
+                                    representa o homem em sua forma mais autêntica. 
+                                    Johnny Depp recebeu $12 milhões para ser o rosto.
+                                </p>
+                                <div class="composition-details">
+                                    <h6><i class="fas fa-flask"></i> Composição Exclusiva:</h6>
+                                    <ul class="composition-list">
+                                        <li><strong>Bergamota Reggio Calabria:</strong> DOP certificado - €18.000/kg</li>
+                                        <li><strong>Pimenta Sichuan:</strong> Montanhas sagradas - €12.000/kg</li>
+                                        <li><strong>Ambroxan Sintético:</strong> Patenteado - €25.000/kg</li>
+                                        <li><strong>Cedro Atlas:</strong> Marrocos - €20.000/kg</li>
+                                    </ul>
+                                </div>
+                                <div class="inspiration-notes">
+                                    <span class="note-top">🍋 Topo: Bergamota Reggio, Pimenta Sichuan, Elemi</span>
+                                    <span class="note-middle">🌾 Coração: Lavanda Provença, Gerânio, Pimenta Rosa</span>
+                                    <span class="note-base">🌊 Fundo: Ambroxan, Cedro Atlas, Papyrus</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-4 col-md-6">
+                        <div class="inspiration-card">
+                            <div class="inspiration-image">
+                                <div class="image-overlay"></div>
+                                <div class="inspiration-icon">
+                                    <i class="fas fa-mountain"></i>
+                                </div>
+                            </div>
+                            <div class="inspiration-content">
+                                <h3>Aquático Intenso</h3>
+                                <p class="inspiration-brand">Inspirado em Bleu de Chanel</p>
+                                <div class="luxury-value-badge">
+                                    <i class="fas fa-crown"></i>
+                                    <span>Valor Original: $2.800/ml - Fragrância Milionária</span>
+                                </div>
+                                <p class="inspiration-description">
+                                    A profundidade do oceano em uma fragrância. Misteriosa e irreverente, 
+                                    para homens que desafiam convenções. Gisele Bündchen e 
+                                    Brad Pitt são embaixadores milionários.
+                                </p>
+                                <div class="composition-details">
+                                    <h6><i class="fas fa-flask"></i> Composição Exclusiva:</h6>
+                                    <ul class="composition-list">
+                                        <li><strong>Íris Florentina:</strong> 3 anos maturação - €45.000/kg</li>
+                                        <li><strong>Sândalo Nova Caledônia:</strong> Protegido - €30.000/kg</li>
+                                        <li><strong>Vétiver Haiti:</strong> Premium - €18.000/kg</li>
+                                        <li><strong>Âmbar Gris:</strong> Natural - €50.000/kg</li>
+                                    </ul>
+                                </div>
+                                <div class="inspiration-notes">
+                                    <span class="note-top">🍈 Topo: Limão Siciliano, Menta, Toranja Rosa</span>
+                                    <span class="note-middle">🌱 Coração: Gengibre, Jasmim, Noz Moscada</span>
+                                    <span class="note-base">🌾 Fundo: Íris, Sândalo, Âmbar, Madeira de Cedro</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Unisex -->
+            <div class="tab-pane fade" id="unisex" role="tabpanel">
+                <div class="row g-4">
+                    <div class="col-lg-4 col-md-6">
+                        <div class="inspiration-card">
+                            <div class="inspiration-image">
+                                <div class="image-overlay"></div>
+                                <div class="inspiration-icon">
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                            <div class="inspiration-content">
+                                <h3>Oriental Luxuoso</h3>
+                                <p class="inspiration-brand">Inspirado em Baccarat Rouge</p>
+                                <div class="luxury-value-badge">
+                                    <i class="fas fa-crown"></i>
+                                    <span>Valor Original: $4.500/ml - Fragrância Bilionária</span>
+                                </div>
+                                <p class="inspiration-description">
+                                    Uma joia líquida que transcende gêneros. Elegante e moderna, 
+                                    representa a sofisticação contemporânea. Usada por 
+                                    bilionários de Dubai, Monaco e Hong Kong.
+                                </p>
+                                <div class="composition-details">
+                                    <h6><i class="fas fa-flask"></i> Composição Exclusiva:</h6>
+                                    <ul class="composition-list">
+                                        <li><strong>Açafrão Iraniano:</strong> Premium - €40.000/kg</li>
+                                        <li><strong>Jasmim Sambac Noturno:</strong> Índia - €28.000/kg</li>
+                                        <li><strong>Ambroxan Natural:</strong> Âmbar gris - €60.000/kg</li>
+                                        <li><strong>Resina de Olibano:</strong> Somalia - €35.000/kg</li>
+                                    </ul>
+                                </div>
+                                <div class="inspiration-notes">
+                                    <span class="note-top">🧡 Topo: Açafrão, Jasmim Sambac, Ambraxan</span>
+                                    <span class="note-middle">🌸 Coração: Resina de Ambraxan, Flor de Laranjeira</span>
+                                    <span class="note-base">🌲 Fundo: Musgo de Carvalho, Vétiver, Cedro</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-4 col-md-6">
+                        <div class="inspiration-card">
+                            <div class="inspiration-image">
+                                <div class="image-overlay"></div>
+                                <div class="inspiration-icon">
+                                    <i class="fas fa-leaf"></i>
+                                </div>
+                            </div>
+                            <div class="inspiration-content">
+                                <h3>Verde Fresco</h3>
+                                <p class="inspiration-brand">Inspirado em Le Labo Santal 33</p>
+                                <div class="luxury-value-badge">
+                                    <i class="fas fa-crown"></i>
+                                    <span>Valor Original: $3.200/ml - Fragrância de Elite</span>
+                                </div>
+                                <p class="inspiration-description">
+                                    O espírito de Nova York em uma fragrância. Única e autêntica, 
+                                    para pessoas que valorizam individualidade. 
+                                    Celebridades pagam $500 por 15ml.
+                                </p>
+                                <div class="composition-details">
+                                    <h6><i class="fas fa-flask"></i> Composição Exclusiva:</h6>
+                                    <ul class="composition-list">
+                                        <li><strong>Sândalo Australiano:</strong> Sustentável - €32.000/kg</li>
+                                        <li><strong>Cardamomo Guatemala:</strong> Orgânico - €18.000/kg</li>
+                                        <li><strong>Papiro Egípcio:</strong> Antigo - €25.000/kg</li>
+                                        <li><strong>Couro Russo:</strong> Envelhecido - €30.000/kg</li>
+                                    </ul>
+                                </div>
+                                <div class="inspiration-notes">
+                                    <span class="note-top">🌶️ Topo: Cardamomo, Pimenta, Violeta</span>
+                                    <span class="note-middle">🪵 Coração: Sândalo Australiano, Papiro</span>
+                                    <span class="note-base">🌿 Fundo: Cedro Virgínia, Vétiver, Couro</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-4 col-md-6">
+                        <div class="inspiration-card">
+                            <div class="inspiration-image">
+                                <div class="image-overlay"></div>
+                                <div class="inspiration-icon">
+                                    <i class="fas fa-snowflake"></i>
+                                </div>
+                            </div>
+                            <div class="inspiration-content">
+                                <h3>Clean Minimalista</h3>
+                                <p class="inspiration-brand">Inspirado em Byredo Mojave Ghost</p>
+                                <div class="luxury-value-badge">
+                                    <i class="fas fa-crown"></i>
+                                    <span>Valor Original: $2.900/ml - Fragrância Milionária</span>
+                                </div>
+                                <p class="inspiration-description">
+                                    A beleza do deserto em uma fragrância. Etérea e misteriosa, 
+                                    captura a essência da natureza. Beyoncé e Rihanna 
+                                    têm coleções exclusivas.
+                                </p>
+                                <div class="composition-details">
+                                    <h6><i class="fas fa-flask"></i> Composição Exclusiva:</h6>
+                                    <ul class="composition-list">
+                                        <li><strong>Ambrette Seed:</strong> Himalaia - €22.000/kg</li>
+                                        <li><strong>Madeira de Cacto:</strong> Desert Flower - €38.000/kg</li>
+                                        <li><strong>Sândalo Mysore:</strong> Índia - €28.000/kg</li>
+                                        <li><strong>Musk Branco Sintético:</strong> Patenteado - €20.000/kg</li>
+                                    </ul>
+                                </div>
+                                <div class="inspiration-notes">
+                                    <span class="note-top">🌵 Topo: Ambrette, Cacto, Madeira de Cacto</span>
+                                    <span class="note-middle">🌺 Coração: Flor de Cacto, Jasmim</span>
+                                    <span class="note-base">🪵 Fundo: Sândalo, Musk Branco, Cedro</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </section>
 
-<!-- Featured Products -->
-<section class="py-5 bg-light">
+<!-- Coleção Brian Peterson Fragrances -->
+<section id="brian-peterson-collection" class="py-5 bg-gradient-luxury">
     <div class="container">
         <div class="text-center mb-5">
-            <h2 class="display-5">Produtos em Destaque</h2>
-            <p class="text-muted">Nossas melhores fragrâncias selecionadas para você</p>
+            <div class="luxury-badge mb-4">
+                <i class="fas fa-gem"></i>
+                COLEÇÃO EXCLUSIVA
+            </div>
+            <h2 class="section-title-luxury">Brian Peterson Fragrances</h2>
+            <p class="section-subtitle-luxury">
+                A essência do luxo absoluto inspirado na mais prestigiada perfumaria internacional
+            </p>
+        </div>
+        
+        <!-- Destaques Brian Peterson -->
+        <div class="row g-4 mb-5">
+            <div class="col-lg-4 col-md-6">
+                <div class="inspiration-card brian-peterson-card">
+                    <div class="inspiration-image">
+                        <img src="/images/perfumes/liii-layton-parfums-de-marly.jpg" alt="LIII - Layton">
+                        <div class="inspiration-overlay">
+                            <div class="overlay-content">
+                                <span class="collection-tag">Brian Peterson Inspired</span>
+                                <h4>LIII - Layton</h4>
+                                <p>Parfums de Marly - Elegância Britânica</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="inspiration-content">
+                        <div class="luxury-value-badge">
+                            <i class="fas fa-crown"></i>
+                            <span>Valor Original: R$320,00 - Composição €40.000/L</span>
+                        </div>
+                        <p class="inspiration-description">
+                            Óleo de Baunilha de Madagascar (€15.000/kg) com Couro Premium (€25.000/kg) 
+                            - elegância britânica para homens sofisticados.
+                        </p>
+                        <div class="composition-details">
+                            <h6><i class="fas fa-flask"></i> Composição Exclusiva:</h6>
+                            <ul class="composition-list">
+                                <li><strong>Baunilha de Madagascar:</strong> €15.000/kg</li>
+                                <li><strong>Couro Italiano Premium:</strong> €25.000/kg</li>
+                                <li><strong>Vetiver Haitiano:</strong> €20.000/kg</li>
+                                <li><strong>Patchouli Premium:</strong> €18.000/kg</li>
+                            </ul>
+                        </div>
+                        <div class="inspiration-notes">
+                            <span class="note-top">� Topo: Maçã, Abacaxi, Bergamota, Noz Moscada</span>
+                            <span class="note-middle">🌹 Coração: Jasmim, Gerânio, Patchouli, Cardamomo</span>
+                            <span class="note-base">🪵 Fundo: Baunilha, Vetiver, Couro, Musk</span>
+                        </div>
+                        <div class="inspiration-actions">
+                            <a href="/products?search=LIII%20Layton" class="btn-luxury btn-primary-luxury">
+                                <i class="fas fa-shopping-bag"></i> Comprar por R$180,00
+                            </a>
+                            <a href="/encyclopedia?search=Layton" class="btn-luxury btn-outline-luxury">
+                                <i class="fas fa-info-circle"></i> Detalhes
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-4 col-md-6">
+                <div class="inspiration-card brian-peterson-card">
+                    <div class="inspiration-image">
+                        <img src="/images/perfumes/lix-aventus-creed.jpg" alt="LIX - Aventus">
+                        <div class="inspiration-overlay">
+                            <div class="overlay-content">
+                                <span class="collection-tag">Brian Peterson Inspired</span>
+                                <h4>LIX - Aventus</h4>
+                                <p>Creed - A Fragrância do Sucesso</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="inspiration-content">
+                        <div class="luxury-value-badge">
+                            <i class="fas fa-gem"></i>
+                            <span>Valor Original: R$380,00 - Composição €45.000/L</span>
+                        </div>
+                        <p class="inspiration-description">
+                            Essência de Maçã Preta Premium (€18.000/kg) com Musk Branco (€22.000/kg) 
+                            - a fragrância do homem vitorioso.
+                        </p>
+                        <div class="composition-details">
+                            <h6><i class="fas fa-flask"></i> Composição Exclusiva:</h6>
+                            <ul class="composition-list">
+                                <li><strong>Óleo de Maçã Preta:</strong> €18.000/kg</li>
+                                <li><strong>Musk Branco Premium:</strong> €22.000/kg</li>
+                                <li><strong>Baunilha de Madagascar:</strong> €15.000/kg</li>
+                                <li><strong>Patchouli Raro:</strong> €18.000/kg</li>
+                            </ul>
+                        </div>
+                        <div class="inspiration-notes">
+                            <span class="note-top">� Topo: Maçã Preta, Abacaxi, Bergamota, Limão Siciliano</span>
+                            <span class="note-middle">� Coração: Jasmim, Patchouli, Bétula, Rosa</span>
+                            <span class="note-base">🪵 Fundo: Musk, Baunilha, Âmbar, Carvalho</span>
+                        </div>
+                        <div class="inspiration-actions">
+                            <a href="/products?search=LIX%20Aventus" class="btn-luxury btn-primary-luxury">
+                                <i class="fas fa-shopping-bag"></i> Comprar por R$170,00
+                            </a>
+                            <a href="/encyclopedia?search=Aventus" class="btn-luxury btn-outline-luxury">
+                                <i class="fas fa-info-circle"></i> Detalhes
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-4 col-md-6">
+                <div class="inspiration-card brian-peterson-card">
+                    <div class="inspiration-image">
+                        <img src="/images/perfumes/cix-side-effect-initio.jpg" alt="CIX - Side Effect">
+                        <div class="inspiration-overlay">
+                            <div class="overlay-content">
+                                <span class="collection-tag">Brian Peterson Inspired</span>
+                                <h4>CIX - Side Effect</h4>
+                                <p>Initio Parfums Prives - O Efeito do Desejo</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="inspiration-content">
+                        <div class="luxury-value-badge">
+                            <i class="fas fa-fire"></i>
+                            <span>Valor Original: R$350,00 - Composição €45.000/L</span>
+                        </div>
+                        <p class="inspiration-description">
+                            Baunilha de Madagascar Premium (€15.000/kg) com Cacau Belga (€20.000/kg) 
+                            - fragrância viciante que desperta os sentidos.
+                        </p>
+                        <div class="composition-details">
+                            <h6><i class="fas fa-flask"></i> Composição Exclusiva:</h6>
+                            <ul class="composition-list">
+                                <li><strong>Baunilha de Madagascar:</strong> €15.000/kg</li>
+                                <li><strong>Cacau Belga Premium:</strong> €20.000/kg</li>
+                                <li><strong>Rosa Bulgária:</strong> €18.000/kg</li>
+                                <li><strong>Musk Branco:</strong> €22.000/kg</li>
+                            </ul>
+                        </div>
+                        <div class="inspiration-notes">
+                            <span class="note-top">� Topo: Baunilha, Canela, Noz Moscada, Pimenta</span>
+                            <span class="note-middle">🌹 Coração: Rosa, Jasmim, Cacau, Tabaco</span>
+                            <span class="note-base">🪵 Fundo: Musk, Âmbar, Baunilha, Couro</span>
+                        </div>
+                        <div class="inspiration-actions">
+                            <a href="/products?search=CIX%20Side%20Effect" class="btn-luxury btn-primary-luxury">
+                                <i class="fas fa-shopping-bag"></i> Comprar por R$180,00
+                            </a>
+                            <a href="/encyclopedia?search=Side%20Effect" class="btn-luxury btn-outline-luxury">
+                                <i class="fas fa-info-circle"></i> Detalhes
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mais Produtos Brian Peterson -->
+        <div class="row g-4 mb-5">
+            <div class="col-lg-3 col-md-6">
+                <div class="inspiration-card brian-peterson-card">
+                    <div class="inspiration-image">
+                        <img src="/images/perfumes/lxviii-blessed-baraka-initio.jpg" alt="LXVIII - Blessed Baraka">
+                        <div class="inspiration-overlay">
+                            <div class="overlay-content">
+                                <span class="collection-tag">Brian Peterson Inspired</span>
+                                <h4>LXVIII - Blessed Baraka</h4>
+                                <p>Initio - A Bênção Divina</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="inspiration-content">
+                        <div class="luxury-value-badge">
+                            <i class="fas fa-moon"></i>
+                            <span>Valor Original: R$300,00 - Composição €65.000/L</span>
+                        </div>
+                        <p class="inspiration-description">
+                            Açafrão Iraniano Premium (€40.000/kg) com Âmbar Gris Natural (€25.000/kg) 
+                            - poder espiritual e magnetismo.
+                        </p>
+                        <div class="composition-details">
+                            <h6><i class="fas fa-flask"></i> Composição Exclusiva:</h6>
+                            <ul class="composition-list">
+                                <li><strong>Açafrão Iraniano:</strong> €40.000/kg</li>
+                                <li><strong>Âmbar Gris Natural:</strong> €25.000/kg</li>
+                                <li><strong>Rosa Bulgária:</strong> €18.000/kg</li>
+                                <li><strong>Baunilha Premium:</strong> €15.000/kg</li>
+                            </ul>
+                        </div>
+                        <div class="inspiration-actions">
+                            <a href="/products?search=LXVIII%20Blessed%20Baraka" class="btn-luxury btn-primary-luxury">
+                                <i class="fas fa-shopping-bag"></i> Comprar por R$160,00
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-3 col-md-6">
+                <div class="inspiration-card brian-peterson-card">
+                    <div class="inspiration-image">
+                        <img src="/images/perfumes/xvi-mango-kiss-stephane.jpg" alt="XVI - Mango Kiss">
+                        <div class="inspiration-overlay">
+                            <div class="overlay-content">
+                                <span class="collection-tag">Brian Peterson Inspired</span>
+                                <h4>XVI - Mango Kiss</h4>
+                                <p>Stephane Humbert Lucas - Tropical Exótico</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="inspiration-content">
+                        <div class="luxury-value-badge">
+                            <i class="fas fa-rose"></i>
+                            <span>Valor Original: R$280,00 - Composição €25.000/L</span>
+                        </div>
+                        <p class="inspiration-description">
+                            Essência de Manga Premium (€8.000/kg) combinada com Mel de Jasmim (€12.000/kg) 
+                            - luxúria dos mercados árabes.
+                        </p>
+                        <div class="composition-details">
+                            <h6><i class="fas fa-flask"></i> Composição Exclusiva:</h6>
+                            <ul class="composition-list">
+                                <li><strong>Óleo de Manga Premium:</strong> €8.000/kg</li>
+                                <li><strong>Absoluto de Jasmim:</strong> €12.000/kg</li>
+                                <li><strong>Mel de Acácia:</strong> €10.000/kg</li>
+                                <li><strong>Sândalo Indiano:</strong> €15.000/kg</li>
+                            </ul>
+                        </div>
+                        <div class="inspiration-actions">
+                            <a href="/products?search=XVI%20Mango%20Kiss" class="btn-luxury btn-primary-luxury">
+                                <i class="fas fa-shopping-bag"></i> Comprar por R$170,00
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-3 col-md-6">
+                <div class="inspiration-card brian-peterson-card">
+                    <div class="inspiration-image">
+                        <img src="/images/perfumes/cxiii-layton-exclusif-parfums.jpg" alt="CXIII - Layton Exclusif">
+                        <div class="inspiration-overlay">
+                            <div class="overlay-content">
+                                <span class="collection-tag">Limited Edition</span>
+                                <h4>CXIII - Layton Exclusif</h4>
+                                <p>Parfums de Marly - Edição Exclusiva</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="inspiration-content">
+                        <div class="luxury-value-badge">
+                            <i class="fas fa-gem"></i>
+                            <span>Valor Original: R$350,00 - Composição €55.000/L</span>
+                        </div>
+                        <p class="inspiration-description">
+                            Cardamomo Premium (€25.000/kg) com Couro Exótico (€30.000/kg) 
+                            - exclusividade em sua forma mais pura.
+                        </p>
+                        <div class="composition-details">
+                            <h6><i class="fas fa-flask"></i> Composição Exclusiva:</h6>
+                            <ul class="composition-list">
+                                <li><strong>Cardamomo Premium:</strong> €25.000/kg</li>
+                                <li><strong>Couro de Crocodilo:</strong> €30.000/kg</li>
+                                <li><strong>Baunilha Premium:</strong> €15.000/kg</li>
+                                <li><strong>Vetiver Haitiano:</strong> €20.000/kg</li>
+                            </ul>
+                        </div>
+                        <div class="inspiration-actions">
+                            <a href="/products?search=CXIII%20Layton%20Exclusif" class="btn-luxury btn-primary-luxury">
+                                <i class="fas fa-shopping-bag"></i> Comprar por R$180,00
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-3 col-md-6">
+                <div class="inspiration-card brian-peterson-card">
+                    <div class="inspiration-image">
+                        <img src="/images/perfumes/liv-herod-parfums-de-marly.jpg" alt="LIV - Herod">
+                        <div class="inspiration-overlay">
+                            <div class="overlay-content">
+                                <span class="collection-tag">Brian Peterson Inspired</span>
+                                <h4>LIV - Herod</h4>
+                                <p>Parfums de Marly - O Rei dos Reis</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="inspiration-content">
+                        <div class="luxury-value-badge">
+                            <i class="fas fa-crown"></i>
+                            <span>Valor Original: R$280,00 - Composição €40.000/L</span>
+                        </div>
+                        <p class="inspiration-description">
+                            Tabaco Virgínio Premium (€22.000/kg) com Baunilha de Madagascar (€15.000/kg) 
+                            - fragrância imperial para governantes.
+                        </p>
+                        <div class="composition-details">
+                            <h6><i class="fas fa-flask"></i> Composição Exclusiva:</h6>
+                            <ul class="composition-list">
+                                <li><strong>Tabaco Virgínio Premium:</strong> €22.000/kg</li>
+                                <li><strong>Baunilha de Madagascar:</strong> €15.000/kg</li>
+                                <li><strong>Pimenta Rosa:</strong> €12.000/kg</li>
+                                <li><strong>Âmbar Premium:</strong> €18.000/kg</li>
+                            </ul>
+                        </div>
+                        <div class="inspiration-actions">
+                            <a href="/products?search=LIV%20Herod" class="btn-luxury btn-primary-luxury">
+                                <i class="fas fa-shopping-bag"></i> Comprar por R$150,00
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Ver Todos os Produtos Brian Peterson -->
+        <div class="text-center">
+            <a href="/products?brand=brian-peterson" class="btn-luxury btn-outline-luxury btn-lg">
+                <i class="fas fa-th"></i>
+                Ver Todos os Perfumes Brian Peterson
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Produtos em Destaque -->
         </div>
         
         <div class="row g-4">
             <% featuredProducts.forEach(product => { %>
             <div class="col-lg-3 col-md-4 col-sm-6">
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="<%= product.featured_image || '/images/product-placeholder.jpg' %>" 
-                             alt="<%= product.name %>" 
-                             loading="lazy">
+                <div class="product-luxury-card">
+                    <div class="product-luxury-image">
+                        <div class="image-placeholder-luxury">
+                            <i class="fas fa-spray-can"></i>
+                        </div>
                         
                         <% if (product.sale_price && product.sale_price < product.regular_price) { %>
-                        <span class="badge-sale">
-                            -<%= Math.round(((product.regular_price - product.sale_price) / product.regular_price) * 100) %>%
+                        <span class="luxury-badge-sale">
+                            <span class="badge-text">EXCLUSIVO</span>
                         </span>
                         <% } %>
                         
-                        <div class="product-actions">
-                            <button class="add-to-wishlist" data-product-id="<%= product.id %>">
+                        <div class="product-luxury-actions">
+                            <button class="luxury-action-btn" title="Adicionar aos Desejos">
                                 <i class="far fa-heart"></i>
                             </button>
-                            <button class="add-to-cart" data-product-id="<%= product.id %>">
-                                <i class="fas fa-shopping-cart"></i>
+                            <button class="luxury-action-btn" title="Adicionar ao Carrinho">
+                                <i class="fas fa-shopping-bag"></i>
                             </button>
                         </div>
                     </div>
                     
-                    <div class="card-body">
-                        <div class="product-brand"><%= product.brand %></div>
-                        <h5 class="product-name"><%= product.name %></h5>
+                    <div class="product-luxury-content">
+                        <div class="product-luxury-brand"><%= product.brand %></div>
+                        <h5 class="product-luxury-name"><%= product.name %></h5>
+                        <p class="product-luxury-inspiration">Inspirado em <%= product.inspiration %></p>
                         
-                        <div class="product-price">
+                        <div class="product-luxury-price">
                             <% if (product.sale_price && product.sale_price < product.regular_price) { %>
-                                <span class="price-current">R$ <%= product.sale_price.toFixed(2).replace('.', ',') %></span>
-                                <span class="price-original">R$ <%= product.regular_price.toFixed(2).replace('.', ',') %></span>
+                                <span class="price-current-luxury">R$ <%= product.sale_price.toFixed(2).replace('.', ',') %></span>
+                                <span class="price-original-luxury">R$ <%= product.regular_price.toFixed(2).replace('.', ',') %></span>
                             <% } else { %>
-                                <span class="price-current">R$ <%= product.regular_price.toFixed(2).replace('.', ',') %></span>
+                                <span class="price-current-luxury">R$ <%= product.regular_price.toFixed(2).replace('.', ',') %></span>
+                            <% } %>
+                        </div>
+                        
+                        <div class="product-luxury-tags">
+                            <% if (product.longevity) { %>
+                            <span class="tag-longevity"><%= product.longevity %></span>
+                            <% } %>
+                            <% if (product.intensity) { %>
+                            <span class="tag-intensity"><%= product.intensity %></span>
                             <% } %>
                         </div>
                         
                         <div class="mt-3">
-                            <a href="/products/<%= product.slug %>" class="btn btn-outline-primary btn-sm w-100">
-                                Ver Detalhes
+                            <a href="/products/<%= product.slug %>" class="btn-luxury btn-outline-luxury w-100">
+                                Descobrir Fragrância
                             </a>
                         </div>
                     </div>
@@ -162,167 +1149,903 @@
             <% }); %>
         </div>
         
-        <div class="text-center mt-4">
-            <a href="/products" class="btn btn-primary btn-lg">
-                Ver Todos os Produtos
+        <div class="text-center mt-5">
+            <a href="/products" class="btn-luxury btn-primary-luxury btn-lg">
+                <span>Ver Coleção Completa</span>
                 <i class="fas fa-arrow-right ms-2"></i>
             </a>
         </div>
     </div>
 </section>
 
-<!-- Best Sellers -->
-<section class="py-5">
-    <div class="container">
-        <div class="text-center mb-5">
-            <h2 class="display-5">Mais Vendidos</h2>
-            <p class="text-muted">As fragrâncias preferidas dos nossos clientes</p>
-        </div>
-        
-        <div class="row g-4">
-            <% bestSellers.slice(0, 4).forEach(product => { %>
-            <div class="col-lg-3 col-md-4 col-sm-6">
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="<%= product.featured_image || '/images/product-placeholder.jpg' %>" 
-                             alt="<%= product.name %>" 
-                             loading="lazy">
-                        
-                        <% if (product.sale_price && product.sale_price < product.regular_price) { %>
-                        <span class="badge-sale">
-                            -<%= Math.round(((product.regular_price - product.sale_price) / product.regular_price) * 100) %>%
-                        </span>
-                        <% } %>
-                        
-                        <div class="product-actions">
-                            <button class="add-to-wishlist" data-product-id="<%= product.id %>">
-                                <i class="far fa-heart"></i>
-                            </button>
-                            <button class="add-to-cart" data-product-id="<%= product.id %>">
-                                <i class="fas fa-shopping-cart"></i>
-                            </button>
-                        </div>
-                    </div>
-                    
-                    <div class="card-body">
-                        <div class="product-brand"><%= product.brand %></div>
-                        <h5 class="product-name"><%= product.name %></h5>
-                        
-                        <div class="product-price">
-                            <% if (product.sale_price && product.sale_price < product.regular_price) { %>
-                                <span class="price-current">R$ <%= product.sale_price.toFixed(2).replace('.', ',') %></span>
-                                <span class="price-original">R$ <%= product.regular_price.toFixed(2).replace('.', ',') %></span>
-                            <% } else { %>
-                                <span class="price-current">R$ <%= product.regular_price.toFixed(2).replace('.', ',') %></span>
-                            <% } %>
-                        </div>
-                        
-                        <div class="mt-3">
-                            <a href="/products/<%= product.slug %>" class="btn btn-outline-primary btn-sm w-100">
-                                Ver Detalhes
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <% }); %>
-        </div>
-    </div>
-</section>
-
-<!-- Sale Products -->
-<section class="py-5 bg-danger bg-gradient">
-    <div class="container">
-        <div class="text-center mb-5">
-            <h2 class="display-5 text-white">Ofertas Especiais</h2>
-            <p class="text-white-50">Aproveite nossos descontos por tempo limitado</p>
-        </div>
-        
-        <div class="row g-4">
-            <% saleProducts.slice(0, 4).forEach(product => { %>
-            <div class="col-lg-3 col-md-4 col-sm-6">
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="<%= product.featured_image || '/images/product-placeholder.jpg' %>" 
-                             alt="<%= product.name %>" 
-                             loading="lazy">
-                        
-                        <span class="badge-sale">
-                            -<%= Math.round(((product.regular_price - product.sale_price) / product.regular_price) * 100) %>%
-                        </span>
-                        
-                        <div class="product-actions">
-                            <button class="add-to-wishlist" data-product-id="<%= product.id %>">
-                                <i class="far fa-heart"></i>
-                            </button>
-                            <button class="add-to-cart" data-product-id="<%= product.id %>">
-                                <i class="fas fa-shopping-cart"></i>
-                            </button>
-                        </div>
-                    </div>
-                    
-                    <div class="card-body">
-                        <div class="product-brand"><%= product.brand %></div>
-                        <h5 class="product-name"><%= product.name %></h5>
-                        
-                        <div class="product-price">
-                            <span class="price-current">R$ <%= product.sale_price.toFixed(2).replace('.', ',') %></span>
-                            <span class="price-original">R$ <%= product.regular_price.toFixed(2).replace('.', ',') %></span>
-                        </div>
-                        
-                        <div class="mt-3">
-                            <a href="/products/<%= product.slug %>" class="btn btn-primary btn-sm w-100">
-                                Ver Detalhes
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <% }); %>
-        </div>
-    </div>
-</section>
-
-<!-- Newsletter Section -->
-<section class="py-5 bg-dark text-white">
+<!-- Seção de Exclusividade -->
+<section class="py-5 bg-dark-luxury">
     <div class="container">
         <div class="row align-items-center">
             <div class="col-lg-6">
-                <h3>Receba Ofertas Exclusivas</h3>
-                <p class="text-white-50">Cadastre-se e ganhe 10% de desconto na primeira compra!</p>
+                <div class="luxury-content">
+                    <h2 class="luxury-title">Exclusividade e Sofisticação</h2>
+                    <p class="luxury-description">
+                        Cada fragrância Bayrom & Hugo Parfums é uma obra-prima da perfumaria, 
+                        criada com as mais raras e nobres matérias-primas. Nossas inspirações 
+                        nas grandes casas de nicho garantem uma experiência olfativa incomparável.
+                    </p>
+                    
+                    <div class="luxury-features">
+                        <div class="luxury-feature">
+                            <i class="fas fa-award"></i>
+                            <div>
+                                <h5>Qualidade Premium</h5>
+                                <p>Matérias-primas importadas</p>
+                            </div>
+                        </div>
+                        <div class="luxury-feature">
+                            <i class="fas fa-flask"></i>
+                            <div>
+                                <h5>Concentração Superior</h5>
+                                <p>Até 30% de concentração</p>
+                            </div>
+                        </div>
+                        <div class="luxury-feature">
+                            <i class="fas fa-clock"></i>
+                            <div>
+                                <h5>Longa Duração</h5>
+                                <p>Persistência excepcional</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="col-lg-6">
-                <form class="d-flex gap-2" id="heroNewsletterForm">
-                    <input type="email" class="form-control" placeholder="Seu melhor email" required>
-                    <button type="submit" class="btn btn-warning">Cadastrar</button>
-                </form>
+                <div class="luxury-image-texture">
+                    <div class="texture-overlay"></div>
+                </div>
             </div>
         </div>
     </div>
 </section>
 
-<!-- Trust Badges -->
-<section class="py-4 bg-light border-top">
+<!-- Newsletter Exclusivo -->
+<section class="py-5 bg-gradient-newsletter">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8 text-center">
+                <div class="newsletter-luxury">
+                    <div class="newsletter-icon">
+                        <i class="fas fa-envelope-open-text"></i>
+                    </div>
+                    <h2 class="newsletter-title">Clube VIP Bayrom & Hugo</h2>
+                    <p class="newsletter-description">
+                        Receba acesso antecipado a lançamentos, ofertas exclusivas e 
+                        conteúdo sobre a arte da perfumaria de nicho.
+                    </p>
+                    <form class="newsletter-form-luxury" id="luxuryNewsletterForm">
+                        <div class="input-group-luxury">
+                            <input type="email" class="form-control-luxury" placeholder="Seu email exclusivo" required>
+                            <button type="submit" class="btn-luxury btn-primary-luxury">
+                                <span>Entrar no Clube</span>
+                                <i class="fas fa-crown ms-2"></i>
+                            </button>
+                        </div>
+                    </form>
+                    <p class="newsletter-benefits">
+                        <i class="fas fa-gift"></i> Ganhe 15% na primeira compra
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Todas as Marcas Disponíveis -->
+<section id="all-brands-section" class="py-5 bg-light-luxury">
+    <div class="container">
+        <div class="text-center mb-5">
+            <div class="luxury-badge mb-4">
+                <i class="fas fa-store"></i>
+                MARCAS PREMIUM
+            </div>
+            <h2 class="section-title-luxury">Todas as Marcas Disponíveis</h2>
+            <p class="section-subtitle-luxury">
+                Mais de 100 perfumes inspirados nas mais prestigiadas casas de perfumaria mundial
+            </p>
+        </div>
+        
+        <!-- Marcas em Destaque -->
+        <div class="row g-4 mb-5">
+            <div class="col-lg-3 col-md-4 col-sm-6">
+                <div class="brand-card">
+                    <div class="brand-logo">
+                        <i class="fas fa-gem"></i>
+                    </div>
+                    <h5>Chanel</h5>
+                    <p class="brand-count">3 perfumes</p>
+                    <a href="/products?brand=chanel" class="btn-luxury btn-outline-luxury btn-sm">
+                        Ver Coleção
+                    </a>
+                </div>
+            </div>
+            
+            <div class="col-lg-3 col-md-4 col-sm-6">
+                <div class="brand-card">
+                    <div class="brand-logo">
+                        <i class="fas fa-crown"></i>
+                    </div>
+                    <h5>Christian Dior</h5>
+                    <p class="brand-count">2 perfumes</p>
+                    <a href="/products?brand=christian-dior" class="btn-luxury btn-outline-luxury btn-sm">
+                        Ver Coleção
+                    </a>
+                </div>
+            </div>
+            
+            <div class="col-lg-3 col-md-4 col-sm-6">
+                <div class="brand-card">
+                    <div class="brand-logo">
+                        <i class="fas fa-fire"></i>
+                    </div>
+                    <h5>Tom Ford</h5>
+                    <p class="brand-count">2 perfumes</p>
+                    <a href="/products?brand=tom-ford" class="btn-luxury btn-outline-luxury btn-sm">
+                        Ver Coleção
+                    </a>
+                </div>
+            </div>
+            
+            <div class="col-lg-3 col-md-4 col-sm-6">
+                <div class="brand-card">
+                    <div class="brand-logo">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h5>Versace</h5>
+                    <p class="brand-count">2 perfumes</p>
+                    <a href="/products?brand=versace" class="btn-luxury btn-outline-luxury btn-sm">
+                        Ver Coleção
+                    </a>
+                </div>
+            </div>
+            
+            <div class="col-lg-3 col-md-4 col-sm-6">
+                <div class="brand-card">
+                    <div class="brand-logo">
+                        <i class="fas fa-coins"></i>
+                    </div>
+                    <h5>Paco Rabanne</h5>
+                    <p class="brand-count">2 perfumes</p>
+                    <a href="/products?brand=paco-rabanne" class="btn-luxury btn-outline-luxury btn-sm">
+                        Ver Coleção
+                    </a>
+                </div>
+            </div>
+            
+            <div class="col-lg-3 col-md-4 col-sm-6">
+                <div class="brand-card">
+                    <div class="brand-logo">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h5>Creed</h5>
+                    <p class="brand-count">2 perfumes</p>
+                    <a href="/products?brand=creed" class="btn-luxury btn-outline-luxury btn-sm">
+                        Ver Coleção
+                    </a>
+                </div>
+            </div>
+            
+            <div class="col-lg-3 col-md-4 col-sm-6">
+                <div class="brand-card">
+                    <div class="brand-logo">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h5>Yves Saint Laurent</h5>
+                    <p class="brand-count">2 perfumes</p>
+                    <a href="/products?brand=ysl" class="btn-luxury btn-outline-luxury btn-sm">
+                        Ver Coleção
+                    </a>
+                </div>
+            </div>
+            
+            <div class="col-lg-3 col-md-4 col-sm-6">
+                <div class="brand-card">
+                    <div class="brand-logo">
+                        <i class="fas fa-horse"></i>
+                    </div>
+                    <h5>Hermès</h5>
+                    <p class="brand-count">2 perfumes</p>
+                    <a href="/products?brand=hermes" class="btn-luxury btn-outline-luxury btn-sm">
+                        Ver Coleção
+                    </a>
+                </div>
+            </div>
+            
+            <div class="col-lg-3 col-md-4 col-sm-6">
+                <div class="brand-card">
+                    <div class="brand-logo">
+                        <i class="fas fa-briefcase"></i>
+                    </div>
+                    <h5>Prada</h5>
+                    <p class="brand-count">2 perfumes</p>
+                    <a href="/products?brand=prada" class="btn-luxury btn-outline-luxury btn-sm">
+                        Ver Coleção
+                    </a>
+                </div>
+            </div>
+            
+            <div class="col-lg-3 col-md-4 col-sm-6">
+                <div class="brand-card">
+                    <div class="brand-logo">
+                        <i class="fas fa-tshirt"></i>
+                    </div>
+                    <h5>Giorgio Armani</h5>
+                    <p class="brand-count">2 perfumes</p>
+                    <a href="/products?brand=armani" class="btn-luxury btn-outline-luxury btn-sm">
+                        Ver Coleção
+                    </a>
+                </div>
+            </div>
+            
+            <div class="col-lg-3 col-md-4 col-sm-6">
+                <div class="brand-card">
+                    <div class="brand-logo">
+                        <i class="fas fa-infinity"></i>
+                    </div>
+                    <h5>Calvin Klein</h5>
+                    <p class="brand-count">2 perfumes</p>
+                    <a href="/products?brand=calvin-klein" class="btn-luxury btn-outline-luxury btn-sm">
+                        Ver Coleção
+                    </a>
+                </div>
+            </div>
+            
+            <div class="col-lg-3 col-md-4 col-sm-6">
+                <div class="brand-card">
+                    <div class="brand-logo">
+                        <i class="fas fa-boss"></i>
+                    </div>
+                    <h5>Hugo Boss</h5>
+                    <p class="brand-count">2 perfumes</p>
+                    <a href="/products?brand=hugo-boss" class="btn-luxury btn-outline-luxury btn-sm">
+                        Ver Coleção
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Lista Completa de Marcas -->
+        <div class="row">
+            <div class="col-12">
+                <div class="brands-list-container">
+                    <h4 class="text-center mb-4">🌟 Todas as 40 Marcas Premium</h4>
+                    <div class="brands-grid">
+                        <a href="/products?brand=abercrombie-fitch" class="brand-link">Abercrombie Fitch</a>
+                        <a href="/products?brand=azzaro" class="brand-link">Azzaro</a>
+                        <a href="/products?brand=britney-spears" class="brand-link">Britney Spears</a>
+                        <a href="/products?brand=bvlgari" class="brand-link">Bvlgari</a>
+                        <a href="/products?brand=cacharel" class="brand-link">Cacharel</a>
+                        <a href="/products?brand=calvin-klein" class="brand-link">Calvin Klein</a>
+                        <a href="/products?brand=carolina-herrera" class="brand-link">Carolina Herrera</a>
+                        <a href="/products?brand=chanel" class="brand-link">Chanel</a>
+                        <a href="/products?brand=chloe" class="brand-link">Chloe</a>
+                        <a href="/products?brand=christian-dior" class="brand-link">Christian Dior</a>
+                        <a href="/products?brand=creed" class="brand-link">Creed</a>
+                        <a href="/products?brand=dolce-gabbana" class="brand-link">Dolce & Gabbana</a>
+                        <a href="/products?brand=ferrari" class="brand-link">Ferrari</a>
+                        <a href="/products?brand=armani" class="brand-link">Giorgio Armani</a>
+                        <a href="/products?brand=givenchy" class="brand-link">Givenchy</a>
+                        <a href="/products?brand=hugo-boss" class="brand-link">Hugo Boss</a>
+                        <a href="/products?brand=issey-miyake" class="brand-link">Issey Miyake</a>
+                        <a href="/products?brand=jean-paul-gaultier" class="brand-link">Jean Paul Gaultier</a>
+                        <a href="/products?brand=lancome" class="brand-link">Lancôme</a>
+                        <a href="/products?brand=montblanc" class="brand-link">Montblanc</a>
+                        <a href="/products?brand=mugler" class="brand-link">Mugler</a>
+                        <a href="/products?brand=paco-rabanne" class="brand-link">Paco Rabanne</a>
+                        <a href="/products?brand=parfums-de-marly" class="brand-link">Parfums de Marly</a>
+                        <a href="/products?brand=ralph-lauren" class="brand-link">Ralph Lauren</a>
+                        <a href="/products?brand=prada" class="brand-link">Prada</a>
+                        <a href="/products?brand=tom-ford" class="brand-link">Tom Ford</a>
+                        <a href="/products?brand=ysl" class="brand-link">Yves Saint Laurent</a>
+                        <a href="/products?brand=viktor-rolf" class="brand-link">Viktor&Rolf</a>
+                        <a href="/products?brand=hermes" class="brand-link">Hermès</a>
+                        <a href="/products?brand=versace" class="brand-link">Versace</a>
+                        <a href="/products?brand=marc-jacobs" class="brand-link">Marc Jacobs</a>
+                        <a href="/products?brand=xerjoff" class="brand-link">Xerjoff</a>
+                        <a href="/products?brand=mfk" class="brand-link">Maison Francis Kurkdjian</a>
+                        <a href="/products?brand=bdk-parfums" class="brand-link">BDK Parfums</a>
+                        <a href="/products?brand=louis-vuitton" class="brand-link">Louis Vuitton</a>
+                        <a href="/products?brand=narciso-rodriguez" class="brand-link">Narciso Rodriguez</a>
+                        <a href="/products?brand=initio-parfums-prives" class="brand-link">Initio Parfums Prives</a>
+                        <a href="/products?brand=nishane" class="brand-link">Nishane</a>
+                        <a href="/products?brand=brian-peterson" class="brand-link">Brian Peterson</a>
+                    </div>
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--luxury-dark);
+        }
+
+        .hero-luxury {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 50%, #1a1a1a 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-particles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            opacity: 0.6;
+            animation: float 15s infinite;
+        }
+
+        .gold-particle { background: linear-gradient(135deg, #FFD700, #D4AF37); }
+        .diamond-particle { background: linear-gradient(135deg, #FFFFFF, #B9F2FF); }
+        .ruby-particle { background: linear-gradient(135deg, #E0115F, #9B111E); }
+        .emerald-particle { background: linear-gradient(135deg, #50C878, #006B3C); }
+        .sapphire-particle { background: linear-gradient(135deg, #0F52BA, #002366); }
+        .amethyst-particle { background: linear-gradient(135deg, #9966CC, #6A0DAD); }
+        .platinum-particle { background: linear-gradient(135deg, #E5E4E2, #C0C0C0); }
+        .silver-particle { background: linear-gradient(135deg, #C0C0C0, #BFC1C2); }
+        .copper-particle { background: linear-gradient(135deg, #B87333, #8B4513); }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) translateX(0); opacity: 0; }
+            10% { opacity: 0.6; }
+            90% { opacity: 0.6; }
+            100% { transform: translateY(-100vh) translateX(100px); opacity: 0; }
+        }
+
+        .brand-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, #FFD700, #FFFFFF, #E0115F, #0F52BA, #50C878);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: shine 3s linear infinite;
+        }
+
+        @keyframes shine {
+            to { background-position: 200% center; }
+        }
+
+        .material-showcase {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #f8f9fa, #ffffff);
+        }
+
+        .material-card {
+            border-radius: 20px;
+            padding: 2px;
+            margin-bottom: 30px;
+            transition: all 0.4s ease;
+            cursor: pointer;
+        }
+
+        .material-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .material-card-content {
+            background: white;
+            border-radius: 18px;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .material-icon-large {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 2rem;
+            color: white;
+        }
+
+        .perfume-material-card {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            margin-bottom: 30px;
+            transition: all 0.4s ease;
+        }
+
+        .perfume-material-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .material-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .material-shimmer {
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                45deg,
+                transparent 30%,
+                rgba(255, 255, 255, 0.3) 50%,
+                transparent 70%
+            );
+            animation: shimmer 3s infinite;
+        }
+    </style>
+</head>
+
+<!-- Material Showcase -->
+<section class="material-showcase">
+<section class="py-4 bg-light-luxury">
     <div class="container">
         <div class="row align-items-center text-center">
             <div class="col-md-3 col-6 mb-3 mb-md-0">
-                <i class="fas fa-credit-card fa-2x text-primary mb-2"></i>
-                <div class="small">Pagamento Seguro</div>
+                <div class="trust-badge-luxury">
+                    <i class="fas fa-shield-alt fa-2x text-primary mb-2"></i>
+                    <div class="trust-text">Garantia Bayrom</div>
+                </div>
             </div>
             <div class="col-md-3 col-6 mb-3 mb-md-0">
-                <i class="fas fa-box fa-2x text-success mb-2"></i>
-                <div class="small">Embalagem Discreta</div>
+                <div class="trust-badge-luxury">
+                    <i class="fas fa-gem fa-2x text-success mb-2"></i>
+                    <div class="trust-text">Qualidade Premium</div>
+                </div>
             </div>
             <div class="col-md-3 col-6 mb-3 mb-md-0">
-                <i class="fas fa-headset fa-2x text-warning mb-2"></i>
-                <div class="small">Suporte Especializado</div>
+                <div class="trust-badge-luxury">
+                    <i class="fas fa-truck fa-2x text-warning mb-2"></i>
+                    <div class="trust-text">Entrega Expressa</div>
+                </div>
             </div>
             <div class="col-md-3 col-6">
-                <i class="fas fa-star fa-2x text-danger mb-2"></i>
-                <div class="small">Satisfação Garantida</div>
+                <div class="trust-badge-luxury">
+                    <i class="fas fa-crown fa-2x text-danger mb-2"></i>
+                    <div class="trust-text">Atendimento VIP</div>
+                </div>
             </div>
         </div>
     </div>
 </section>
 
 <%- include('../partials/footer') %>
+
+<style>
+/* Estilo específico para Brian Peterson Cards */
+.brian-peterson-card {
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    background: linear-gradient(135deg, #ffffff 0%, #fafafa 100%);
+    transition: all 0.4s ease;
+}
+
+.brian-peterson-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(212, 175, 55, 0.15);
+    border-color: var(--luxury-gold);
+}
+
+.brian-peterson-card .collection-tag {
+    background: linear-gradient(135deg, var(--luxury-gold), #d4af37);
+    color: white;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.brian-peterson-card .luxury-value-badge {
+    background: linear-gradient(135deg, rgba(212, 175, 55, 0.1), rgba(212, 175, 55, 0.05));
+    border-left: 4px solid var(--luxury-gold);
+    padding: 12px 16px;
+    margin: 15px 0;
+    border-radius: 8px;
+}
+
+.brian-peterson-card .luxury-value-badge i {
+    color: var(--luxury-gold);
+    margin-right: 8px;
+}
+
+.brian-peterson-card .luxury-value-badge span {
+    font-size: 0.9rem;
+    color: var(--luxury-dark);
+    font-weight: 500;
+}
+
+.brian-peterson-card .composition-details {
+    background: rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(212, 175, 55, 0.1);
+    border-radius: 12px;
+    padding: 16px;
+    margin: 15px 0;
+}
+
+.brian-peterson-card .composition-details h6 {
+    color: var(--luxury-gold);
+    font-weight: 600;
+    margin-bottom: 10px;
+    font-size: 0.9rem;
+}
+
+.brian-peterson-card .composition-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.brian-peterson-card .composition-list li {
+    font-size: 0.85rem;
+    color: var(--luxury-gray);
+    margin-bottom: 4px;
+    padding-left: 12px;
+    position: relative;
+}
+
+.brian-peterson-card .composition-list li:before {
+    content: "•";
+    color: var(--luxury-gold);
+    position: absolute;
+    left: 0;
+    font-weight: bold;
+}
+
+.brian-peterson-card .inspiration-notes {
+    background: linear-gradient(135deg, rgba(212, 175, 55, 0.05), rgba(212, 175, 55, 0.02));
+    border-radius: 8px;
+    padding: 12px;
+    margin: 15px 0;
+    font-size: 0.8rem;
+}
+
+.brian-peterson-card .inspiration-notes span {
+    display: block;
+    margin-bottom: 4px;
+    color: var(--luxury-gray);
+}
+
+.brian-peterson-card .note-top {
+    color: #ff6b6b !important;
+}
+
+.brian-peterson-card .note-middle {
+    color: #4ecdc4 !important;
+}
+
+.brian-peterson-card .note-base {
+    color: #45b7d1 !important;
+}
+
+.brian-peterson-card .inspiration-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.brian-peterson-card .inspiration-actions .btn-luxury {
+    flex: 1;
+    padding: 10px 16px;
+    font-size: 0.9rem;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.brian-peterson-card .inspiration-actions .btn-primary-luxury {
+    background: linear-gradient(135deg, var(--luxury-gold), #d4af37);
+    border: none;
+    color: white;
+}
+
+.brian-peterson-card .inspiration-actions .btn-primary-luxury:hover {
+    background: linear-gradient(135deg, #d4af37, var(--luxury-gold));
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(212, 175, 55, 0.3);
+}
+
+.brian-peterson-card .inspiration-actions .btn-outline-luxury {
+    background: transparent;
+    border: 2px solid var(--luxury-gold);
+    color: var(--luxury-gold);
+}
+
+.brian-peterson-card .inspiration-actions .btn-outline-luxury:hover {
+    background: var(--luxury-gold);
+    color: white;
+    transform: translateY(-2px);
+}
+
+/* Estilo para Cards de Marcas */
+.brand-card {
+    background: white;
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    border-radius: 12px;
+    padding: 25px 20px;
+    text-align: center;
+    transition: all 0.3s ease;
+    height: 100%;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+.brand-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 30px rgba(212, 175, 55, 0.15);
+    border-color: var(--luxury-gold);
+}
+
+.brand-logo {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, var(--luxury-gold), #d4af37);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 15px;
+    color: white;
+    font-size: 1.5rem;
+}
+
+.brand-card h5 {
+    color: var(--luxury-dark);
+    font-weight: 600;
+    margin-bottom: 8px;
+    font-size: 1.1rem;
+}
+
+.brand-count {
+    color: var(--luxury-gray);
+    font-size: 0.9rem;
+    margin-bottom: 15px;
+}
+
+.brand-card .btn-luxury {
+    border-radius: 20px;
+    padding: 8px 20px;
+    font-size: 0.85rem;
+}
+
+/* Estilo para Lista de Marcas */
+.brands-list-container {
+    background: white;
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+    border: 1px solid rgba(212, 175, 55, 0.1);
+}
+
+.brands-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 12px;
+    max-height: 400px;
+    overflow-y: auto;
+    padding: 10px;
+}
+
+.brand-link {
+    display: block;
+    padding: 12px 16px;
+    background: linear-gradient(135deg, #f8f9fa, #ffffff);
+    border: 1px solid rgba(212, 175, 55, 0.1);
+    border-radius: 8px;
+    text-decoration: none;
+    color: var(--luxury-dark);
+    font-weight: 500;
+    transition: all 0.3s ease;
+    text-align: center;
+    font-size: 0.9rem;
+}
+
+.brand-link:hover {
+    background: linear-gradient(135deg, var(--luxury-gold), #d4af37);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(212, 175, 55, 0.2);
+}
+
+/* Estilo para Estatísticas do Catálogo */
+.catalog-stats {
+    background: white;
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+    border: 1px solid rgba(212, 175, 55, 0.1);
+}
+
+.stat-item {
+    padding: 20px;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #f8f9fa, #ffffff);
+    border: 1px solid rgba(212, 175, 55, 0.1);
+    transition: all 0.3s ease;
+}
+
+.stat-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(212, 175, 55, 0.1);
+    border-color: var(--luxury-gold);
+}
+
+.stat-item h3 {
+    color: var(--luxury-gold);
+    font-weight: 700;
+    margin-bottom: 5px;
+    font-size: 2rem;
+}
+
+.stat-item p {
+    color: var(--luxury-gray);
+    font-weight: 500;
+    margin: 0;
+    font-size: 0.95rem;
+}
+
+/* Scrollbar personalizada para brands-grid */
+.brands-grid::-webkit-scrollbar {
+    width: 8px;
+}
+
+.brands-grid::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+
+.brands-grid::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, var(--luxury-gold), #d4af37);
+    border-radius: 10px;
+}
+
+.brands-grid::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(135deg, #d4af37, var(--luxury-gold));
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .brian-peterson-card .inspiration-actions {
+        flex-direction: column;
+    }
+    
+    .brian-peterson-card .inspiration-actions .btn-luxury {
+        width: 100%;
+    }
+    
+    .brands-grid {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 8px;
+        max-height: 300px;
+    }
+    
+    .brand-link {
+        padding: 10px 12px;
+        font-size: 0.85rem;
+    }
+    
+    .brand-card {
+        padding: 20px 15px;
+    }
+    
+    .brand-logo {
+        width: 50px;
+        height: 50px;
+        font-size: 1.3rem;
+    }
+    
+    .stat-item h3 {
+        font-size: 1.5rem;
+    }
+}
+</style>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="/js/material-system.js"></script>
+<script>
+    // Criar partículas de materiais no hero
+    function createMaterialParticles() {
+        const heroParticles = document.querySelector('.hero-particles');
+        if (!heroParticles) return;
+
+        const materials = ['gold', 'diamond', 'ruby', 'emerald', 'sapphire', 'amethyst', 'platinum', 'silver'];
+        
+        for (let i = 0; i < 50; i++) {
+            const particle = document.createElement('div');
+            const material = materials[Math.floor(Math.random() * materials.length)];
+            particle.className = `particle ${material}-particle`;
+            particle.style.left = Math.random() * 100 + '%';
+            particle.style.animationDelay = Math.random() * 15 + 's';
+            particle.style.animationDuration = (15 + Math.random() * 10) + 's';
+            heroParticles.appendChild(particle);
+        }
+    }
+
+    // Inicializar partículas quando a página carregar
+    document.addEventListener('DOMContentLoaded', () => {
+        createMaterialParticles();
+        
+        // Adicionar efeito de brilho aos cards de materiais
+        const materialCards = document.querySelectorAll('.material-card');
+        materialCards.forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-15px) scale(1.02)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+
+        // Adicionar efeito de clique nos cards de perfumes
+        const perfumeCards = document.querySelectorAll('.perfume-material-card');
+        perfumeCards.forEach(card => {
+            card.addEventListener('click', function() {
+                // Criar efeito de explosão de partículas
+                const burst = document.createElement('div');
+                burst.style.cssText = `
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    pointer-events: none;
+                    z-index: 1000;
+                `;
+                
+                for (let i = 0; i < 12; i++) {
+                    const particle = document.createElement('div');
+                    const angle = (i * 30) * Math.PI / 180;
+                    const distance = 30 + Math.random() * 50;
+                    
+                    particle.style.cssText = `
+                        position: absolute;
+                        width: 6px;
+                        height: 6px;
+                        border-radius: 50%;
+                        background: linear-gradient(135deg, #FFD700, #FFFFFF);
+                        animation: burst 0.8s ease-out forwards;
+                        transform: translate(${Math.cos(angle) * distance}px, ${Math.sin(angle) * distance}px);
+                    `;
+                    
+                    burst.appendChild(particle);
+                }
+                
+                this.appendChild(burst);
+                setTimeout(() => burst.remove(), 800);
+            });
+        });
+    });
+
+    // Adicionar CSS para animação de burst
+    const style = document.createElement('style');
+    style.textContent = `
+        @keyframes burst {
+            0% {
+                transform: translate(0, 0) scale(1);
+                opacity: 1;
+            }
+            100% {
+                transform: translate(var(--tx), var(--ty)) scale(0);
+                opacity: 0;
+            }
+        }
+    `;
+    document.head.appendChild(style);
+</script>
