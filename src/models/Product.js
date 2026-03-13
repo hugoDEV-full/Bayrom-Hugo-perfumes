@@ -33,7 +33,7 @@ const Product = sequelize.define('Product', {
     },
     sku: {
         type: DataTypes.STRING(50),
-        allowNull: false,
+        allowNull: true,
         unique: true,
         validate: {
             notEmpty: true
@@ -60,7 +60,7 @@ const Product = sequelize.define('Product', {
         }
     },
     fragrance_family: {
-        type: DataTypes.ENUM('citrico', 'floral', 'amadeirado', 'oriental', 'aquatico', 'fores', 'especiarias', 'doce'),
+        type: DataTypes.STRING(50),
         allowNull: true
     },
     size_ml: {

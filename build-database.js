@@ -25,7 +25,12 @@ async function syncSchemaWithFallback() {
     }
 }
 
-async function buildDatabase() {
+async function buildDatabase(options = {}) {
+    const {
+        closeConnection = (require.main === module),
+        tolerateProductionErrors = (require.main === module)
+    } = options;
+
     try {
         console.log('📊 Conectando ao banco de dados...');
         await sequelize.authenticate();
@@ -272,22 +277,32 @@ async function buildDatabase() {
             console.log('   • Em local: SQLite não requer configuração');
         }
         
-        if (sequelize) {
+        if (closeConnection && sequelize) {
             await sequelize.close();
         }
-        
-        // Em produção, não falhar o build por erro no banco
-        if (process.env.NODE_ENV === 'production') {
+
+        // Se foi chamado pelo servidor (RUN_DB_SETUP), não engolir erro
+        // (precisa falhar fast para não iniciar com DB inconsistente)
+        if (process.env.RUN_DB_SETUP === 'true') {
+            throw error;
+        }
+
+        // Em produção, quando executado no build (postinstall), não falhar o deploy por erro de DB
+        if (tolerateProductionErrors && process.env.NODE_ENV === 'production') {
             console.log('⚠️  Continuando build em produção...');
             return;
         }
-        
-        process.exit(1);
+
+        throw error;
+    } finally {
+        if (closeConnection && sequelize) {
+            await sequelize.close();
+        }
     }
 }
 
 // Executar apenas se não for em ambiente de teste
-if (require.main === module) {
+if (require.main === module && process.env.NODE_ENV !== 'test') {
     buildDatabase();
 }
 
