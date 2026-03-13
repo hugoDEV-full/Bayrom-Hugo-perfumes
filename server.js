@@ -26,11 +26,11 @@ app.use(helmet({
     contentSecurityPolicy: {
         directives: {
             defaultSrc: ["'self'"],
-            styleSrc: ["'self'", "'unsafe-inline'", "https://cdn.jsdelivr.net", "https://fonts.googleapis.com"],
+            styleSrc: ["'self'", "'unsafe-inline'", "https://cdn.jsdelivr.net", "https://cdnjs.cloudflare.com", "https://fonts.googleapis.com"],
             scriptSrc: ["'self'", "'unsafe-inline'", "https://cdn.jsdelivr.net", "https://js.stripe.com", "https://sdk.mercadopago.com"],
-            fontSrc: ["'self'", "https://fonts.gstatic.com"],
+            fontSrc: ["'self'", "data:", "https://fonts.gstatic.com", "https://cdnjs.cloudflare.com"],
             imgSrc: ["'self'", "data:", "https:"],
-            connectSrc: ["'self'", "https://api.stripe.com", "https://api.mercadopago.com"]
+            connectSrc: ["'self'", "https://api.stripe.com", "https://api.mercadopago.com", "https://cdn.jsdelivr.net", "https://cdnjs.cloudflare.com"]
         }
     }
 }));
@@ -55,8 +55,10 @@ const limiter = rateLimit({
 });
 app.use('/api/', limiter);
 
-// Logs
-app.use(morgan('combined', { stream: { write: message => console.log(message.trim()) } }));
+// Logs (reduzir custo/ruído em produção)
+if (process.env.NODE_ENV !== 'production') {
+    app.use(morgan('dev', { stream: { write: message => console.log(message.trim()) } }));
+}
 
 // CORS
 app.use(cors({
@@ -85,8 +87,12 @@ app.use(session({
 app.use(flash());
 
 // Arquivos estáticos
-app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
-app.use(express.static(path.join(__dirname, 'public')));
+const staticOptions = process.env.NODE_ENV === 'production'
+    ? { maxAge: '7d', etag: true }
+    : undefined;
+
+app.use('/uploads', express.static(path.join(__dirname, 'uploads'), staticOptions));
+app.use(express.static(path.join(__dirname, 'public'), staticOptions));
 
 // Configuração do EJS
 app.set('view engine', 'ejs');
@@ -111,6 +117,7 @@ const indexRoutes = require('./src/routes/index');
 const authRoutes = require('./src/routes/auth');
 const productRoutes = require('./src/routes/products');
 const cartRoutes = require('./src/routes/cart');
+const checkoutRoutes = require('./src/routes/checkout');
 const orderRoutes = require('./src/routes/orders');
 const adminRoutes = require('./src/routes/admin');
 const apiRoutes = require('./src/routes/api');
@@ -120,6 +127,7 @@ app.use('/', indexRoutes);
 app.use('/auth', authRoutes);
 app.use('/products', productRoutes);
 app.use('/cart', cartRoutes);
+app.use('/checkout', checkoutRoutes);
 app.use('/orders', orderRoutes);
 app.use('/admin', adminRoutes);
 app.use('/api', apiRoutes);
@@ -144,18 +152,25 @@ app.use((err, req, res, next) => {
 // Inicialização do servidor
 async function startServer() {
     try {
-        // Garantir que o banco está pronto ANTES de qualquer coisa
-        console.log('🔄 Configurando banco de dados...');
-        const buildDatabase = require('./build-database');
-        await buildDatabase();
-        console.log('✅ Banco de dados configurado!');
+        // Em produção (Railway) evite rodar sync/seed a cada boot (custo/tempo).
+        // A criação do schema deve acontecer no deploy via postinstall.
+        const shouldSetupDb =
+            process.env.NODE_ENV !== 'production' ||
+            process.env.RUN_DB_SETUP === 'true';
+
+        if (shouldSetupDb) {
+            console.log('🔄 Configurando banco de dados...');
+            const buildDatabase = require('./build-database');
+            await buildDatabase();
+            console.log('✅ Banco de dados configurado!');
+        }
         
         // Iniciar servidor
         const server = app.listen(PORT, () => {
             console.log(`🚀 Servidor Bayrom & Hugo Parfums rodando na porta ${PORT}`);
             console.log(`🌐 Ambiente: ${process.env.NODE_ENV || 'development'}`);
             console.log(`📍 URL: ${process.env.BASE_URL || `http://localhost:${PORT}`}`);
-            console.log(`🗄️  Banco: SQLite (Garantido)`);
+            console.log(`🗄️  Banco: ${process.env.DATABASE_URL ? 'MySQL' : 'SQLite'}`);
         });
 
         return server;

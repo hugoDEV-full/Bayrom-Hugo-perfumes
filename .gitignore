@@ -75,6 +75,11 @@ uploads/
 *.sqlite-journal
 database.sqlite*
 
+# Backups
+back up/
+backup/
+backups/
+
 # IDE
 .vscode/
 .idea/

@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600" role="img" aria-label="Imagem de perfume indisponível">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#111"/>
+      <stop offset="1" stop-color="#2a2a2a"/>
+    </linearGradient>
+    <linearGradient id="gold" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#d4af37"/>
+      <stop offset="0.5" stop-color="#f5e6a8"/>
+      <stop offset="1" stop-color="#d4af37"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="800" height="600" fill="url(#bg)"/>
+  <rect x="60" y="60" width="680" height="480" rx="28" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.10)"/>
+
+  <!-- Bottle icon -->
+  <g transform="translate(0,10)">
+    <rect x="350" y="160" width="100" height="55" rx="10" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.18)"/>
+    <rect x="330" y="210" width="140" height="250" rx="26" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.18)"/>
+    <rect x="346" y="240" width="108" height="190" rx="18" fill="rgba(0,0,0,0.12)" stroke="rgba(212,175,55,0.35)"/>
+    <rect x="360" y="310" width="80" height="40" rx="10" fill="rgba(255,255,255,0.06)"/>
+    <rect x="365" y="318" width="70" height="10" rx="5" fill="url(#gold)"/>
+  </g>
+
+  <text x="400" y="480" text-anchor="middle" font-family="Montserrat, Arial, sans-serif" font-size="18" fill="rgba(255,255,255,0.75)">Imagem indisponível</text>
+  <text x="400" y="510" text-anchor="middle" font-family="Montserrat, Arial, sans-serif" font-size="14" fill="rgba(255,255,255,0.55)">Bayrom &amp; Hugo Parfums</text>
+</svg>

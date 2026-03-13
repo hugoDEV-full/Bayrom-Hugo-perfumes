@@ -1,0 +1,109 @@
+<%- include('../../partials/header') %>
+
+<div class="container py-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <div>
+            <h1 class="h3 mb-0">Pedido #<%= order.order_number %></h1>
+            <div class="text-muted small">ID: <%= order.id %></div>
+        </div>
+        <a href="/admin/orders" class="btn btn-outline-secondary">Voltar</a>
+    </div>
+
+    <div class="row g-4">
+        <div class="col-lg-8">
+            <div class="card shadow-sm mb-4">
+                <div class="card-body">
+                    <h2 class="h5">Itens</h2>
+                    <div class="table-responsive">
+                        <table class="table align-middle">
+                            <thead>
+                                <tr>
+                                    <th>Produto</th>
+                                    <th class="text-end">Qtd</th>
+                                    <th class="text-end">Unit</th>
+                                    <th class="text-end">Total</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <% if (!order.items || order.items.length === 0) { %>
+                                    <tr><td colspan="4" class="text-muted">Sem itens.</td></tr>
+                                <% } else { %>
+                                    <% order.items.forEach(i => { %>
+                                        <tr>
+                                            <td><%= i.product ? i.product.name : (i.product_snapshot ? i.product_snapshot.name : '-') %></td>
+                                            <td class="text-end"><%= i.quantity %></td>
+                                            <td class="text-end">R$ <%= Number(i.unit_price || 0).toFixed(2) %></td>
+                                            <td class="text-end">R$ <%= Number(i.total_price || 0).toFixed(2) %></td>
+                                        </tr>
+                                    <% }) %>
+                                <% } %>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h2 class="h5">Atualizar status</h2>
+                    <form method="POST" action="/admin/orders/<%= order.id %>/status" class="row g-2">
+                        <div class="col-md-4">
+                            <select name="status" class="form-select">
+                                <option value="pending" <%= order.status === 'pending' ? 'selected' : '' %>>pending</option>
+                                <option value="confirmed" <%= order.status === 'confirmed' ? 'selected' : '' %>>confirmed</option>
+                                <option value="processing" <%= order.status === 'processing' ? 'selected' : '' %>>processing</option>
+                                <option value="shipped" <%= order.status === 'shipped' ? 'selected' : '' %>>shipped</option>
+                                <option value="delivered" <%= order.status === 'delivered' ? 'selected' : '' %>>delivered</option>
+                                <option value="cancelled" <%= order.status === 'cancelled' ? 'selected' : '' %>>cancelled</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4">
+                            <input name="tracking_code" class="form-control" placeholder="Código de rastreio" value="<%= order.tracking_code || '' %>" />
+                        </div>
+                        <div class="col-md-4">
+                            <input name="notes" class="form-control" placeholder="Nota interna" />
+                        </div>
+                        <div class="col-12">
+                            <button class="btn btn-primary" type="submit">Salvar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-4">
+            <div class="card shadow-sm mb-4">
+                <div class="card-body">
+                    <h2 class="h5">Resumo</h2>
+                    <div class="d-flex justify-content-between"><span>Status</span><strong><%= order.status %></strong></div>
+                    <div class="d-flex justify-content-between"><span>Pagamento</span><strong><%= order.payment_status %></strong></div>
+                    <hr />
+                    <div class="d-flex justify-content-between"><span>Total</span><strong>R$ <%= Number(order.total_amount || 0).toFixed(2) %></strong></div>
+                </div>
+            </div>
+
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h2 class="h5">Entrega</h2>
+                    <% if (order.shippingAddress) { %>
+                        <div class="text-muted small">Destinatário</div>
+                        <div class="mb-2"><%= order.shippingAddress.recipient_name %></div>
+                        <div class="text-muted small">Endereço</div>
+                        <div>
+                            <%= order.shippingAddress.street %>, <%= order.shippingAddress.number %>
+                            <% if (order.shippingAddress.complement) { %>
+                                - <%= order.shippingAddress.complement %>
+                            <% } %>
+                        </div>
+                        <div><%= order.shippingAddress.neighborhood %> - <%= order.shippingAddress.city %>/<%= order.shippingAddress.state %></div>
+                        <div>CEP: <%= order.shippingAddress.postal_code %></div>
+                    <% } else { %>
+                        <div class="text-muted">Sem endereço cadastrado.</div>
+                    <% } %>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<%- include('../../partials/footer') %>

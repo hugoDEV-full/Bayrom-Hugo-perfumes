@@ -70,7 +70,7 @@ function displaySearchResults(products) {
     } else {
         searchResults.innerHTML = products.map(product => `
             <a href="/products/${product.slug}" class="search-result-item d-flex align-items-center p-3 text-decoration-none border-bottom">
-                <img src="${product.featured_image || '/images/product-placeholder.jpg'}" 
+                <img src="${product.featured_image || '/images/perfume-placeholder.svg'}" 
                      alt="${product.name}" 
                      class="me-3" 
                      style="width: 50px; height: 50px; object-fit: cover; border-radius: 4px;">

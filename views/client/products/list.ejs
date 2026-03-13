@@ -184,22 +184,22 @@
                                         <div class="mt-auto">
                                             <div class="d-flex justify-content-between align-items-center mb-3">
                                                 <div>
-                                                    <% if (product.sale_price && product.sale_price < product.price) { %>
+                                                    <% if (product.sale_price && product.sale_price < product.regular_price) { %>
                                                         <span class="text-decoration-line-through text-muted small">
-                                                            R$ <%= product.price.toFixed(2) %>
+                                                            R$ <%= Number(product.regular_price || 0).toFixed(2) %>
                                                         </span>
-                                                        <h5 class="text-success mb-0">R$ <%= product.sale_price.toFixed(2) %></h5>
+                                                        <h5 class="text-success mb-0">R$ <%= Number(product.sale_price || 0).toFixed(2) %></h5>
                                                     <% } else { %>
-                                                        <h5 class="mb-0">R$ <%= (product.sale_price || product.price).toFixed(2) %></h5>
+                                                        <h5 class="mb-0">R$ <%= Number(product.regular_price || product.sale_price || 0).toFixed(2) %></h5>
                                                     <% } %>
                                                 </div>
                                             </div>
                                             
                                             <div class="d-grid gap-2">
-                                                <a href="/products/<%= product.id %>" class="btn btn-luxury">
+                                                <a href="/products/<%= product.slug %>" class="btn btn-luxury">
                                                     Ver Detalhes
                                                 </a>
-                                                <button class="btn btn-outline-luxury" onclick="addToCart(<%= product.id %>)">
+                                                <button class="btn btn-outline-luxury add-to-cart-btn" data-product-id="<%= product.id %>">
                                                     <i class="fas fa-shopping-cart me-2"></i>Adicionar
                                                 </button>
                                             </div>
@@ -225,7 +225,7 @@
                         <ul class="pagination justify-content-center">
                             <% if (pagination.hasPrevPage) { %>
                                 <li class="page-item">
-                                    <a class="page-link" href="#" onclick="changePage(<%= pagination.currentPage - 1 %>)">
+                                    <a class="page-link pagination-link" href="#" data-page="<%= pagination.currentPage - 1 %>">
                                         <i class="fas fa-chevron-left"></i>
                                     </a>
                                 </li>
@@ -238,7 +238,7 @@
                                     </li>
                                 <% } else if (Math.abs(i - pagination.currentPage) <= 2 || i === 1 || i === pagination.totalPages) { %>
                                     <li class="page-item">
-                                        <a class="page-link" href="#" onclick="changePage(<%= i %>)"><%= i %></a>
+                                        <a class="page-link pagination-link" href="#" data-page="<%= i %>"><%= i %></a>
                                     </li>
                                 <% } else if (Math.abs(i - pagination.currentPage) === 3) { %>
                                     <li class="page-item disabled">
@@ -249,7 +249,7 @@
                             
                             <% if (pagination.hasNextPage) { %>
                                 <li class="page-item">
-                                    <a class="page-link" href="#" onclick="changePage(<%= pagination.currentPage + 1 %>)">
+                                    <a class="page-link pagination-link" href="#" data-page="<%= pagination.currentPage + 1 %>">
                                         <i class="fas fa-chevron-right"></i>
                                     </a>
                                 </li>
@@ -295,7 +295,7 @@ function changePage(page) {
     window.location.href = '/products?' + params.toString();
 }
 
-function addToCart(productId) {
+function addToCart(productId, button) {
     // Implementar lógica do carrinho
     fetch('/cart/add', {
         method: 'POST',
@@ -311,15 +311,16 @@ function addToCart(productId) {
     .then(data => {
         if (data.success) {
             // Mostrar mensagem de sucesso
-            const button = event.target;
-            const originalText = button.innerHTML;
-            button.innerHTML = '<i class="fas fa-check me-2"></i>Adicionado!';
-            button.classList.add('btn-success');
+            if (button) {
+                const originalText = button.innerHTML;
+                button.innerHTML = '<i class="fas fa-check me-2"></i>Adicionado!';
+                button.classList.add('btn-success');
             
-            setTimeout(() => {
-                button.innerHTML = originalText;
-                button.classList.remove('btn-success');
-            }, 2000);
+                setTimeout(() => {
+                    button.innerHTML = originalText;
+                    button.classList.remove('btn-success');
+                }, 2000);
+            }
         } else {
             alert('Erro ao adicionar ao carrinho');
         }
@@ -329,6 +330,26 @@ function addToCart(productId) {
         alert('Erro ao adicionar ao carrinho');
     });
 }
+
+document.addEventListener('click', (e) => {
+    const addBtn = e.target.closest('.add-to-cart-btn');
+    if (addBtn) {
+        const productId = Number(addBtn.getAttribute('data-product-id'));
+        if (!Number.isNaN(productId)) {
+            addToCart(productId, addBtn);
+        }
+        return;
+    }
+
+    const pageLink = e.target.closest('.pagination-link');
+    if (pageLink) {
+        e.preventDefault();
+        const page = Number(pageLink.getAttribute('data-page'));
+        if (!Number.isNaN(page)) {
+            changePage(page);
+        }
+    }
+});
 </script>
 
 <style>
@@ -373,220 +394,3 @@ function addToCart(productId) {
     border-color: var(--luxury-gold);
 }
 </style>
-                            <div class="col-6">
-                                <input type="number" class="form-control form-control-sm" 
-                                       placeholder="Mín" id="priceMin" value="<%= filters.price_min || '' %>"
-                                       onchange="filterProducts()">
-                            </div>
-                            <div class="col-6">
-                                <input type="number" class="form-control form-control-sm" 
-                                       placeholder="Máx" id="priceMax" value="<%= filters.price_max || '' %>"
-                                       onchange="filterProducts()">
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Marcas -->
-                    <div class="mb-4">
-                        <h6>Marcas</h6>
-                        <select class="form-select form-select-sm" id="brandFilter" onchange="filterProducts()">
-                            <option value="">Todas as marcas</option>
-                            <% brands.forEach(brand => { %>
-                                <option value="<%= brand %>" <%= filters.brand === brand ? 'selected' : '' %>>
-                                    <%= brand %>
-                                </option>
-                            <% }); %>
-                        </select>
-                    </div>
-
-                    <button class="btn btn-outline-secondary btn-sm w-100" onclick="clearFilters()">
-                        Limpar Filtros
-                    </button>
-                </div>
-            </div>
-        </div>
-
-        <!-- Produtos -->
-        <div class="col-lg-9">
-            <% if (products.length === 0) { %>
-                <div class="text-center py-5">
-                    <i class="fas fa-search fa-4x text-muted mb-3"></i>
-                    <h4>Nenhum produto encontrado</h4>
-                    <p class="text-muted">Tente ajustar seus filtros ou buscar por outros termos.</p>
-                    <button class="btn btn-primary" onclick="clearFilters()">
-                        Limpar Filtros
-                    </button>
-                </div>
-            <% } else { %>
-                <div class="row g-4">
-                    <% products.forEach(product => { %>
-                        <div class="col-lg-4 col-md-6">
-                            <div class="product-card">
-                                <div class="product-image">
-                                    <img src="<%= product.featured_image || '/images/product-placeholder.jpg' %>" 
-                                         alt="<%= product.name %>" 
-                                         loading="lazy">
-                                    
-                                    <% if (product.sale_price && product.sale_price < product.regular_price) { %>
-                                    <span class="badge-sale">
-                                        -<%= Math.round(((product.regular_price - product.sale_price) / product.regular_price) * 100) %>%
-                                    </span>
-                                    <% } %>
-                                    
-                                    <div class="product-actions">
-                                        <button class="add-to-wishlist" data-product-id="<%= product.id %>">
-                                            <i class="far fa-heart"></i>
-                                        </button>
-                                        <button class="add-to-cart" data-product-id="<%= product.id %>">
-                                            <i class="fas fa-shopping-cart"></i>
-                                        </button>
-                                    </div>
-                                </div>
-                                
-                                <div class="card-body">
-                                    <div class="product-brand"><%= product.brand %></div>
-                                    <h5 class="product-name"><%= product.name %></h5>
-                                    
-                                    <% if (product.averageRating > 0) { %>
-                                        <div class="product-rating mb-2">
-                                            <div class="stars">
-                                                <% for(let i = 1; i <= 5; i++) { %>
-                                                    <% if (i <= Math.round(product.averageRating)) { %>
-                                                        <i class="fas fa-star text-warning"></i>
-                                                    <% } else { %>
-                                                        <i class="far fa-star text-warning"></i>
-                                                    <% } %>
-                                                <% } %>
-                                            </div>
-                                            <small class="text-muted">(<%= product.averageRating %>)</small>
-                                        </div>
-                                    <% } %>
-                                    
-                                    <div class="product-price">
-                                        <% if (product.sale_price && product.sale_price < product.regular_price) { %>
-                                            <span class="price-current">R$ <%= product.sale_price.toFixed(2).replace('.', ',') %></span>
-                                            <span class="price-original">R$ <%= product.regular_price.toFixed(2).replace('.', ',') %></span>
-                                        <% } else { %>
-                                            <span class="price-current">R$ <%= product.regular_price.toFixed(2).replace('.', ',') %></span>
-                                        <% } %>
-                                    </div>
-                                    
-                                    <div class="mt-3">
-                                        <a href="/products/<%= product.slug %>" class="btn btn-outline-primary btn-sm w-100">
-                                            Ver Detalhes
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    <% }); %>
-                </div>
-
-                <!-- Paginação -->
-                <% if (pagination.totalPages > 1) { %>
-                <nav aria-label="Paginação de produtos" class="mt-5">
-                    <ul class="pagination justify-content-center">
-                        <% if (pagination.hasPrevPage) { %>
-                            <li class="page-item">
-                                <a class="page-link" href="?page=<%= pagination.currentPage - 1 %><%= buildQueryString() %>">Anterior</a>
-                            </li>
-                        <% } else { %>
-                            <li class="page-item disabled">
-                                <span class="page-link">Anterior</span>
-                            </li>
-                        <% } %>
-
-                        <% for(let i = 1; i <= pagination.totalPages; i++) { %>
-                            <% if (i === pagination.currentPage) { %>
-                                <li class="page-item active">
-                                    <span class="page-link"><%= i %></span>
-                                </li>
-                            <% } else { %>
-                                <li class="page-item">
-                                    <a class="page-link" href="?page=<%= i %><%= buildQueryString() %>"><%= i %></a>
-                                </li>
-                            <% } %>
-                        <% } %>
-
-                        <% if (pagination.hasNextPage) { %>
-                            <li class="page-item">
-                                <a class="page-link" href="?page=<%= pagination.currentPage + 1 %><%= buildQueryString() %>">Próxima</a>
-                            </li>
-                        <% } else { %>
-                            <li class="page-item disabled">
-                                <span class="page-link">Próxima</span>
-                            </li>
-                        <% } %>
-                    </ul>
-                </nav>
-                <% } %>
-            <% } %>
-        </div>
-    </div>
-</div>
-
-<script>
-function buildQueryString() {
-    const params = new URLSearchParams();
-    
-    const category = document.querySelector('input[name="category"]:checked')?.value;
-    const priceMin = document.getElementById('priceMin').value;
-    const priceMax = document.getElementById('priceMax').value;
-    const brand = document.getElementById('brandFilter').value;
-    const sort = document.querySelector('select').value;
-    
-    if (category) params.append('category', category);
-    if (priceMin) params.append('price_min', priceMin);
-    if (priceMax) params.append('price_max', priceMax);
-    if (brand) params.append('brand', brand);
-    if (sort && sort !== 'relevance') params.append('sort', sort);
-    
-    const queryString = params.toString();
-    return queryString ? '&' + queryString : '';
-}
-
-function filterProducts() {
-    const params = new URLSearchParams(window.location.search);
-    
-    const category = document.querySelector('input[name="category"]:checked')?.value;
-    const priceMin = document.getElementById('priceMin').value;
-    const priceMax = document.getElementById('priceMax').value;
-    const brand = document.getElementById('brandFilter').value;
-    
-    // Limpar parâmetros existentes
-    params.delete('category');
-    params.delete('price_min');
-    params.delete('price_max');
-    params.delete('brand');
-    params.delete('page');
-    
-    // Adicionar novos parâmetros
-    if (category) params.append('category', category);
-    if (priceMin) params.append('price_min', priceMin);
-    if (priceMax) params.append('price_max', priceMax);
-    if (brand) params.append('brand', brand);
-    
-    // Recarregar página
-    window.location.href = '?' + params.toString();
-}
-
-function sortProducts(sortValue) {
-    const params = new URLSearchParams(window.location.search);
-    
-    if (sortValue === 'relevance') {
-        params.delete('sort');
-    } else {
-        params.set('sort', sortValue);
-    }
-    
-    params.delete('page');
-    
-    window.location.href = '?' + params.toString();
-}
-
-function clearFilters() {
-    window.location.href = '/products';
-}
-</script>
-
-<%- include('../../partials/footer') %>

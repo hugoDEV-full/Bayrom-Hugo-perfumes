@@ -1,13 +1,64 @@
 const express = require('express');
 const router = express.Router();
-const { adminMiddleware } = require('../middleware/auth');
+const { authMiddleware, adminMiddleware } = require('../middleware/auth');
 const Product = require('../models/Product');
 const Order = require('../models/Order');
+const OrderItem = require('../models/OrderItem');
 const User = require('../models/User');
 const Category = require('../models/Category');
 
 // Middleware para garantir acesso apenas a administradores
+router.use(authMiddleware);
 router.use(adminMiddleware);
+
+function normalizeProductPayload(body) {
+    const productData = { ...body };
+
+    const numberFields = ['size_ml', 'stock_quantity', 'min_stock', 'regular_price', 'sale_price', 'cost_price', 'weight'];
+    for (const field of numberFields) {
+        if (productData[field] === '' || typeof productData[field] === 'undefined') continue;
+        const value = Number(productData[field]);
+        if (!Number.isNaN(value)) productData[field] = value;
+    }
+
+    const boolFields = ['is_featured', 'is_digital', 'requires_shipping', 'track_quantity', 'allow_backorder'];
+    for (const field of boolFields) {
+        productData[field] = productData[field] === 'true' || productData[field] === 'on' || productData[field] === true;
+    }
+
+    const jsonArrayFields = ['tags', 'occasion', 'images'];
+    for (const field of jsonArrayFields) {
+        if (typeof productData[field] !== 'string') continue;
+        const raw = productData[field].trim();
+        if (!raw) continue;
+        try {
+            const parsed = JSON.parse(raw);
+            productData[field] = parsed;
+        } catch {
+            productData[field] = raw
+                .split(/\r?\n|,/)
+                .map((s) => s.trim())
+                .filter(Boolean);
+        }
+    }
+
+    if (typeof productData.notes === 'string') {
+        const raw = productData.notes.trim();
+        if (raw) {
+            try {
+                productData.notes = JSON.parse(raw);
+            } catch {
+                productData.notes = null;
+            }
+        }
+    }
+
+    if (typeof productData.status === 'undefined' || productData.status === '') {
+        productData.status = 'active';
+    }
+
+    return productData;
+}
 
 // Dashboard
 router.get('/', async (req, res) => {
@@ -155,7 +206,7 @@ router.get('/products/new', async (req, res) => {
 // Criar produto
 router.post('/products', async (req, res) => {
     try {
-        const productData = req.body;
+        const productData = normalizeProductPayload(req.body);
         
         // Validações básicas
         if (!productData.name || !productData.sku || !productData.regular_price) {
@@ -212,7 +263,8 @@ router.post('/products/:id', async (req, res) => {
             return res.redirect('/admin/products');
         }
 
-        await product.update(req.body);
+        const productData = normalizeProductPayload(req.body);
+        await product.update(productData);
         
         req.flash('success_msg', 'Produto atualizado com sucesso!');
         res.redirect('/admin/products');
@@ -223,21 +275,45 @@ router.post('/products/:id', async (req, res) => {
     }
 });
 
-// Excluir produto
-router.delete('/products/:id', async (req, res) => {
+// Desativar produto (soft delete)
+router.post('/products/:id/deactivate', async (req, res) => {
     try {
         const product = await Product.findByPk(req.params.id);
         
         if (!product) {
-            return res.status(404).json({ error: 'Produto não encontrado' });
+            req.flash('error_msg', 'Produto não encontrado');
+            return res.redirect('/admin/products');
         }
 
         await product.update({ status: 'inactive' });
         
-        res.json({ success: true, message: 'Produto desativado com sucesso' });
+        req.flash('success_msg', 'Produto desativado com sucesso!');
+        res.redirect('/admin/products');
     } catch (error) {
         console.error('Erro ao desativar produto:', error);
-        res.status(500).json({ error: 'Erro ao desativar produto' });
+        req.flash('error_msg', 'Erro ao desativar produto');
+        res.redirect('/admin/products');
+    }
+});
+
+// Reativar produto
+router.post('/products/:id/activate', async (req, res) => {
+    try {
+        const product = await Product.findByPk(req.params.id);
+
+        if (!product) {
+            req.flash('error_msg', 'Produto não encontrado');
+            return res.redirect('/admin/products');
+        }
+
+        await product.update({ status: 'active' });
+
+        req.flash('success_msg', 'Produto ativado com sucesso!');
+        res.redirect('/admin/products');
+    } catch (error) {
+        console.error('Erro ao ativar produto:', error);
+        req.flash('error_msg', 'Erro ao ativar produto');
+        res.redirect('/admin/products');
     }
 });
 

@@ -5,6 +5,136 @@ const Category = require('../models/Category');
 const Review = require('../models/Review');
 const { optionalAuthMiddleware } = require('../middleware/auth');
 
+// Catálogo de inspirações (leve, focado em busca e filtros)
+router.get('/inspiracoes', optionalAuthMiddleware, async (req, res) => {
+    try {
+        const {
+            page = 1,
+            limit = 24,
+            category,
+            brand,
+            fragrance_family,
+            inspiration,
+            search,
+            sort = 'sales_count',
+            order = 'DESC'
+        } = req.query;
+
+        let whereClause = { status: 'active' };
+        let orderClause = [];
+
+        if (category) whereClause.category = category;
+
+        if (brand) {
+            whereClause.brand = { [Product.sequelize.Sequelize.Op.like]: `%${brand}%` };
+        }
+
+        if (fragrance_family) whereClause.fragrance_family = fragrance_family;
+
+        if (inspiration) {
+            whereClause.inspiration = { [Product.sequelize.Sequelize.Op.like]: `%${inspiration}%` };
+        }
+
+        if (search) {
+            whereClause[Product.sequelize.Sequelize.Op.or] = [
+                { name: { [Product.sequelize.Sequelize.Op.like]: `%${search}%` } },
+                { brand: { [Product.sequelize.Sequelize.Op.like]: `%${search}%` } },
+                { inspiration: { [Product.sequelize.Sequelize.Op.like]: `%${search}%` } },
+                { short_description: { [Product.sequelize.Sequelize.Op.like]: `%${search}%` } }
+            ];
+        }
+
+        const validSortFields = ['created_at', 'sales_count', 'rating_average', 'sale_price', 'name'];
+        const sortField = validSortFields.includes(sort) ? sort : 'sales_count';
+        const sortOrder = order.toUpperCase() === 'ASC' ? 'ASC' : 'DESC';
+        orderClause.push([sortField, sortOrder]);
+
+        const offset = (parseInt(page) - 1) * parseInt(limit);
+
+        const { count, rows: products } = await Product.findAndCountAll({
+            where: whereClause,
+            order: orderClause,
+            limit: parseInt(limit),
+            offset,
+            attributes: [
+                'id',
+                'name',
+                'slug',
+                'brand',
+                'category',
+                'fragrance_family',
+                'inspiration',
+                'size_ml',
+                'regular_price',
+                'sale_price',
+                'featured_image',
+                'stock_quantity',
+                'sales_count',
+                'rating_average',
+                'rating_count'
+            ]
+        });
+
+        const brands = await Product.findAll({
+            attributes: [[Product.sequelize.Sequelize.fn('DISTINCT', Product.sequelize.Sequelize.col('brand')), 'brand']],
+            where: { status: 'active' },
+            order: [['brand', 'ASC']]
+        });
+
+        const inspirations = await Product.findAll({
+            attributes: [[Product.sequelize.Sequelize.fn('DISTINCT', Product.sequelize.Sequelize.col('inspiration')), 'inspiration']],
+            where: {
+                status: 'active',
+                inspiration: { [Product.sequelize.Sequelize.Op.ne]: null }
+            },
+            order: [['inspiration', 'ASC']]
+        });
+
+        const families = await Product.findAll({
+            attributes: [[Product.sequelize.Sequelize.fn('DISTINCT', Product.sequelize.Sequelize.col('fragrance_family')), 'fragrance_family']],
+            where: {
+                status: 'active',
+                fragrance_family: { [Product.sequelize.Sequelize.Op.ne]: null }
+            },
+            order: [['fragrance_family', 'ASC']]
+        });
+
+        const totalPages = Math.ceil(count / limit);
+
+        res.render('client/inspirations/index', {
+            title: 'Catálogo de Inspirações - Bayrom & Hugo Parfums',
+            description: 'Pesquise e filtre perfumes por inspiração, marca, família olfativa e categoria.',
+            products,
+            filterOptions: {
+                brands: brands.map((b) => b.brand).filter(Boolean),
+                inspirations: inspirations.map((i) => i.inspiration).filter(Boolean),
+                families: families.map((f) => f.fragrance_family).filter(Boolean)
+            },
+            pagination: {
+                currentPage: parseInt(page),
+                totalPages,
+                hasNextPage: parseInt(page) < totalPages,
+                hasPrevPage: parseInt(page) > 1,
+                totalItems: count,
+                itemsPerPage: parseInt(limit)
+            },
+            filters: {
+                category,
+                brand,
+                fragrance_family,
+                inspiration,
+                search,
+                sort,
+                order
+            }
+        });
+    } catch (error) {
+        console.error('Erro no catálogo de inspirações:', error);
+        req.flash('error_msg', 'Ocorreu um erro ao carregar o catálogo de inspirações');
+        res.redirect('/products');
+    }
+});
+
 // Listagem de produtos
 router.get('/', optionalAuthMiddleware, async (req, res) => {
     try {

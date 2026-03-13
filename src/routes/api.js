@@ -7,6 +7,121 @@ const { optionalAuthMiddleware } = require('../middleware/auth');
 
 // API Routes - todas retornam JSON
 
+function getCombinationInfo(materials) {
+    const combinations = {
+        'gold,diamond,ruby': {
+            title: 'Luxo Real',
+            description: 'Uma combinação majestosa que representa poder, riqueza e paixão. Ideal para quem não tem medo de ser o centro das atenções.',
+            personality: 'Destemido',
+            style: 'Sofisticado',
+            occasion: 'Eventos Especiais'
+        },
+        'diamond,emerald,sapphire': {
+            title: 'Elegância Clássica',
+            description: 'A união da pureza com a sabedoria e natureza. Perfeita para quem valoriza tradição e refinamento.',
+            personality: 'Clássico',
+            style: 'Elegante',
+            occasion: 'Uso Diário'
+        },
+        'amethyst,ruby,rose-gold': {
+            title: 'Mistério e Paixão',
+            description: 'Uma mistura enigmática que combina intensidade com mistério e romance. Para almas livres e criativas.',
+            personality: 'Misterioso',
+            style: 'Romântico',
+            occasion: 'Noites Especiais'
+        },
+        'gold,onyx,platinum': {
+            title: 'Poder Absoluto',
+            description: 'A combinação máxima de força e prestígio. Indicada para líderes e pessoas que comandam respeito.',
+            personality: 'Líder',
+            style: 'Poderoso',
+            occasion: 'Reuniões Importantes'
+        }
+    };
+
+    const key = [...materials].sort().join(',');
+    return combinations[key] || {
+        title: 'Sua Combinação Única',
+        description: `Uma seleção especial de ${materials.length} materiais que cria uma fragrância exclusivamente sua.`,
+        personality: 'Único',
+        style: 'Personalizado',
+        occasion: 'Qualquer Momento'
+    };
+}
+
+function getMaterialToFamilies(material) {
+    const map = {
+        gold: ['oriental', 'amadeirado', 'especiarias'],
+        diamond: ['aquatico', 'floral', 'citrico'],
+        ruby: ['oriental', 'doce', 'especiarias'],
+        emerald: ['floral', 'citrico', 'aquatico'],
+        sapphire: ['aquatico', 'citrico', 'amadeirado'],
+        amethyst: ['oriental', 'floral', 'doce'],
+        platinum: ['amadeirado', 'aquatico'],
+        'rose-gold': ['floral', 'doce', 'oriental'],
+        onyx: ['amadeirado', 'oriental']
+    };
+    return map[material] || [];
+}
+
+// Recomendações para "Crie sua combinação perfeita"
+router.get('/combinations/recommendations', async (req, res) => {
+    try {
+        const raw = String(req.query.materials || '').trim();
+        const materials = raw
+            .split(',')
+            .map((m) => m.trim())
+            .filter(Boolean)
+            .slice(0, 3);
+
+        if (materials.length === 0) {
+            return res.json({
+                materials: [],
+                combination: getCombinationInfo([]),
+                products: []
+            });
+        }
+
+        const families = Array.from(new Set(materials.flatMap(getMaterialToFamilies)));
+
+        const whereClause = { status: 'active' };
+        if (families.length > 0) {
+            whereClause.fragrance_family = { [Product.sequelize.Sequelize.Op.in]: families };
+        }
+
+        const products = await Product.findAll({
+            where: whereClause,
+            attributes: [
+                'id',
+                'name',
+                'slug',
+                'brand',
+                'inspiration',
+                'featured_image',
+                'regular_price',
+                'sale_price',
+                'size_ml',
+                'fragrance_family',
+                'sales_count',
+                'rating_average',
+                'rating_count'
+            ],
+            limit: 6,
+            order: [['sales_count', 'DESC']]
+        });
+
+        res.json({
+            materials,
+            families,
+            combination: getCombinationInfo(materials),
+            products
+        });
+    } catch (error) {
+        console.error('Erro ao gerar recomendações da combinação:', error);
+        res.status(500).json({ error: 'Erro interno do servidor' });
+    }
+});
+
 // Busca rápida de produtos
 router.get('/products/search', async (req, res) => {
     try {

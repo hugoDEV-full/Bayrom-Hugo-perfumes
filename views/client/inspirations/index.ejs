@@ -1,0 +1,187 @@
+<%- include('../../partials/header') %>
+
+<section class="py-5 bg-gradient-luxury">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-9 mx-auto text-center">
+                <div class="luxury-badge mb-4">
+                    <i class="fas fa-wand-magic-sparkles"></i>
+                    CATÁLOGO DE INSPIRAÇÕES
+                </div>
+                <h1 class="section-title-luxury">Encontre seu perfume por inspiração</h1>
+                <p class="section-subtitle-luxury">Pesquise e filtre por marca, categoria, família olfativa e inspiração</p>
+            </div>
+        </div>
+
+        <div class="row mt-4">
+            <div class="col-lg-10 mx-auto">
+                <form method="GET" action="/products/inspiracoes" class="row g-2">
+                    <div class="col-md-8">
+                        <div class="input-group">
+                            <input type="text" name="search" class="form-control" placeholder="Buscar por nome, marca ou inspiração..." value="<%= filters.search || '' %>">
+                            <button class="btn btn-luxury" type="submit"><i class="fas fa-search"></i></button>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <select name="sort" class="form-select" onchange="this.form.submit()">
+                            <option value="sales_count" <%= filters.sort === 'sales_count' ? 'selected' : '' %>>Mais vendidos</option>
+                            <option value="rating_average" <%= filters.sort === 'rating_average' ? 'selected' : '' %>>Melhor avaliação</option>
+                            <option value="created_at" <%= filters.sort === 'created_at' ? 'selected' : '' %>>Mais novos</option>
+                            <option value="sale_price" <%= filters.sort === 'sale_price' ? 'selected' : '' %>>Menor preço</option>
+                            <option value="name" <%= filters.sort === 'name' ? 'selected' : '' %>>Nome</option>
+                        </select>
+                        <input type="hidden" name="order" value="<%= filters.order || 'DESC' %>">
+                        <input type="hidden" name="category" value="<%= filters.category || '' %>">
+                        <input type="hidden" name="brand" value="<%= filters.brand || '' %>">
+                        <input type="hidden" name="fragrance_family" value="<%= filters.fragrance_family || '' %>">
+                        <input type="hidden" name="inspiration" value="<%= filters.inspiration || '' %>">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 mb-4">
+                <div class="card luxury-card">
+                    <div class="card-header bg-luxury-dark text-white">
+                        <h6 class="mb-0"><i class="fas fa-filter me-2"></i>Filtros</h6>
+                    </div>
+                    <div class="card-body">
+                        <form method="GET" action="/products/inspiracoes" id="filtersForm">
+                            <input type="hidden" name="search" value="<%= filters.search || '' %>">
+                            <input type="hidden" name="sort" value="<%= filters.sort || 'sales_count' %>">
+                            <input type="hidden" name="order" value="<%= filters.order || 'DESC' %>">
+
+                            <div class="mb-3">
+                                <label class="form-label fw-bold">Categoria</label>
+                                <select class="form-select form-select-sm" name="category" onchange="document.getElementById('filtersForm').submit()">
+                                    <option value="">Todas</option>
+                                    <option value="masculino" <%= filters.category === 'masculino' ? 'selected' : '' %>>Masculino</option>
+                                    <option value="feminino" <%= filters.category === 'feminino' ? 'selected' : '' %>>Feminino</option>
+                                    <option value="unisex" <%= filters.category === 'unisex' ? 'selected' : '' %>>Unisex</option>
+                                </select>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label fw-bold">Marca</label>
+                                <select class="form-select form-select-sm" name="brand" onchange="document.getElementById('filtersForm').submit()">
+                                    <option value="">Todas</option>
+                                    <% (filterOptions.brands || []).forEach(b => { %>
+                                        <option value="<%= b %>" <%= filters.brand === b ? 'selected' : '' %>><%= b %></option>
+                                    <% }) %>
+                                </select>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label fw-bold">Família olfativa</label>
+                                <select class="form-select form-select-sm" name="fragrance_family" onchange="document.getElementById('filtersForm').submit()">
+                                    <option value="">Todas</option>
+                                    <% (filterOptions.families || []).forEach(f => { %>
+                                        <option value="<%= f %>" <%= filters.fragrance_family === f ? 'selected' : '' %>><%= f %></option>
+                                    <% }) %>
+                                </select>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label fw-bold">Inspiração</label>
+                                <select class="form-select form-select-sm" name="inspiration" onchange="document.getElementById('filtersForm').submit()">
+                                    <option value="">Todas</option>
+                                    <% (filterOptions.inspirations || []).forEach(i => { %>
+                                        <option value="<%= i %>" <%= filters.inspiration === i ? 'selected' : '' %>><%= i %></option>
+                                    <% }) %>
+                                </select>
+                            </div>
+
+                            <div class="d-grid gap-2">
+                                <a class="btn btn-outline-luxury" href="/products/inspiracoes">Limpar filtros</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-9">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <div class="text-muted"><%= pagination.totalItems %> perfume(s) encontrados</div>
+                    <div>
+                        <a href="/products" class="btn btn-sm btn-outline-secondary">Ver loja (produtos)</a>
+                    </div>
+                </div>
+
+                <div class="row g-4">
+                    <% if (products && products.length > 0) { %>
+                        <% products.forEach(product => { %>
+                            <div class="col-md-6 col-lg-4">
+                                <div class="card h-100 luxury-card product-card">
+                                    <% if (product.featured_image) { %>
+                                        <img src="<%= product.featured_image %>" class="card-img-top product-image" alt="<%= product.name %>">
+                                    <% } else { %>
+                                        <div class="card-img-top product-placeholder d-flex align-items-center justify-content-center">
+                                            <i class="fas fa-spray-can fa-3x text-muted"></i>
+                                        </div>
+                                    <% } %>
+
+                                    <div class="card-body d-flex flex-column">
+                                        <div class="mb-2">
+                                            <small class="text-muted"><%= product.brand %></small>
+                                        </div>
+
+                                        <h5 class="card-title"><%= product.name %></h5>
+
+                                        <% if (product.inspiration) { %>
+                                            <p class="card-text text-muted small">Inspirado em <%= product.inspiration %></p>
+                                        <% } %>
+
+                                        <div class="mt-auto">
+                                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                                <div>
+                                                    <h5 class="mb-0">R$ <%= Number(product.sale_price || product.regular_price || 0).toFixed(2) %></h5>
+                                                    <small class="text-muted"><%= product.size_ml %>ml</small>
+                                                </div>
+                                                <div class="text-end">
+                                                    <small class="text-muted">Estoque: <%= product.stock_quantity ?? 0 %></small>
+                                                </div>
+                                            </div>
+
+                                            <div class="d-grid gap-2">
+                                                <a href="/products/<%= product.slug %>" class="btn btn-luxury">Ver detalhes</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        <% }) %>
+                    <% } else { %>
+                        <div class="col-12">
+                            <div class="text-center py-5">
+                                <i class="fas fa-search fa-3x text-muted mb-3"></i>
+                                <h4>Nenhum perfume encontrado</h4>
+                                <p class="text-muted">Tente ajustar os filtros ou buscar por outro termo</p>
+                            </div>
+                        </div>
+                    <% } %>
+                </div>
+
+                <% if (pagination && pagination.totalPages > 1) { %>
+                    <nav class="mt-4">
+                        <ul class="pagination justify-content-end">
+                            <li class="page-item <%= pagination.hasPrevPage ? '' : 'disabled' %>">
+                                <a class="page-link" href="?page=<%= pagination.currentPage - 1 %>&limit=<%= pagination.itemsPerPage %>&category=<%= filters.category || '' %>&brand=<%= filters.brand || '' %>&fragrance_family=<%= filters.fragrance_family || '' %>&inspiration=<%= filters.inspiration || '' %>&search=<%= filters.search || '' %>&sort=<%= filters.sort || '' %>&order=<%= filters.order || '' %>">Anterior</a>
+                            </li>
+                            <li class="page-item disabled"><span class="page-link">Página <%= pagination.currentPage %> / <%= pagination.totalPages %></span></li>
+                            <li class="page-item <%= pagination.hasNextPage ? '' : 'disabled' %>">
+                                <a class="page-link" href="?page=<%= pagination.currentPage + 1 %>&limit=<%= pagination.itemsPerPage %>&category=<%= filters.category || '' %>&brand=<%= filters.brand || '' %>&fragrance_family=<%= filters.fragrance_family || '' %>&inspiration=<%= filters.inspiration || '' %>&search=<%= filters.search || '' %>&sort=<%= filters.sort || '' %>&order=<%= filters.order || '' %>">Próxima</a>
+                            </li>
+                        </ul>
+                    </nav>
+                <% } %>
+            </div>
+        </div>
+    </div>
+</section>
+
+<%- include('../../partials/footer') %>
