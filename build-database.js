@@ -4,6 +4,21 @@ console.log('🔧 Build Database - Iniciando configuração automática...');
 const sequelize = require('./src/config/database');
 const { User, Product, Category, Review } = require('./src/models');
 
+function logDetailedSequelizeError(error) {
+    if (!error) return;
+
+    if (Array.isArray(error?.errors) && error.errors.length > 0) {
+        console.error('📌 Detalhes do erro Sequelize:');
+        error.errors.forEach((e) => {
+            console.error(`   • ${e?.path || 'field'}: ${e?.message || e}`);
+        });
+    }
+
+    if (error?.parent?.sqlMessage) {
+        console.error(`📌 SQL Message: ${error.parent.sqlMessage}`);
+    }
+}
+
 async function syncSchemaWithFallback() {
     try {
         await sequelize.sync({ alter: true });
@@ -59,7 +74,7 @@ async function buildDatabase(options = {}) {
                 { name: 'Perfumes Femininos', slug: 'perfumes-femininos', description: 'Coleção feminina', icon: 'fa-female', sort_order: 2, is_active: true },
                 { name: 'Perfumes Unisex', slug: 'perfumes-unisex', description: 'Coleção unisex', icon: 'fa-venus-mars', sort_order: 3, is_active: true },
                 { name: 'Kits de Presente', slug: 'kits-de-presente', description: 'Kits especiais', icon: 'fa-gift', sort_order: 4, is_active: true }
-            ]);
+            ], { ignoreDuplicates: true });
             console.log('✅ Categorias inseridas!');
 
             // Inserir produtos
@@ -224,17 +239,19 @@ async function buildDatabase(options = {}) {
                     sales_count: 12,
                     rating_average: 4.3, rating_count: 6
                 }
-            ]);
+            ], { ignoreDuplicates: true });
             console.log('✅ Produtos inseridos!');
 
             // Criar usuário admin
-            await User.create({
-                name: 'Administrador',
-                email: 'admin@bayromhugo.com.br',
-                password: 'admin123',
-                role: 'admin',
-                status: 'active',
-                email_verified: true
+            await User.findOrCreate({
+                where: { email: 'admin@bayromhugo.com.br' },
+                defaults: {
+                    name: 'Administrador',
+                    password: 'admin123',
+                    role: 'admin',
+                    status: 'active',
+                    email_verified: true
+                }
             });
             console.log('✅ Usuário admin criado!');
 
@@ -250,7 +267,7 @@ async function buildDatabase(options = {}) {
                     comment: 'Excelente experiência e ótima fixação.',
                     is_verified_purchase: false,
                     is_approved: true
-                })));
+                })), { ignoreDuplicates: true });
             }
             console.log('✅ Avaliações inseridas!');
         }
@@ -269,6 +286,7 @@ async function buildDatabase(options = {}) {
 
     } catch (error) {
         console.error('❌ Erro ao configurar banco de dados:', error.message);
+        logDetailedSequelizeError(error);
         
         if (error.code === 'ECONNREFUSED') {
             console.log('');
@@ -277,10 +295,6 @@ async function buildDatabase(options = {}) {
             console.log('   • Em local: SQLite não requer configuração');
         }
         
-        if (closeConnection && sequelize) {
-            await sequelize.close();
-        }
-
         // Se foi chamado pelo servidor (RUN_DB_SETUP), não engolir erro
         // (precisa falhar fast para não iniciar com DB inconsistente)
         if (process.env.RUN_DB_SETUP === 'true') {
