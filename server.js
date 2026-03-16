@@ -161,7 +161,7 @@ async function startServer() {
         if (shouldSetupDb) {
             console.log('🔄 Configurando banco de dados...');
             const buildDatabase = require('./build-database');
-            await buildDatabase();
+            await buildDatabase({ closeConnection: false, tolerateProductionErrors: false });
             console.log('✅ Banco de dados configurado!');
         }
         
