@@ -285,7 +285,7 @@ router.get('/buscar', async (req, res) => {
 // Página de produtos
 router.get('/products', async (req, res) => {
     try {
-        const { category, brand, sort = 'newest' } = req.query;
+        const { category, brand, sort = 'newest', search = '' } = req.query;
         
         let whereClause = { status: 'active' };
         let orderClause = [];
@@ -346,13 +346,21 @@ router.get('/products', async (req, res) => {
             order: [['name', 'ASC']]
         });
 
+        const pagination = {
+            totalItems: products.length,
+            currentPage: 1,
+            totalPages: 1,
+            itemsPerPage: 20
+        };
+
         res.render('client/products/list', {
             title: 'Produtos - Bayrom & Hugo Parfums',
             description: 'Conheça nossa coleção completa de perfumes premium.',
             products,
             categories,
             brands,
-            filters: { category, brand, sort }
+            pagination,
+            filters: { category, brand, sort, search }
         });
     } catch (error) {
         console.error('Erro ao carregar produtos:', error);
