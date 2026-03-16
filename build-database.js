@@ -299,6 +299,12 @@ async function syncSchemaWithFallback() {
         // Limpar dados órfãos antes de adicionar FKs
         await sequelize.query('DELETE FROM reviews WHERE product_id NOT IN (SELECT id FROM products)');
         await sequelize.query('DELETE FROM reviews WHERE user_id NOT IN (SELECT id FROM users)');
+        await sequelize.query('DELETE FROM reviews WHERE order_id NOT IN (SELECT id FROM orders) AND order_id IS NOT NULL');
+
+        // Truncar tabela reviews para garantir FK limpa (dados inseridos depois)
+        await sequelize.query('SET FOREIGN_KEY_CHECKS = 0');
+        await sequelize.query('TRUNCATE TABLE reviews');
+        await sequelize.query('SET FOREIGN_KEY_CHECKS = 1');
 
         // Agora rodar sync com alter para criar FKs e tabelas restantes
         await sequelize.sync({ alter: true });
