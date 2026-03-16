@@ -320,11 +320,26 @@ router.get('/products', async (req, res) => {
                 orderClause.push(['created_at', 'DESC']);
         }
 
-        const products = await Product.findAll({
+        const productsRaw = await Product.findAll({
             where: whereClause,
             order: orderClause,
             limit: 20
         });
+
+        const products = productsRaw.map((p) => {
+            const plain = p.get({ plain: true });
+            if (plain.regular_price != null) plain.regular_price = Number(plain.regular_price);
+            if (plain.sale_price != null) plain.sale_price = Number(plain.sale_price);
+            return plain;
+        });
+
+        const brands = Array.from(
+            new Set(
+                products
+                    .map((p) => p.brand)
+                    .filter((b) => typeof b === 'string' && b.trim().length > 0)
+            )
+        ).sort((a, b) => a.localeCompare(b));
 
         const categories = await Category.findAll({
             where: { is_active: true },
