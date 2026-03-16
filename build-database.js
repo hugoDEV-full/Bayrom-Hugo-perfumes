@@ -1,6 +1,6 @@
 console.log('🔧 Build Database - Iniciando configuração automática...');
 
-// Usar a MESMA instância/config do app para evitar divergência de schema
+const { DataTypes } = require('sequelize');
 const sequelize = require('./src/config/database');
 const { User, Product, Category, Review } = require('./src/models');
 
@@ -21,6 +21,128 @@ function logDetailedSequelizeError(error) {
 
 async function syncSchemaWithFallback() {
     try {
+        // Forçar ordem de criação manual para evitar FK antes da tabela existir
+        const queryInterface = sequelize.getQueryInterface();
+        
+        // Criar tabelas base primeiro (sem FK)
+        await queryInterface.createTable('users', {
+            id: {
+                type: DataTypes.INTEGER,
+                primaryKey: true,
+                autoIncrement: true
+            },
+            name: {
+                type: DataTypes.STRING(100),
+                allowNull: false
+            },
+            email: {
+                type: DataTypes.STRING(150),
+                allowNull: false,
+                unique: true
+            },
+            password: {
+                type: DataTypes.STRING(255),
+                allowNull: false
+            },
+            cpf: { type: DataTypes.STRING(14) },
+            phone: { type: DataTypes.STRING(20) },
+            birth_date: { type: DataTypes.DATEONLY },
+            gender: { type: DataTypes.ENUM('M', 'F', 'O') },
+            role: {
+                type: DataTypes.ENUM('admin', 'client'),
+                defaultValue: 'client'
+            },
+            status: {
+                type: DataTypes.ENUM('active', 'inactive', 'blocked'),
+                defaultValue: 'active'
+            },
+            email_verified: { type: DataTypes.BOOLEAN, defaultValue: false },
+            email_verification_token: { type: DataTypes.STRING(255) },
+            password_reset_token: { type: DataTypes.STRING(255) },
+            password_reset_expires: { type: DataTypes.DATE },
+            last_login: { type: DataTypes.DATE },
+            preferences: { type: DataTypes.JSON },
+            created_at: {
+                type: DataTypes.DATE,
+                defaultValue: DataTypes.NOW
+            },
+            updated_at: {
+                type: DataTypes.DATE,
+                defaultValue: DataTypes.NOW
+            }
+        }, { engine: 'InnoDB' });
+
+        // Criar categorias
+        await queryInterface.createTable('categories', {
+            id: {
+                type: DataTypes.INTEGER,
+                primaryKey: true,
+                autoIncrement: true
+            },
+            name: { type: DataTypes.STRING(100), allowNull: false },
+            slug: { type: DataTypes.STRING(120), allowNull: false, unique: true },
+            description: { type: DataTypes.TEXT },
+            image: { type: DataTypes.STRING(500) },
+            icon: { type: DataTypes.STRING(50) },
+            parent_id: { type: DataTypes.INTEGER },
+            sort_order: { type: DataTypes.INTEGER, defaultValue: 0 },
+            is_active: { type: DataTypes.BOOLEAN, defaultValue: true },
+            seo_title: { type: DataTypes.STRING(70) },
+            seo_description: { type: DataTypes.STRING(160) },
+            meta_keywords: { type: DataTypes.STRING(255) },
+            created_at: {
+                type: DataTypes.DATE,
+                defaultValue: DataTypes.NOW
+            },
+            updated_at: {
+                type: DataTypes.DATE,
+                defaultValue: DataTypes.NOW
+            }
+        }, { engine: 'InnoDB' });
+
+        // Criar produtos
+        await queryInterface.createTable('products', {
+            id: {
+                type: DataTypes.INTEGER,
+                primaryKey: true,
+                autoIncrement: true
+            },
+            name: { type: DataTypes.STRING(200), allowNull: false },
+            slug: { type: DataTypes.STRING(220), allowNull: false, unique: true },
+            sku: { type: DataTypes.STRING(50), unique: true },
+            brand: { type: DataTypes.STRING(100) },
+            category: { type: DataTypes.STRING(50) },
+            regular_price: { type: DataTypes.DECIMAL(10, 2), allowNull: false },
+            sale_price: { type: DataTypes.DECIMAL(10, 2) },
+            description: { type: DataTypes.TEXT },
+            short_description: { type: DataTypes.TEXT },
+            inspiration: { type: DataTypes.STRING(200) },
+            fragrance_family: { type: DataTypes.STRING(50) },
+            size_ml: { type: DataTypes.INTEGER },
+            is_featured: { type: DataTypes.BOOLEAN, defaultValue: false },
+            status: { type: DataTypes.ENUM('active', 'inactive', 'draft'), defaultValue: 'active' },
+            stock_quantity: { type: DataTypes.INTEGER, defaultValue: 0 },
+            min_stock: { type: DataTypes.INTEGER, defaultValue: 0 },
+            images: { type: DataTypes.JSON },
+            is_digital: { type: DataTypes.BOOLEAN, defaultValue: false },
+            requires_shipping: { type: DataTypes.BOOLEAN, defaultValue: true },
+            track_quantity: { type: DataTypes.BOOLEAN, defaultValue: true },
+            allow_backorder: { type: DataTypes.BOOLEAN, defaultValue: false },
+            view_count: { type: DataTypes.INTEGER, defaultValue: 0 },
+            sales_count: { type: DataTypes.INTEGER, defaultValue: 0 },
+            rating_average: { type: DataTypes.DECIMAL(3, 2), defaultValue: 0 },
+            rating_count: { type: DataTypes.INTEGER, defaultValue: 0 },
+            created_at: {
+                type: DataTypes.DATE,
+                defaultValue: DataTypes.NOW
+            },
+            updated_at: {
+                type: DataTypes.DATE,
+                defaultValue: DataTypes.NOW
+            }
+        }, { engine: 'InnoDB' });
+
+        // Agora rodar sync com alter para criar FKs e tabelas restantes
         await sequelize.sync({ alter: true });
         return { rebuilt: false };
     } catch (error) {
