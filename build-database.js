@@ -306,6 +306,17 @@ async function syncSchemaWithFallback() {
         await sequelize.query('TRUNCATE TABLE reviews');
         await sequelize.query('SET FOREIGN_KEY_CHECKS = 1');
 
+        // Remover FKs existentes para recriação limpa
+        try {
+            await sequelize.query('ALTER TABLE reviews DROP FOREIGN KEY Review_ibfk_1');
+        } catch (e) {}
+        try {
+            await sequelize.query('ALTER TABLE reviews DROP FOREIGN KEY Review_ibfk_2');
+        } catch (e) {}
+        try {
+            await sequelize.query('ALTER TABLE reviews DROP FOREIGN KEY Review_ibfk_3');
+        } catch (e) {}
+
         // Agora rodar sync com alter para criar FKs e tabelas restantes
         await sequelize.sync({ alter: true });
         return { rebuilt: false };
