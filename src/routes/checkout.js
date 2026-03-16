@@ -101,9 +101,18 @@ router.post('/place-order', [
             return res.redirect('/cart');
         }
 
-        // Validar estoque antes
+        // Validar estoque antes (recarregar com lock para evitar concorrência)
+        const lockedProductsById = new Map();
         for (const item of cartItems) {
-            const product = item.product;
+            const productId = item.product_id;
+
+            const product = await Product.findByPk(productId, {
+                transaction,
+                lock: transaction.LOCK.UPDATE
+            });
+
+            lockedProductsById.set(productId, product);
+
             if (!product || product.status !== 'active') {
                 req.flash('error_msg', 'Um item do seu carrinho não está mais disponível');
                 await transaction.rollback();
@@ -138,7 +147,7 @@ router.post('/place-order', [
         // Criar pedido
         const order = await Order.create({
             user_id: req.user.id,
-            status: 'confirmed',
+            status: 'pending',
             payment_status: 'pending',
             payment_method: req.body.payment_method,
             shipping_address_id: shippingAddress.id,
@@ -159,13 +168,18 @@ router.post('/place-order', [
 
         // Criar itens
         for (const cartItem of cartItems) {
-            const product = cartItem.product;
+            const product = lockedProductsById.get(cartItem.product_id);
+            if (!product) {
+                req.flash('error_msg', 'Um item do seu carrinho não está mais disponível');
+                await transaction.rollback();
+                return res.redirect('/cart');
+            }
 
             await OrderItem.create({
                 order_id: order.id,
                 product_id: product.id,
                 product_name: product.name,
-                product_sku: product.sku,
+                product_sku: product.sku || null,
                 quantity: cartItem.quantity,
                 unit_price: cartItem.unit_price,
                 discount_amount: 0,

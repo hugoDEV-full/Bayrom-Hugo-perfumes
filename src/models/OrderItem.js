@@ -31,7 +31,7 @@ const OrderItem = sequelize.define('OrderItem', {
     },
     product_sku: {
         type: DataTypes.STRING(50),
-        allowNull: false
+        allowNull: true
     },
     quantity: {
         type: DataTypes.INTEGER,
