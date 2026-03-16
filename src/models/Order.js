@@ -228,7 +228,7 @@ const Order = sequelize.define('Order', {
         allowNull: true
     },
     ip_address: {
-        type: DataTypes.INET,
+        type: DataTypes.STRING(45),
         allowNull: true
     }
 }, {
