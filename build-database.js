@@ -142,6 +142,47 @@ async function syncSchemaWithFallback() {
             }
         }, { engine: 'InnoDB' });
 
+        // Criar addresses (antes de Order)
+        await queryInterface.createTable('addresses', {
+            id: {
+                type: DataTypes.INTEGER,
+                primaryKey: true,
+                autoIncrement: true
+            },
+            user_id: {
+                type: DataTypes.INTEGER,
+                allowNull: false,
+                references: {
+                    model: 'users',
+                    key: 'id'
+                },
+                onDelete: 'CASCADE'
+            },
+            type: {
+                type: DataTypes.ENUM('shipping', 'billing'),
+                defaultValue: 'shipping'
+            },
+            recipient_name: { type: DataTypes.STRING(100), allowNull: false },
+            postal_code: { type: DataTypes.STRING(9), allowNull: false },
+            street: { type: DataTypes.STRING(200), allowNull: false },
+            number: { type: DataTypes.STRING(20), allowNull: false },
+            complement: { type: DataTypes.STRING(100) },
+            neighborhood: { type: DataTypes.STRING(100), allowNull: false },
+            city: { type: DataTypes.STRING(100), allowNull: false },
+            state: { type: DataTypes.STRING(2), allowNull: false },
+            country: { type: DataTypes.STRING(50), defaultValue: 'Brasil' },
+            is_default: { type: DataTypes.BOOLEAN, defaultValue: false },
+            coordinates: { type: DataTypes.JSON },
+            created_at: {
+                type: DataTypes.DATE,
+                defaultValue: DataTypes.NOW
+            },
+            updated_at: {
+                type: DataTypes.DATE,
+                defaultValue: DataTypes.NOW
+            }
+        }, { engine: 'InnoDB' });
+
         // Agora rodar sync com alter para criar FKs e tabelas restantes
         await sequelize.sync({ alter: true });
         return { rebuilt: false };
