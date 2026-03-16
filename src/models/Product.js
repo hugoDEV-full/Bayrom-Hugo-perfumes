@@ -209,8 +209,17 @@ const Product = sequelize.define('Product', {
     rating_count: {
         type: DataTypes.INTEGER,
         defaultValue: 0
+    },
+    created_at: {
+        type: DataTypes.DATE,
+        defaultValue: DataTypes.NOW
+    },
+    updated_at: {
+        type: DataTypes.DATE,
+        defaultValue: DataTypes.NOW
     }
 }, {
+    tableName: 'products',
     hooks: {
         beforeCreate: (product) => {
             if (product.name && !product.slug) {

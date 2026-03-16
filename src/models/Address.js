@@ -93,6 +93,7 @@ const Address = sequelize.define('Address', {
         comment: 'Latitude e longitude para entrega'
     }
 }, {
+    tableName: 'addresses',
     indexes: [
         {
             fields: ['user_id']

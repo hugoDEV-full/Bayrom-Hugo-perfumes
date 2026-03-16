@@ -71,6 +71,7 @@ const Review = sequelize.define('Review', {
         defaultValue: DataTypes.NOW
     }
 }, {
+    tableName: 'reviews',
     indexes: [
         {
             fields: ['product_id']

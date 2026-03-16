@@ -21,6 +21,21 @@ function logDetailedSequelizeError(error) {
 
 async function syncSchemaWithFallback() {
     try {
+        const isMysql = sequelize.getDialect && sequelize.getDialect() === 'mysql';
+
+        // Em MySQL produção, pode existir schema legado com tabelas singular/maiúsculo (ex: `Review`),
+        // o que causa erro ao tentar adicionar FKs no alter. Se RUN_DB_SETUP=true, limpamos isso.
+        if (isMysql && process.env.RUN_DB_SETUP === 'true') {
+            await sequelize.query('SET FOREIGN_KEY_CHECKS = 0');
+            await sequelize.query('DROP TABLE IF EXISTS `Review`');
+            await sequelize.query('DROP TABLE IF EXISTS `Order`');
+            await sequelize.query('DROP TABLE IF EXISTS `Address`');
+            await sequelize.query('DROP TABLE IF EXISTS `Product`');
+            await sequelize.query('DROP TABLE IF EXISTS `Category`');
+            await sequelize.query('DROP TABLE IF EXISTS `User`');
+            await sequelize.query('SET FOREIGN_KEY_CHECKS = 1');
+        }
+
         // Forçar ordem de criação manual para evitar FK antes da tabela existir
         const queryInterface = sequelize.getQueryInterface();
         
@@ -347,6 +362,7 @@ async function buildDatabase(options = {}) {
         console.log('📊 Conectando ao banco de dados...');
         await sequelize.authenticate();
         console.log('✅ Conexão estabelecida!');
+
 
         console.log('🏗️ Criando tabelas...');
         const { rebuilt } = await syncSchemaWithFallback();

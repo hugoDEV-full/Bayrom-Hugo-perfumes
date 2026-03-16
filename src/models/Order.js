@@ -232,6 +232,7 @@ const Order = sequelize.define('Order', {
         allowNull: true
     }
 }, {
+    tableName: 'orders',
     hooks: {
         beforeCreate: (order) => {
             if (!order.order_number) {

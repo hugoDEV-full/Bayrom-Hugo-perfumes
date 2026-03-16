@@ -66,36 +66,40 @@ const Category = sequelize.define('Category', {
         allowNull: true
     }
 }, {
+    tableName: 'categories',
     hooks: {
         beforeCreate: (category) => {
-            if (category.name && !category.slug) {
-                category.slug = category.name
-                    .toLowerCase()
-                    .replace(/[^a-z0-9]+/g, '-')
-                    .replace(/(^-|-$)/g, '');
+            if (!category.slug && category.name) {
+                category.slug = category.name.toLowerCase()
+                    .replace(/[^a-z0-9\s-]/g, '')
+                    .replace(/\s+/g, '-')
+                    .replace(/-+/g, '-')
+                    .trim('-');
             }
         },
         beforeUpdate: (category) => {
-            if (category.changed('name') && !category.slug) {
-                category.slug = category.name
-                    .toLowerCase()
-                    .replace(/[^a-z0-9]+/g, '-')
-                    .replace(/(^-|-$)/g, '');
+            if (category.changed('name')) {
+                category.slug = category.name.toLowerCase()
+                    .replace(/[^a-z0-9\s-]/g, '')
+                    .replace(/\s+/g, '-')
+                    .replace(/-+/g, '-')
+                    .trim('-');
             }
         }
     },
     indexes: [
         {
+            unique: true,
             fields: ['slug']
         },
         {
             fields: ['parent_id']
         },
         {
-            fields: ['sort_order']
+            fields: ['is_active']
         },
         {
-            fields: ['is_active']
+            fields: ['sort_order']
         }
     ]
 });
