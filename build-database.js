@@ -41,10 +41,10 @@ async function syncSchemaWithFallback() {
 }
 
 async function buildDatabase(options = {}) {
-    const {
-        closeConnection = (require.main === module),
-        tolerateProductionErrors = (require.main === module)
-    } = options;
+    // Quando chamado pelo server (RUN_DB_SETUP), NUNCA fechar a conexão
+    // Quando executado direto pela CLI (require.main === module), fechar ao final
+    const closeConnection = options.closeConnection ?? (require.main === module);
+    const tolerateProductionErrors = options.tolerateProductionErrors ?? (require.main === module);
 
     try {
         console.log('📊 Conectando ao banco de dados...');
@@ -309,7 +309,8 @@ async function buildDatabase(options = {}) {
 
         throw error;
     } finally {
-        if (closeConnection && sequelize) {
+        // SÓ fechar a conexão se não for chamado pelo server (RUN_DB_SETUP)
+        if (closeConnection && sequelize && process.env.RUN_DB_SETUP !== 'true') {
             await sequelize.close();
         }
     }
