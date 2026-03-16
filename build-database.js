@@ -183,6 +183,67 @@ async function syncSchemaWithFallback() {
             }
         }, { engine: 'InnoDB' });
 
+        // Criar orders (antes de sync para evitar FK com addresses)
+        await queryInterface.createTable('orders', {
+            id: {
+                type: DataTypes.INTEGER,
+                primaryKey: true,
+                autoIncrement: true
+            },
+            user_id: {
+                type: DataTypes.INTEGER,
+                allowNull: false,
+                references: {
+                    model: 'users',
+                    key: 'id'
+                },
+                onDelete: 'CASCADE'
+            },
+            order_number: { type: DataTypes.STRING(50), allowNull: false, unique: true },
+            status: {
+                type: DataTypes.ENUM('pending', 'confirmed', 'processing', 'shipped', 'delivered', 'cancelled'),
+                defaultValue: 'pending'
+            },
+            payment_status: {
+                type: DataTypes.ENUM('pending', 'paid', 'failed', 'refunded'),
+                defaultValue: 'pending'
+            },
+            payment_method: { type: DataTypes.STRING(50) },
+            subtotal: { type: DataTypes.DECIMAL(10, 2), allowNull: false },
+            tax_amount: { type: DataTypes.DECIMAL(10, 2), defaultValue: 0 },
+            shipping_amount: { type: DataTypes.DECIMAL(10, 2), defaultValue: 0 },
+            discount_amount: { type: DataTypes.DECIMAL(10, 2), defaultValue: 0 },
+            total_amount: { type: DataTypes.DECIMAL(10, 2), allowNull: false },
+            currency: { type: DataTypes.STRING(3), defaultValue: 'BRL' },
+            shipping_address_id: {
+                type: DataTypes.INTEGER,
+                references: {
+                    model: 'addresses',
+                    key: 'id'
+                },
+                onDelete: 'RESTRICT'
+            },
+            billing_address_id: {
+                type: DataTypes.INTEGER,
+                references: {
+                    model: 'addresses',
+                    key: 'id'
+                },
+                onDelete: 'RESTRICT'
+            },
+            notes: { type: DataTypes.TEXT },
+            shipped_at: { type: DataTypes.DATE },
+            delivered_at: { type: DataTypes.DATE },
+            created_at: {
+                type: DataTypes.DATE,
+                defaultValue: DataTypes.NOW
+            },
+            updated_at: {
+                type: DataTypes.DATE,
+                defaultValue: DataTypes.NOW
+            }
+        }, { engine: 'InnoDB' });
+
         // Agora rodar sync com alter para criar FKs e tabelas restantes
         await sequelize.sync({ alter: true });
         return { rebuilt: false };
