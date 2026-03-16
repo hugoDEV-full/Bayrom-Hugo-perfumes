@@ -244,6 +244,58 @@ async function syncSchemaWithFallback() {
             }
         }, { engine: 'InnoDB' });
 
+        // Criar reviews (antes de sync para evitar FK com products)
+        await queryInterface.createTable('reviews', {
+            id: {
+                type: DataTypes.INTEGER,
+                primaryKey: true,
+                autoIncrement: true
+            },
+            user_id: {
+                type: DataTypes.INTEGER,
+                allowNull: false,
+                references: {
+                    model: 'users',
+                    key: 'id'
+                },
+                onDelete: 'CASCADE'
+            },
+            product_id: {
+                type: DataTypes.INTEGER,
+                allowNull: false,
+                references: {
+                    model: 'products',
+                    key: 'id'
+                },
+                onDelete: 'CASCADE'
+            },
+            order_id: {
+                type: DataTypes.INTEGER,
+                references: {
+                    model: 'orders',
+                    key: 'id'
+                },
+                onDelete: 'SET NULL'
+            },
+            rating: {
+                type: DataTypes.INTEGER,
+                allowNull: false
+            },
+            title: { type: DataTypes.STRING(100) },
+            comment: { type: DataTypes.TEXT },
+            is_verified_purchase: { type: DataTypes.BOOLEAN, defaultValue: false },
+            is_approved: { type: DataTypes.BOOLEAN, defaultValue: true },
+            helpful_count: { type: DataTypes.INTEGER, defaultValue: 0 },
+            created_at: {
+                type: DataTypes.DATE,
+                defaultValue: DataTypes.NOW
+            },
+            updated_at: {
+                type: DataTypes.DATE,
+                defaultValue: DataTypes.NOW
+            }
+        }, { engine: 'InnoDB' });
+
         // Agora rodar sync com alter para criar FKs e tabelas restantes
         await sequelize.sync({ alter: true });
         return { rebuilt: false };
