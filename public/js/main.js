@@ -89,12 +89,28 @@ function displaySearchResults(products) {
 // Cart Functionality
 function initializeCart() {
     // Add to cart buttons
-    document.querySelectorAll('.add-to-cart').forEach(button => {
+    document.querySelectorAll('.add-to-cart, .add-to-cart-btn').forEach(button => {
         button.addEventListener('click', async function() {
             const productId = this.dataset.productId;
             const quantity = this.dataset.quantity || 1;
             
             await addToCart(productId, quantity, this);
+        });
+    });
+
+    // Buy now buttons (fast checkout)
+    document.querySelectorAll('.buy-now').forEach(button => {
+        button.addEventListener('click', async function() {
+            const productId = this.dataset.productId;
+
+            let quantity = 1;
+            const qtyInput = document.querySelector('.quantity-input');
+            if (qtyInput && qtyInput.value) {
+                const parsed = parseInt(qtyInput.value, 10);
+                if (!Number.isNaN(parsed) && parsed > 0) quantity = parsed;
+            }
+
+            await buyNow(productId, quantity, this);
         });
     });
     
@@ -159,6 +175,8 @@ async function addToCart(productId, quantity, button) {
                     button.disabled = false;
                 }, 2000);
             }
+
+            return true;
         } else {
             throw new Error(result.error || 'Erro ao adicionar ao carrinho');
         }
@@ -167,7 +185,18 @@ async function addToCart(productId, quantity, button) {
         showNotification('error', error.message || 'Ocorreu um erro. Tente novamente.');
         button.innerHTML = originalText;
         button.disabled = false;
+
+        return false;
     }
+}
+
+async function buyNow(productId, quantity, button) {
+    const added = await addToCart(productId, quantity, button);
+    if (!added) return;
+
+    // Checkout exige login. Se o usuário não estiver logado, o backend vai redirecionar,
+    // mas garantimos uma UX rápida passando o next.
+    window.location.href = '/checkout';
 }
 
 // Update Quantity
