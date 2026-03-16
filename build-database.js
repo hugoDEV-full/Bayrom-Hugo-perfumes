@@ -296,6 +296,10 @@ async function syncSchemaWithFallback() {
             }
         }, { engine: 'InnoDB' });
 
+        // Limpar dados órfãos antes de adicionar FKs
+        await sequelize.query('DELETE FROM reviews WHERE product_id NOT IN (SELECT id FROM products)');
+        await sequelize.query('DELETE FROM reviews WHERE user_id NOT IN (SELECT id FROM users)');
+
         // Agora rodar sync com alter para criar FKs e tabelas restantes
         await sequelize.sync({ alter: true });
         return { rebuilt: false };
