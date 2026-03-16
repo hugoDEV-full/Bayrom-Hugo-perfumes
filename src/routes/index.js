@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const Product = require('../models/Product');
 const Category = require('../models/Category');
+const { authMiddleware } = require('../middleware/auth');
 
 // Página de demonstração de materiais preciosos
 router.get('/materiais-preciosos', (req, res) => {
@@ -14,6 +15,27 @@ router.get('/materiais-preciosos', (req, res) => {
 // Página inicial
 router.get('/', async (req, res) => {
     return res.redirect('/products');
+});
+
+// Rotas legadas (evitar links quebrados)
+router.get('/about', (req, res) => {
+    return res.redirect('/sobre-nos');
+});
+
+router.get('/contact', (req, res) => {
+    return res.redirect('/contato');
+});
+
+router.get('/account/profile', (req, res) => {
+    return res.redirect('/profile');
+});
+
+// Perfil do usuário
+router.get('/profile', authMiddleware, (req, res) => {
+    res.render('client/profile', {
+        title: 'Meu Perfil - Bayrom & Hugo Parfums',
+        description: 'Gerencie seus dados e acompanhe seus pedidos.'
+    });
 });
 
 // Página de enciclopédia de perfumes

@@ -1,0 +1,40 @@
+<%- include('../../partials/header') %>
+
+<div class="container py-5">
+    <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 mb-4">
+        <div>
+            <h1 class="mb-1">Rastreamento</h1>
+            <div class="text-muted">Pedido <strong><%= order.order_number %></strong></div>
+        </div>
+        <div>
+            <a href="/orders/<%= order.order_number %>" class="btn btn-outline-secondary">Voltar ao pedido</a>
+        </div>
+    </div>
+
+    <div class="card shadow-sm">
+        <div class="card-body">
+            <div class="mb-3"><strong>Código:</strong> <%= order.tracking_code %></div>
+
+            <% if (trackingInfo && trackingInfo.events && trackingInfo.events.length > 0) { %>
+                <ul class="list-group">
+                    <% trackingInfo.events.forEach(ev => { %>
+                        <li class="list-group-item">
+                            <div class="fw-bold"><%= ev.status %></div>
+                            <div class="text-muted small">
+                                <%= ev.date ? new Date(ev.date).toLocaleString('pt-BR') : '' %>
+                                <%= ev.location ? ' | ' + ev.location : '' %>
+                            </div>
+                            <% if (ev.description) { %>
+                                <div class="mt-1"><%= ev.description %></div>
+                            <% } %>
+                        </li>
+                    <% }) %>
+                </ul>
+            <% } else { %>
+                <div class="text-muted">Nenhuma informação de rastreio disponível no momento.</div>
+            <% } %>
+        </div>
+    </div>
+</div>
+
+<%- include('../../partials/footer') %>

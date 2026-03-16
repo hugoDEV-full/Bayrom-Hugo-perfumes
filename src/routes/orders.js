@@ -41,7 +41,7 @@ router.get('/', async (req, res) => {
     } catch (error) {
         console.error('Erro ao carregar pedidos:', error);
         req.flash('error_msg', 'Ocorreu um erro ao carregar seus pedidos');
-        res.redirect('/account/profile');
+        res.redirect('/profile');
     }
 });
 
