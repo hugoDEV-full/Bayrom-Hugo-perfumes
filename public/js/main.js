@@ -1,9 +1,13 @@
 // Main JavaScript file for Bayrom & Hugo Parfums
 
 // DOM Content Loaded
-document.addEventListener('DOMContentLoaded', function() {
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', function() {
+        initializeApp();
+    });
+} else {
     initializeApp();
-});
+}
 
 // Initialize Application
 function initializeApp() {
@@ -88,20 +92,11 @@ function displaySearchResults(products) {
 
 // Cart Functionality
 function initializeCart() {
-    // Add to cart buttons
-    document.querySelectorAll('.add-to-cart, .add-to-cart-btn').forEach(button => {
-        button.addEventListener('click', async function() {
-            const productId = this.dataset.productId;
-            const quantity = this.dataset.quantity || 1;
-            
-            await addToCart(productId, quantity, this);
-        });
-    });
-
-    // Buy now buttons (fast checkout)
-    document.querySelectorAll('.buy-now').forEach(button => {
-        button.addEventListener('click', async function() {
-            const productId = this.dataset.productId;
+    // Delegated click handlers (works even if elements are added later)
+    document.addEventListener('click', async (e) => {
+        const buyNowBtn = e.target.closest('.buy-now');
+        if (buyNowBtn) {
+            const productId = buyNowBtn.dataset.productId;
 
             let quantity = 1;
             const qtyInput = document.querySelector('.quantity-input');
@@ -110,8 +105,16 @@ function initializeCart() {
                 if (!Number.isNaN(parsed) && parsed > 0) quantity = parsed;
             }
 
-            await buyNow(productId, quantity, this);
-        });
+            await buyNow(productId, quantity, buyNowBtn);
+            return;
+        }
+
+        const addToCartBtn = e.target.closest('.add-to-cart, .add-to-cart-btn');
+        if (addToCartBtn) {
+            const productId = addToCartBtn.dataset.productId;
+            const quantity = addToCartBtn.dataset.quantity || 1;
+            await addToCart(productId, quantity, addToCartBtn);
+        }
     });
     
     // Quantity controls in cart
