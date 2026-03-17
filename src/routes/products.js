@@ -1,8 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const Product = require('../models/Product');
-const Category = require('../models/Category');
-const Review = require('../models/Review');
+const { Product, Category, Review, User, Wishlist, Order, OrderItem } = require('../models');
 const { optionalAuthMiddleware } = require('../middleware/auth');
 
 // Catálogo de inspirações (leve, focado em busca e filtros)
@@ -271,7 +269,7 @@ router.get('/:slug', optionalAuthMiddleware, async (req, res) => {
                 model: Review,
                 as: 'reviews',
                 include: [{
-                    model: require('../models/User'),
+                    model: User,
                     as: 'user',
                     attributes: ['name']
                 }],
@@ -306,14 +304,13 @@ router.get('/:slug', optionalAuthMiddleware, async (req, res) => {
         // Verificar se produto está nos favoritos
         let isInWishlist = false;
         if (req.user) {
-            const Wishlist = require('../models/Wishlist');
-            const wishlistItem = await Wishlist.findOne({
+            const wishlist = await Wishlist.findOne({
                 where: {
                     user_id: req.user.id,
                     product_id: product.id
                 }
             });
-            isInWishlist = !!wishlistItem;
+            isInWishlist = !!wishlist;
         }
 
         // Calcular estatísticas de avaliações
@@ -380,8 +377,7 @@ router.post('/:slug/review', [
         }
 
         // Verificar se usuário comprou o produto (opcional)
-        const Order = require('../models/Order');
-        const OrderItem = require('../models/OrderItem');
+        const { Order, OrderItem } = require('../models');
         const hasPurchased = await OrderItem.findOne({
             include: [{
                 model: Order,

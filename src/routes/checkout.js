@@ -3,11 +3,7 @@ const router = express.Router();
 const { body, validationResult } = require('express-validator');
 
 const { authMiddleware } = require('../middleware/auth');
-const Cart = require('../models/Cart');
-const Product = require('../models/Product');
-const Address = require('../models/Address');
-const Order = require('../models/Order');
-const OrderItem = require('../models/OrderItem');
+const { Cart, Product, Address, Order, OrderItem } = require('../models');
 const sequelize = require('../config/database');
 
 async function getUserCartItems(userId) {

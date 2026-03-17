@@ -1,8 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const Product = require('../models/Product');
-const Category = require('../models/Category');
-const Cart = require('../models/Cart');
+const { Product, Category, Cart } = require('../models');
 const { optionalAuthMiddleware } = require('../middleware/auth');
 
 // API Routes - todas retornam JSON

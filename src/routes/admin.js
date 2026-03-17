@@ -1,11 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const { authMiddleware, adminMiddleware } = require('../middleware/auth');
-const Product = require('../models/Product');
-const Order = require('../models/Order');
-const OrderItem = require('../models/OrderItem');
-const User = require('../models/User');
-const Category = require('../models/Category');
+const { Product, Order, OrderItem, User, Category, Address } = require('../models');
 
 // Middleware para garantir acesso apenas a administradores
 router.use(authMiddleware);
@@ -383,7 +379,7 @@ router.get('/orders/:id', async (req, res) => {
                     as: 'user'
                 },
                 {
-                    model: require('../models/Address'),
+                    model: Address,
                     as: 'shippingAddress'
                 }
             ]
@@ -430,7 +426,7 @@ router.post('/orders/:id/status', async (req, res) => {
         await order.update(updateData);
         
         // Registrar no histórico
-        const OrderStatusHistory = require('../models/OrderStatusHistory');
+        const { OrderStatusHistory } = require('../models');
         await OrderStatusHistory.create({
             order_id: order.id,
             status,

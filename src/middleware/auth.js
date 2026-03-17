@@ -1,4 +1,4 @@
-const User = require('../models/User');
+const { User } = require('../models');
 
 // Middleware para verificar se usuário está autenticado
 const authMiddleware = async (req, res, next) => {

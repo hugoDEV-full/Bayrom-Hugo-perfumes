@@ -3,7 +3,7 @@ const router = express.Router();
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const { body, validationResult } = require('express-validator');
-const User = require('../models/User');
+const { User } = require('../models');
 const { authMiddleware, guestMiddleware } = require('../middleware/auth');
 
 // Middleware para convidados (usuários não logados)

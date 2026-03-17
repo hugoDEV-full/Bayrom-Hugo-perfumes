@@ -1,9 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const Order = require('../models/Order');
-const OrderItem = require('../models/OrderItem');
-const Product = require('../models/Product');
-const Address = require('../models/Address');
+const { Order, OrderItem, Product, Address, Cart } = require('../models');
 const { authMiddleware } = require('../middleware/auth');
 
 // Middleware para verificar autenticação em todas as rotas
@@ -169,8 +166,6 @@ router.post('/:orderNumber/reorder', async (req, res) => {
         }
 
         // Adicionar itens ao carrinho
-        const Cart = require('../models/Cart');
-        
         for (const item of order.items) {
             if (item.product && item.product.status === 'active' && item.product.isInStock()) {
                 const existingItem = await Cart.findOne({
