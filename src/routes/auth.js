@@ -54,20 +54,34 @@ router.post('/login', [
         // Atualizar último login
         await user.update({ last_login: new Date() });
 
-        // Criar sessão
-        req.session.user = {
-            id: user.id,
-            name: user.name,
-            email: user.email,
-            role: user.role
-        };
+        // Regenerar sessão e persistir antes do redirect (evita problemas de cookie/sessão em produção)
+        const previousReturnTo = req.session.returnTo;
+        req.session.regenerate((err) => {
+            if (err) {
+                console.error('Erro ao regenerar sessão:', err);
+                req.flash('error_msg', 'Ocorreu um erro ao fazer login. Tente novamente.');
+                return res.redirect('/auth/login');
+            }
 
-        // Redirecionar com base no papel do usuário
-        const redirectTo = req.session.returnTo || (user.role === 'admin' ? '/admin' : '/');
-        delete req.session.returnTo;
+            req.session.user = {
+                id: user.id,
+                name: user.name,
+                email: user.email,
+                role: user.role
+            };
 
-        req.flash('success_msg', `Bem-vindo(a) de volta, ${user.name}!`);
-        res.redirect(redirectTo);
+            const redirectTo = previousReturnTo || (user.role === 'admin' ? '/admin' : '/');
+            req.flash('success_msg', `Bem-vindo(a) de volta, ${user.name}!`);
+
+            req.session.save((saveErr) => {
+                if (saveErr) {
+                    console.error('Erro ao salvar sessão:', saveErr);
+                    req.flash('error_msg', 'Ocorreu um erro ao fazer login. Tente novamente.');
+                    return res.redirect('/auth/login');
+                }
+                res.redirect(redirectTo);
+            });
+        });
     } catch (error) {
         console.error('Erro no login:', error);
         req.flash('error_msg', 'Ocorreu um erro ao fazer login. Tente novamente.');
