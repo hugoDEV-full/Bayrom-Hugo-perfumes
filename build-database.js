@@ -614,8 +614,10 @@ async function buildDatabase(options = {}) {
             throw error;
         }
 
-        // Em produção, quando executado no build (postinstall), não falhar o deploy por erro de DB
-        if (tolerateProductionErrors && process.env.NODE_ENV === 'production') {
+        // Em produção/Railway, quando executado no build (postinstall), não falhar o deploy por erro de DB.
+        // No ambiente de build do Nixpacks, NODE_ENV nem sempre vem como 'production'.
+        // Então usamos DATABASE_URL como sinal de MySQL/produção.
+        if (tolerateProductionErrors && process.env.DATABASE_URL) {
             console.log('⚠️  Continuando build em produção...');
             return;
         }
@@ -631,7 +633,10 @@ async function buildDatabase(options = {}) {
 
 // Executar apenas se não for em ambiente de teste
 if (require.main === module && process.env.NODE_ENV !== 'test') {
-    buildDatabase();
+    buildDatabase().catch((error) => {
+        console.error('❌ Erro ao configurar banco de dados:', error?.message || error);
+        process.exit(1);
+    });
 }
 
 module.exports = buildDatabase;
