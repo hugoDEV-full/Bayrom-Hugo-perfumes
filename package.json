@@ -6,8 +6,8 @@
   "scripts": {
     "start": "node server.js",
     "dev": "nodemon server.js",
-    "build": "node -e \"if (process.env.RUN_DB_SETUP === 'true') { require('./build-database')(); } else { console.log('Skipping build step'); }\"",
-    "postinstall": "node -e \"if (process.env.RUN_DB_SETUP === 'true') { require('./build-database')(); } else { console.log('Skipping postinstall'); }\"",
+    "build": "node -e \"console.log('Skipping build step');\"",
+    "postinstall": "node -e \"console.log('Skipping postinstall');\"",
     "db:build": "node build-database.js",
     "setup": "node scripts/setup.js",
     "test": "node test-system.js",
