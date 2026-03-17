@@ -154,8 +154,9 @@ async function startServer() {
     try {
         // Em produção (Railway) evite rodar sync/seed a cada boot (custo/tempo).
         // A criação do schema deve acontecer no deploy via postinstall.
+        const isRailwayOrMySql = Boolean(process.env.DATABASE_URL);
         const shouldSetupDb =
-            process.env.NODE_ENV !== 'production' ||
+            !isRailwayOrMySql ||
             process.env.RUN_DB_SETUP === 'true';
 
         if (shouldSetupDb) {
