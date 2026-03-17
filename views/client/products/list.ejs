@@ -316,52 +316,7 @@ function changePage(page) {
     window.location.href = '/products?' + params.toString();
 }
 
-function addToCart(productId, button) {
-    // Implementar lógica do carrinho
-    fetch('/cart/add', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-            product_id: productId,
-            quantity: 1
-        })
-    })
-    .then(response => response.json())
-    .then(data => {
-        if (data.success) {
-            // Mostrar mensagem de sucesso
-            if (button) {
-                const originalText = button.innerHTML;
-                button.innerHTML = '<i class="fas fa-check me-2"></i>Adicionado!';
-                button.classList.add('btn-success');
-            
-                setTimeout(() => {
-                    button.innerHTML = originalText;
-                    button.classList.remove('btn-success');
-                }, 2000);
-            }
-        } else {
-            alert('Erro ao adicionar ao carrinho');
-        }
-    })
-    .catch(error => {
-        console.error('Erro:', error);
-        alert('Erro ao adicionar ao carrinho');
-    });
-}
-
 document.addEventListener('click', (e) => {
-    const addBtn = e.target.closest('.add-to-cart-btn');
-    if (addBtn) {
-        const productId = Number(addBtn.getAttribute('data-product-id'));
-        if (!Number.isNaN(productId)) {
-            addToCart(productId, addBtn);
-        }
-        return;
-    }
-
     const pageLink = e.target.closest('.pagination-link');
     if (pageLink) {
         e.preventDefault();
