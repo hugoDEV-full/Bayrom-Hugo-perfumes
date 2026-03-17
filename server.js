@@ -13,6 +13,9 @@ const flash = require('connect-flash');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+// Behind a reverse proxy (Railway), trust proxy so secure cookies work
+app.set('trust proxy', 1);
+
 // Configurar URL base para Railway
 const BASE_URL = process.env.RAILWAY_URL?.replace(/\/$/, '') || process.env.BASE_URL || 'http://localhost:3000';
 process.env.BASE_URL = BASE_URL;
@@ -76,8 +79,10 @@ app.use(session({
     secret: process.env.SESSION_SECRET || 'bayrom-hugo-perfumes-secret-2024',
     resave: false,
     saveUninitialized: false,
+    proxy: true,
     cookie: {
         secure: process.env.NODE_ENV === 'production',
+        sameSite: 'lax',
         httpOnly: true,
         maxAge: 24 * 60 * 60 * 1000 // 24 horas
     }
