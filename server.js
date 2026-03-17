@@ -156,8 +156,8 @@ async function startServer() {
         // A criação do schema deve acontecer no deploy via postinstall.
         const isRailwayOrMySql = Boolean(process.env.DATABASE_URL);
         const shouldSetupDb =
-            !isRailwayOrMySql ||
-            process.env.RUN_DB_SETUP === 'true';
+            !isRailwayOrMySql &&
+            (process.env.NODE_ENV !== 'production' || process.env.RUN_DB_SETUP === 'true');
 
         if (shouldSetupDb) {
             console.log('🔄 Configurando banco de dados...');
